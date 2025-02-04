@@ -8,13 +8,12 @@ router.get('/' , (req,res) => {
     
     res.sendFile(a)
 })
+// const HOST =
 
-
-app.get('/login/page', async (req, res) => {
-    
-    const REDIRECT_URI = "http://localhost:3000/oauth/kakao";
-    const redirectURL = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`
-    res.redirect(redirectURL);
-  });
+// router.get('/login/page', async (req, res) => {
+//     const REDIRECT_URI = "http://localhost:3000/oauth/kakao";
+//     const redirectURL = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`
+//     res.redirect(redirectURL);
+//   });
 
 module.exports= router
