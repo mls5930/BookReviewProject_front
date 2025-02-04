@@ -1,0 +1,22 @@
+{
+  "name": "bookreviewproject_front",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {
+    "axios": "^1.7.9",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nunjucks": "^3.2.4",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+  
+}
