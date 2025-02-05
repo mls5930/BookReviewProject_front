@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin:0;
+}
+
+#mainPage {
+    background: #F3EAD6;
+    color: #A66D45;
+}
+
+#header {
+    max-width: 90%;
+    height: 500px;
+    margin: 0 auto;
+}
+.headerBox {
+    display: flex;
+    justify-content: space-between;
+}
+#search {
+    border-radius: 800px;
+    width: 400px;
+    background-color: #E6E9ED;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#input {
+    background-color: #E6E9ED;
+    border: none;
+    color:gray;
+
+}
