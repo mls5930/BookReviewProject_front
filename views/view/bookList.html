@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>책 검색 리스트페이지</title>
+    <title>책 검색 페이지</title>
+    <link href="../../css/bookList.css" rel="stylesheet">
 </head>
 <body>
-    
+    <div id="conteiner">
+        <div id="innerConteiner">
+            <ul class="list">
+                {% for item in bookData %}
+                <li>
+                    <img src="{{ item.cover }}">
+                    <div>{{ item.title }}</div>
+                    <div>{{ item.author }}</div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

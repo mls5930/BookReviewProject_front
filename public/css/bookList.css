@@ -1,0 +1,17 @@
+#conteiner {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#innerConteiner {
+    margin: 0 auto;
+    display: flex;
+    max-width: 900px;
+    border: 1px solid blue;
+}
+
+.list {
+    list-style: none;
+}

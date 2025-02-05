@@ -1,0 +1,57 @@
+#container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+#innerContainer {
+    margin: 0 auto;
+    display: flex;
+    max-width: 900px;
+    justify-content: center;
+}
+
+.title {
+    position: sticky;
+}
+
+.bookImg > img  {
+    margin-top: 90px;
+    margin-left: 65px;
+    margin-bottom: 15px;
+}
+
+.title > button {
+    margin-left: 130px;
+}
+.title > button > img {
+    width: 43px;
+    height: 16px;
+    cursor: pointer;
+}
+
+#attribute {
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+    margin-left: 46px;
+    margin-right: 5px;
+    height: 90vh; 
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    display: none;
+  }
+
+#content {
+    display: flex;
+    margin-top: 90px;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 40px;
+    border-bottom: 1px solid black;
+}
+
+.commentaryBtn {
+    margin-left: 70px;
+}
