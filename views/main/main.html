@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/BookReviewProject_front/css/mainPage.css">
+    <link rel="stylesheet" href="/css/maincss/header.css">
 </head>
 <body>
     <div id="mainPage">
-            <div id="header">
-                <div class="headerBox">
-                <div>LOGO</div>
-                <input type="text" value="책 검색">
-                <a href="/login/page">로그인</a>
+        <div id="header">
+            <div class="headerBox">
+                <h1>LOGO</h1>
+                <div id="search">
+                    <div>돋보기</div>
+                    <input type="text" value="원하는 책을 검색해보세요!" id="input">
+                    <div>crtlk</div>
                 </div>
+                <a href="/login/page">로그인</a>
             </div>
         </div>
         <div id="inner">
@@ -35,18 +38,51 @@
                 <div class="adName">최근 감상문</div>
                 <div class="bookUpload">책이 추가될자리</div>
             </div>
+        </div>
         <div id="topbutton">
-            <button>top</button></div>
+            <button>top</button>
         </div>
         <div id="footer">
-            <div>(주)북아일렌드</div>
-        </div>
+            <div>
+                <div>(주)북아일렌드</div>
+                <div>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                </div>
+            </div>
+            <div>
+                <ul class="footerUl">
+                    <li><a href="#">이용약관 ></a></li>
+                    <li><a href="#">개인정보처리방침 ></a></li>
+                    <li><a href="#">청소년보호정책  ></a></li>
+                    <li><a href="#">고객센터 ></a></li>
+                    <li><a href="#">B2B 문의 ></a></li>
+                    <li><a href="#">콘텐츠 제휴문의 ></a></li>
+                    <li><a href="#">뷰어 다운로드 ></a></li>
+                    <li><a href="#">회사 소개 </a></li>
+                </ul>
+            </div>
+                <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+            </div>
+            <div>
+                <a><img width="50px" height="50px"></a>
+                <a href="#">정보관리체계 블록체인 인증획득 |</a>
+                <a href="#">인증 범위: 북아일렌드 고객서비스 |</a>
+                <a href="#">인증 범위: 북아일렌드 고객서비스 |</a>
+                <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
+            </div>
         <div class="loginBox">
             <div>
                 <div>로그인 이미지</div>
                 <div>반가워요 북커버리 시작하기</div>
                 <div class="logintext">요즘 일하는 사람들이 책을 찾는 새로운 방법</div>
-                <button type="button">구글로 3초만에 시작하기</button>
+                <form method="get" action="/login/page">
+                    <button type="submit">
+                        <img width="30px" height="30px">
+                        카카오로 3초만에 시작하기
+                    </button>
+                </form>
                 <p>로그인은
                     <a href="https://bookcovery.notion.site/7f574a4a03a540ea846dd638aa712b11">개인정보보호 정책</a>
                     및
