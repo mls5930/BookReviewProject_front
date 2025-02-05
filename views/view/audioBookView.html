@@ -5,25 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>책상세 페이지</title>
     <link href="../../css/viewPage.css" rel="stylesheet">
+    <style>
+        .btnImg {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .btnImg > button:nth-child(1){
+            margin-left: 95px;
+        }
+        
+        .btnImg > button:nth-child(2){
+            margin-left: 15px;
+        }
+
+
+        .btnImg > button > img {
+            width: 43px;
+            height: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <div id="container-Box">
-        <div id="inner-container">
-            <section class="bookImg">
-                <img src="https://image.aladin.co.kr/product/33037/47/cover500/8986022842_1.jpg">
-                <button>북마크</button>
-                <button> 헤드셋이미지 </button>
-            </section>
-            <section id="title">
-                <div class="bookTitle">상실</div>
-                <div class="bookAthor">조앤 디디온지음 </br>홍한별 옮김</div>
-                <div class="bookDct"></div>
-            </section>
-            <section id="content">
-                <p>감상문</p>
-                <button id="CommentaryBtn">감상문 작성</button>
-            </section>
-        </div>
-    </div>
+    <main id="container">
+        <section id="innerContainer">
+            <aside class="title">
+                {% for item in bookData %}
+                    <div class="bookImg">
+                        <img src="{{ item.cover }}">
+                    </div>
+                {% endfor%}
+                <div class="btnImg">
+                    <button>
+                        <img src ="/img/not.png" art="빈 이미지">
+                    </button>
+                    <button>
+                        <img src ="/img/audio.png" art="빈 이미지">
+                    </button>
+                </div>
+            </aside>
+            <article id="attribute">
+                {% for item in bookData %}
+                <div class="items">
+                    <h1 class="bookTitle">{{ item.title }}</h1>
+                    <h3 class="bookAthor">{{ item.author }}</h3>
+                    <h4 class="bookDct">{{ item.description }}</h4>
+                </div>
+            {% endfor %}
+                <div id="content">
+                    <div>감상문</div>
+                    <button class="commentaryBtn">감상문 작성</button>
+                </div>
+            </article>
+        </section>
+    </main>
 </body>
 </html>

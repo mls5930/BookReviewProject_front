@@ -7,24 +7,32 @@
     <link href="../../css/viewPage.css" rel="stylesheet">
 </head>
 <body>
-    <div id="container-Box">
-        <div id="inner-container">
-            <section class="bookImg">
-                <img src="https://image.aladin.co.kr/product/33037/47/cover500/8986022842_1.jpg">
-                <button>
-                    북마크
-                </button>
-            </section>
-            <section id="title">
-                <div class="bookTitle">상실</div>
-                <div class="bookAthor">조앤 디디온지음 </br>홍한별 옮김</div>
-                <div class="bookDct"></div>
-            </section>
-            <section id="content">
-                <p>감상문</p>
-                <button id="CommentaryBtn">감상문 작성</button>
-            </section>
-        </div>
-    </div>
+    <main id="container">
+        <section id="innerContainer">
+            <aside class="title">
+                {% for item in bookData %}
+                    <div class="bookImg">
+                        <img src="{{ item.cover }}">
+                    </div>
+                {% endfor%}
+                    <button>
+                        <img src ="/img/not.png" art="빈 이미지">
+                    </button>
+            </aside>
+            <article id="attribute">
+                {% for item in bookData %}
+                <div class="items">
+                    <h1 class="bookTitle">{{ item.title }}</h1>
+                    <h3 class="bookAthor">{{ item.author }}</h3>
+                    <h4 class="bookDct">{{ item.description }}</h4>
+                </div>
+            {% endfor %}
+                <div id="content">
+                    <div>감상문</div>
+                    <button class="commentaryBtn">감상문 작성</button>
+                </div>
+            </article>
+        </section>
+    </main>
 </body>
 </html>
