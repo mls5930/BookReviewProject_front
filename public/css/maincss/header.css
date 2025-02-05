@@ -1,34 +1,110 @@
 *{
     padding: 0;
-    margin:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul,li {
+    list-style:none;
+}
+
+h1 {
+    font-size:40px;
+}
+
+h2 {
+    font-size:32px;
+}
+
+h3 {
+    font-size:24px;
+}
+
+h4 {
+    font-size:16px;
 }
 
 #mainPage {
-    background: #F3EAD6;
-    color: #A66D45;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* background: #ffffff;
+    color: #A66D45; */
+    position: relative;
+}
+#topbutton{
+    display: flex;
+    justify-content: right;
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
 }
 
 #header {
-    max-width: 90%;
-    height: 500px;
+    width: 1200px;
+    height: 56px;
     margin: 0 auto;
+    position: fixed;  
+    z-index: 1000;
+    background-color: white;
+    /* border-bottom: 1px solid black; */
 }
+
 .headerBox {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    
 }
+
 #search {
-    border-radius: 800px;
     width: 400px;
-    background-color: #E6E9ED;
-    border: none;
+    border-bottom: 1px solid black;
     display: flex;
     justify-content: center;
-    align-items: center;
+    font-size: 16px;
 }
 #input {
-    background-color: #E6E9ED;
+    height: 27px;
+    width: 300px;
     border: none;
-    color:gray;
+    font-size: 16px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+#inner{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom : 50px;
+    position: relative;
+    /* left: 200px; */
+    background-color: white;
+    
+}
 
+#banner {
+    display: flex;
+    justify-content: left;
+    gap: 140px;
+    list-style: none;
+    border-bottom: solid 1px black;
+    position:fixed;
+    padding-bottom: 5px;
+    margin-left:40px;
+}
+#banner > li > a {
+    padding: 15px;
+    font-size:20px;
+    font-weight: 900;
+    color:black;
+    text-decoration: none;
+
+}
+#banner > li > a:hover {
+    border-radius: 800px;
+    color: black;
+    text-decoration: underline;
+}
+#box{
+    /* border-bottom: 1px solid #efefef; */
 }

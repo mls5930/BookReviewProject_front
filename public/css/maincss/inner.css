@@ -1,0 +1,30 @@
+/* #inner{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 70px;
+    padding-bottom : 50px;
+    position: relative;
+    background-color: white;
+}
+
+#banner {
+    display: flex;
+    justify-content: left;
+    gap: 100px;
+    list-style: none;
+    border-bottom: solid 1px black;
+    position:fixed;
+}
+#banner > li > a {
+    padding: 15px;
+    font-size:16px;
+    font-weight: 900;
+    color:black;
+    text-decoration: none;
+
+}
+#banner > li > a:hover {
+    border-radius: 800px;
+    color: black;
+    text-decoration: underline;
+} */

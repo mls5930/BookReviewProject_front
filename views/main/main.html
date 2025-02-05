@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/maincss/header.css">
+    <link rel="stylesheet" href="/css/maincss/main.css">
+    <link rel="stylesheet" href="/css/maincss/ad.css">
+    <link rel="stylesheet" href="/css/maincss/inner.css">
+    <link rel="stylesheet" href="/css/maincss/footer.css">
 </head>
 <body>
     <div id="mainPage">
@@ -12,43 +16,67 @@
             <div class="headerBox">
                 <h1>LOGO</h1>
                 <div id="search">
-                    <div>돋보기</div>
-                    <input type="text" value="원하는 책을 검색해보세요!" id="input">
-                    <div>crtlk</div>
+                    <input type="text" placeholder="원하는 책을 검색하세요" id="input">
+                    <div>검색</div>
                 </div>
                 <a href="/login/page">로그인</a>
             </div>
-        </div>
-        <div id="inner">
-            <div class="innerbox">
-                <ul id="banner">
-                    <li>감상문</li>
-                    <li>책</li>
-                    <li>오디오북</li>
-                    <li>커뮤니티</li>
-                </ul>
+            <div id="box">
+                <div id="inner">
+                    <div class="innerbox">
+                        <ul id="banner">
+                            <li><a href="#">감상문</a></li>
+                            <li><a href="#">책</a></li>
+                            <li><a href="#">오디오북</a></li>
+                            <li><a href="#">커뮤니티</li></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="main">
-            <div class="mainName">오늘의 책</div>
-            <div class="daybook">책이 추가될 자리</div>
+            <div class="mainName">
+                <h3>오늘의 책</h3>
+            </div>
+            <div class="daybookbox">
+                {% for item in bookData %}
+                <ul>
+                    <li class="daybook-thumnail">
+                        <img src="{{item.cover}}" />
+                    </li>
+                    <li class="daybook-title">
+                        {{item.title}} -
+                        <span class="daybook-author">
+                            {{item.author}}
+                        </span>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
         </div>
         <div id="ad">
+            <div class="mainName">
+                <h3>최근 감상문</h3>
+            </div>
             <div class="adbox">
-                <div class="adName">최근 감상문</div>
-                <div class="bookUpload">책이 추가될자리</div>
+                {% for item in bookData2 %}
+                    <div class="bookUpload">
+                        <div><img class="bookImg" src={{item.cover}}></div>
+                        <div>{{item.author}}</div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div id="topbutton">
-            <button>top</button>
+            <a href="#mainPage"><img width="60px" height="60px" src="./img/topimg.png"></a>
         </div>
         <div id="footer">
-            <div>
+            <div class="footerbox">
                 <div>(주)북아일렌드</div>
                 <div>
-                    <a href="#"></a>
-                    <a href="#"></a>
-                    <a href="#"></a>
+                    <a href="#"><img width="30px" height="30px"></a>
+                    <a href="#"><img width="30px" height="30px"></a>
+                    <a href="#"><img width="30px" height="30px"></a>
                 </div>
             </div>
             <div>
@@ -63,15 +91,17 @@
                     <li><a href="#">회사 소개 </a></li>
                 </ul>
             </div>
-                <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
-            </div>
             <div>
-                <a><img width="50px" height="50px"></a>
-                <a href="#">정보관리체계 블록체인 인증획득 |</a>
-                <a href="#">인증 범위: 북아일렌드 고객서비스 |</a>
-                <a href="#">인증 범위: 북아일렌드 고객서비스 |</a>
-                <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
+                <ul class="footerUL">
+                    <li><a><img width="40px" height="40px"></a></li>
+                    <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
+                    <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                    <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                    <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
+                </ul>
             </div>
+            <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+        </div>
         <div class="loginBox">
             <div>
                 <div>로그인 이미지</div>
