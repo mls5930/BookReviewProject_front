@@ -48,10 +48,31 @@
     margin-top: 90px;
     flex-direction: row;
     justify-content: space-around;
-    margin-left: 40px;
+    /* margin-left: 40px; */
     border-bottom: 1px solid black;
 }
 
 .commentaryBtn {
     margin-left: 70px;
+}
+
+/* audio book view 버튼 css */
+.btnImg {
+    display: flex;
+    flex-direction: row;
+}
+
+.btnImg > button:nth-child(1){
+    margin-left: 95px;
+}
+
+.btnImg > button:nth-child(2){
+    margin-left: 15px;
+}
+
+
+.btnImg > button > img {
+    width: 43px;
+    height: 16px;
+    cursor: pointer;
 }

@@ -14,7 +14,7 @@ nunjucks.configure('views', {
 
 app.get('/', (req,res, next) => {
 
-  res.render('view/bookList.html', {bookData});
+  res.render('view/bookView.html', {bookData});
   
 
 })

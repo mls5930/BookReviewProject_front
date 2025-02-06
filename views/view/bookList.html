@@ -5,15 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>책 검색 페이지</title>
     <link href="../../css/bookList.css" rel="stylesheet">
+    <link href="../../css/maincss/mainheader.css" rel="stylesheet">
 </head>
 <body>
+    <div id="mainPage">
+        <div id="header">
+            <div class="headerBox">
+                <h1>LOGO</h1>
+                <div id="search">
+                    <input type="text" placeholder="원하는 책을 검색하세요" id="input">
+                    <div>검색</div>
+                </div>
+                <a href="/login/page">로그인</a>
+            </div>
+            <div id="box">
+                <div id="inner">
+                    <div class="innerbox">
+                        <ul id="banner">
+                            <li><a href="#">감상문</a></li>
+                            <li><a href="#">책</a></li>
+                            <li><a href="#">오디오북</a></li>
+                            <li><a href="#">커뮤니티</li></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div id="conteiner">
         <div id="innerConteiner">
             <ul class="list">
                 {% for item in bookData %}
-                <li>
+                <li class="inner">
                     <img src="{{ item.cover }}">
-                    <div>{{ item.title }}</div>
+                    <h1>{{ item.title }}</h1>
                     <div>{{ item.author }}</div>
                 </li>
                 {% endfor %}
