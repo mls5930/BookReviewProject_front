@@ -12,11 +12,19 @@ nunjucks.configure('views', {
   express: app
 });
 
-app.get('/', (req,res, next) => {
+app.get('/list', (req,res, next) => {
 
   res.render('view/bookList.html', {bookData});
-  
+})
 
+app.get('/adi', (req,res, next) => {
+
+  res.render('view/audioBookView.html', {bookData});
+})
+
+app.get('/', (req,res, next) => {
+
+  res.render('view/bookView.html', {bookData});
 })
 
 app.listen(3005, () => {

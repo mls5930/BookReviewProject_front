@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>책상세 페이지</title>
-    <link href="../../css/viewPage.css" rel="stylesheet">
+    <link href="../../css/views/viewPage.css" rel="stylesheet">
+    <link href="../../css/maincss/header.css" rel="stylesheet">
 </head>
 <body>
+    <div id="mainPage">
+        <div id="header">
+            <div class="header-inner">
+                <div class="headerBox">
+                    <h1>LOGO</h1>
+                    <div class="search">
+                        <input type="text" placeholder="원하는 책을 검색해보세요!" id="input">
+                        <div>검색</div>
+                    </div>
+                    <a href="/login/page">로그인</a>
+                </div>
+                <div id="inner">
+                    <div class="innerbox">
+                        <ul class="banner">
+                            <li>
+                                <a href="#">감상문</a>
+                            </li>
+                            <li>
+                                <a href="#">책</a>
+                            </li>
+                            <li>
+                                <a href="#">오디오북</a>
+                            </li>
+                            <li>
+                                <a href="#">커뮤니티</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     <main id="container">
         <section id="innerContainer">
             <aside class="title">
@@ -28,7 +60,7 @@
                 {% for item in bookData %}
                 <div class="items">
                     <h1 class="bookTitle">{{ item.title }}</h1>
-                    <h3 class="bookAthor">{{ item.author }}</h3>
+                    <h3 class="bookAuthor">{{ item.author }}</h3>
                     <h4 class="bookDct">{{ item.description }}</h4>
                 </div>
             {% endfor %}

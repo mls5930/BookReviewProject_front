@@ -13,22 +13,30 @@
 <body>
     <div id="mainPage">
         <div id="header">
-            <div class="headerBox">
-                <h1>LOGO</h1>
-                <div id="search">
-                    <input type="text" placeholder="원하는 책을 검색하세요" id="input">
-                    <div>검색</div>
+            <div class="header-inner">
+                <div class="headerBox">
+                    <h1>LOGO</h1>
+                    <div class="search">
+                        <input type="text" placeholder="원하는 책을 검색해보세요!" id="input">
+                        <div>검색</div>
+                    </div>
+                    <a href="/login/page">로그인</a>
                 </div>
-                <a href="/login/page">로그인</a>
-            </div>
-            <div id="box">
                 <div id="inner">
                     <div class="innerbox">
-                        <ul id="banner">
-                            <li><a href="#">감상문</a></li>
-                            <li><a href="#">책</a></li>
-                            <li><a href="#">오디오북</a></li>
-                            <li><a href="#">커뮤니티</li></a></li>
+                        <ul class="banner">
+                            <li>
+                                <a href="#">감상문</a>
+                            </li>
+                            <li>
+                                <a href="#">책</a>
+                            </li>
+                            <li>
+                                <a href="#">오디오북</a>
+                            </li>
+                            <li>
+                                <a href="#">커뮤니티</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -42,7 +50,7 @@
                 {% for item in bookData %}
                 <ul>
                     <li class="daybook-thumnail">
-                        <img src="{{item.cover}}" />
+                        <img width="170px" height="240px" src="{{item.cover}}" />
                     </li>
                     <li class="daybook-title">
                         {{item.title}} -
