@@ -4,42 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/BookReviewProject_front/css/mainPage.css">
+    <link rel="stylesheet" href="/css/maincss/header.css">
+    <link rel="stylesheet" href="/css/maincss/main.css">
+    <link rel="stylesheet" href="/css/maincss/ad.css">
+    <link rel="stylesheet" href="/css/maincss/inner.css">
+    <link rel="stylesheet" href="/css/maincss/footer.css">
 </head>
 <body>
     <div id="mainPage">
-            <div id="header">
-                <div class="headerBox">
-                <div>LOGO</div>
-                <input type="text" value="책 검색">
+        <div id="header">
+            <div class="headerBox">
+                <h1>LOGO</h1>
+                <div id="search">
+                    <input type="text" placeholder="원하는 책을 검색하세요" id="input">
+                    <div>검색</div>
+                </div>
                 <a href="/login/page">로그인</a>
+            </div>
+            <div id="box">
+                <div id="inner">
+                    <div class="innerbox">
+                        <ul id="banner">
+                            <li><a href="#">감상문</a></li>
+                            <li><a href="#">책</a></li>
+                            <li><a href="#">오디오북</a></li>
+                            <li><a href="#">커뮤니티</li></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="inner">
-            <div class="innerbox">
-                <ul id="banner">
-                    <li>감상문</li>
-                    <li>책</li>
-                    <li>오디오북</li>
-                    <li>커뮤니티</li>
-                </ul>
-            </div>
-        </div>
         <div id="main">
-            <div class="mainName">오늘의 책</div>
-            <div class="daybook">책이 추가될 자리</div>
+            <div class="mainName">
+                <h3>오늘의 책</h3>
+            </div>
+            <div class="daybookbox">
+                {% for item in bookData %}
+                <ul>
+                    <li class="daybook-thumnail">
+                        <img src="{{item.cover}}" />
+                    </li>
+                    <li class="daybook-title">
+                        {{item.title}} -
+                        <span class="daybook-author">
+                            {{item.author}}
+                        </span>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
         </div>
         <div id="ad">
-            <div class="adbox">
-                <div class="adName">최근 감상문</div>
-                <div class="bookUpload">책이 추가될자리</div>
+            <div class="mainName">
+                <h3>최근 감상문</h3>
             </div>
+            <div class="adbox">
+                {% for item in bookData2 %}
+                    <div class="bookUpload">
+                        <div><img class="bookImg" src={{item.cover}}></div>
+                        <div>{{item.author}}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
         <div id="topbutton">
-            <button>top</button></div>
+            <a href="#mainPage"><img width="60px" height="60px" src="./img/topimg.png"></a>
         </div>
         <div id="footer">
-            <div>(주)북아일렌드</div>
+            <div class="footerbox">
+                <div>(주)북아일렌드</div>
+                <div>
+                    <a href="#"><img width="30px" height="30px"></a>
+                    <a href="#"><img width="30px" height="30px"></a>
+                    <a href="#"><img width="30px" height="30px"></a>
+                </div>
+            </div>
+            <div>
+                <ul class="footerUl">
+                    <li><a href="#">이용약관 ></a></li>
+                    <li><a href="#">개인정보처리방침 ></a></li>
+                    <li><a href="#">청소년보호정책  ></a></li>
+                    <li><a href="#">고객센터 ></a></li>
+                    <li><a href="#">B2B 문의 ></a></li>
+                    <li><a href="#">콘텐츠 제휴문의 ></a></li>
+                    <li><a href="#">뷰어 다운로드 ></a></li>
+                    <li><a href="#">회사 소개 </a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="footerUL">
+                    <li><a><img width="40px" height="40px"></a></li>
+                    <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
+                    <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                    <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                    <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
+                </ul>
+            </div>
+            <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+        </div>
+        <div class="loginBox">
+            <div>
+                <div>로그인 이미지</div>
+                <div>반가워요 북커버리 시작하기</div>
+                <div class="logintext">요즘 일하는 사람들이 책을 찾는 새로운 방법</div>
+                <form method="get" action="/login/page">
+                    <button type="submit">
+                        <img width="30px" height="30px">
+                        카카오로 3초만에 시작하기
+                    </button>
+                </form>
+                <p>로그인은
+                    <a href="https://bookcovery.notion.site/7f574a4a03a540ea846dd638aa712b11">개인정보보호 정책</a>
+                    및
+                    <a href="https://bookcovery.notion.site/92c58cef635a4fd08663942a6d4e7288">서비스 약관</a>
+                    에 동의하는 것을 의미합니다!
+                </p>
+            </div>
         </div>
     </div>
 </body>

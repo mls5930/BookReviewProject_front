@@ -48,8 +48,11 @@
     margin-top: 90px;
     flex-direction: row;
     justify-content: space-around;
-    /* margin-left: 40px; */
     border-bottom: 1px solid black;
+}
+
+#content > div {
+    
 }
 
 .commentaryBtn {
