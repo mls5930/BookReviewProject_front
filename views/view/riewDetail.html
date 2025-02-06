@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책상세 페이지</title>
+    <link href="../../css/viewPage.css" rel="stylesheet">
+</head>
+<body>
+    <main id="container">
+        <section id="innerContainer">
+            <aside class="title">
+                {% for item in bookData %}
+                    <div class="bookImg">
+                        <img src="{{ item.cover }}">
+                    </div>
+                {% endfor%}
+                    <button>
+                        <img src ="/img/not.png" art="빈 이미지">
+                    </button>
+            </aside>
+            <article id="attribute">
+                {% for item in bookData %}
+                <div class="items">
+                    <h1 class="Title"></h1>
+                    <h3 class=""></h3>
+                    <h4 class=""></h4>
+                </div>
+            {% endfor %}
+                <div id="content">
+                    <div>감상문</div>
+                    <button class="commentaryBtn">감상문 작성</button>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
