@@ -63,26 +63,29 @@ h4 {
 
 .search {
     width: 400px;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     display: flex;
     justify-content: center;
     font-size: 16px;
 }
 
 input {
-    height: 27px;
-    width: 300px;
+    height: 34px;
+    width: 360px;
     border: none;
     font-size: 16px;
     margin-bottom: 5px;
     text-align: left;
+    background-color: #f5f4f4;
+    border-radius: 20px;
+    padding-left: 30px;
 }
 
 #inner{
-    width: 1200px;
+    border-bottom: 1px solid black;
     margin: 0 auto;
     padding-top: 60px;
-    padding-bottom : 50px;
+    padding-bottom : 45px;
     position: relative;
     /* left: 200px; */
     background-color: white;
@@ -94,7 +97,7 @@ input {
     justify-content: left;
     gap: 120px;
     list-style: none;
-    border-bottom: solid 1px black;
+    /* border-bottom: solid 1px black; */
     position:fixed;
     padding-bottom: 5px;
     margin-left:40px;
@@ -102,7 +105,7 @@ input {
 
 .banner > li > a {
     padding: 15px;
-    font-size:20px;
+    font-size:24px;
     font-weight: 900;
     color:black;
     text-decoration: none;

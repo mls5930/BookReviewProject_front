@@ -19,10 +19,26 @@ const REST_API_KEY = process.env.API_KEY
 //     const redirectURL = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`
 //     res.redirect(redirectURL);
 //   });
-router.get('/login/page', async (req, res) => {
-    
+router.get('/mypage', async (req, res) => {
+    const mybookData = bookData.map( (book) => {
+        return{
+            title: book.title.split("-")[0],
+            cover: book.cover,
+            author: book.author.split("(")[0]
+        };
+    });
+    // if (titles)
+    console.log(mybookData);
+    res.render(mainHtml+`mypage.html`,{
+        mybookData
+    })
+})
 
-    res.render(mainHtml+`mypage.html`)
+router.get('/myreview', async (req, res) => {
+    
+    res.render(mainHtml+`myreview.html`,{
+        bookData
+    })
 })
 module.exports= router
 
