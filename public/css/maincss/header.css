@@ -29,7 +29,7 @@ h4 {
     margin: 0 auto;
     /* background: #ffffff;
     color: #A66D45; */
-    position: relative;
+    /* position: relative; */
 }
 #topbutton{
     display: flex;
@@ -38,13 +38,19 @@ h4 {
     bottom: 50px;
     right: 100px;
 }
-
 #header {
+    height : 165px;
+}
+
+.header-inner {
+    position: fixed;
+    left : 0;
+    right : 0;
+    top : 0;
     width: 1200px;
     height: 56px;
     margin: 0 auto;
-    position: fixed;  
-    z-index: 1000;
+    /* z-index: 1000; */
     background-color: white;
     /* border-bottom: 1px solid black; */
 }
@@ -53,24 +59,25 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
 }
 
-#search {
+.search {
     width: 400px;
     border-bottom: 1px solid black;
     display: flex;
     justify-content: center;
     font-size: 16px;
 }
-#input {
+
+input {
     height: 27px;
     width: 300px;
     border: none;
     font-size: 16px;
     margin-bottom: 5px;
-    text-align: center;
+    text-align: left;
 }
+
 #inner{
     width: 1200px;
     margin: 0 auto;
@@ -79,20 +86,21 @@ h4 {
     position: relative;
     /* left: 200px; */
     background-color: white;
-    
 }
 
-#banner {
+
+.banner {
     display: flex;
     justify-content: left;
-    gap: 140px;
+    gap: 120px;
     list-style: none;
     border-bottom: solid 1px black;
     position:fixed;
     padding-bottom: 5px;
     margin-left:40px;
 }
-#banner > li > a {
+
+.banner > li > a {
     padding: 15px;
     font-size:20px;
     font-weight: 900;
@@ -100,11 +108,9 @@ h4 {
     text-decoration: none;
 
 }
-#banner > li > a:hover {
+.banner > li > a:hover {
     border-radius: 800px;
     color: black;
     text-decoration: underline;
 }
-#box{
-    /* border-bottom: 1px solid #efefef; */
-}
+
