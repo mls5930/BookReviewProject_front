@@ -59,6 +59,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
 }
 .bookcaseRoute {
     display: flex;
@@ -69,12 +70,12 @@ a {
 .mybookcase{
     font-size: 24px;
     font-weight:800;
-    color: #333;
+    color: #999;
 }
 .myReview {
     font-size: 24px;
     font-weight:800;
-    color: #999;
+    color: #333;
 }
 
 .bookcaseRoute > div > a:hover {
@@ -119,24 +120,33 @@ a {
 .bookmarkBtn:hover{
     background-color: rgb(10, 10, 243);
 }
-
-.bookData {
-    max-width: 1200px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-.bookMarkBox {
-    width: 280px;
-    padding: 8px 50px;
+.bookReview {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 10px;
 }
-.bookMarkBox > img {
-    width: 118px;
-    height: 177px;
+
+.BookreviewBox {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+    border: solid 1px #efefef;
+    border-radius:18px
+}
+.imgBox{
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+}
+.imgBox > div {
+    display: flex;
+    align-items: end;
+}
+.myimg{
+    width: 40px;
+    height: 40px;
     border-radius: 12px;
 }

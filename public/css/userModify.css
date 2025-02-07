@@ -59,84 +59,51 @@ a {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 800px;
 }
 .bookcaseRoute {
-    display: flex;
-    gap: 8px;
-    font-size: 24px;
-    padding-left: 20px;
-}
-.mybookcase{
-    font-size: 24px;
-    font-weight:800;
-    color: #333;
-}
-.myReview {
-    font-size: 24px;
-    font-weight:800;
-    color: #999;
-}
-
-.bookcaseRoute > div > a:hover {
-    font-size: 24px;
-    font-weight:800;
-    color: #333;
-    background-color: #e2e2e2;
-    border-radius: 10px;
-}
-
-.rightBox {
-    padding: 80px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    font-size: 16px;
-    color: #666;
-    margin: 0 280px;
-}
-
-.rightBox :nth-child(1) {
-    font-weight: 600;
-    font-size: 22px;
-    color: black;
-}
-.bookmarkBtn {
-    /* width: 250px; */
-    padding: 8px 16px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: blue;
-    border-radius: 10px;
-    border: none;
-    color: white;
+    padding-bottom: 30px;
+    font-size:16px;
     font-weight: 800;
-    text-decoration: none;
 }
-.bookmarkBtn:hover{
-    background-color: rgb(10, 10, 243);
+.mydata {
+    color: #333;
+    font-size: 24px;
+    font-weight:800;
+}
+#myModify{
+    display: flex;
+    gap: 20px;
+    border: solid 1px #e2e2e2;
+}
+.modifyform > input{
+    background-color: white;
+    border: none;
+    font-weight:400
+}
+.modifyform > button{
+    background-color: white;
+    border: none;
+    color: blue;
+    font-weight:400
 }
 
-.bookData {
-    max-width: 1200px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-.bookMarkBox {
-    width: 280px;
-    padding: 8px 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-.bookMarkBox > img {
-    width: 118px;
-    height: 177px;
+.modifyImg{
+    
+    width: 110px;
+    height: 110px;
     border-radius: 12px;
 }
+.modifyBox {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+.name, .title , .Introduce{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
