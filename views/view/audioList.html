@@ -4,8 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오디오 책</title>
+    <link href="../../css/maincss/header.css" rel="stylesheet">
+    <link href="../../css/views/bookList.css" rel="stylesheet">
+    <style>
+        .bookMark > button:nth-child(1){
+            margin-left: -20px;
+        }
+
+        .bookMark > button:nth-child(2){
+            margin-left: 7px;
+        }
+    </style>
+
 </head>
 <body>
-    
+    <div id="mainPage">
+        <div id="header">
+            <div class="header-inner">
+                <div class="headerBox">
+                    <h1>LOGO</h1>
+                    <div class="search">
+                        <input type="text" placeholder="원하는 책을 검색해보세요!" id="input">
+                        <div>검색</div>
+                    </div>
+                    <a href="/login/page">로그인</a>
+                </div>
+                <div id="inner">
+                    <div class="innerbox">
+                        <ul class="banner">
+                            <li>
+                                <a href="#">감상문</a>
+                            </li>
+                            <li>
+                                <a href="#">책</a>
+                            </li>
+                            <li>
+                                <a href="#">오디오북</a>
+                            </li>
+                            <li>
+                                <a href="#">커뮤니티</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="conteiner">
+            <div id="searchR">
+                <p>' 아이 ' 에 대한 182,113개의 검색 결과</p>
+            </div>
+            <div id="innerConteiner">
+                <ul class="list">
+                    {% for item in bookData %}
+                    <li class="inner">
+                        <img src="{{ item.cover }}">
+                        <div class="bookMark">
+                            <button>
+                                <img src ="/img/not.png" art="빈 이미지">
+                            </button>
+                            <button>
+                                <img src ="/img/audio.png" art="빈 이미지">
+                            </button>
+                        </div>
+                        <p class="book">{{ item.title }}</p>
+                        <p class="author">{{ item.author }}</p>
+                        
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
 </body>
 </html>

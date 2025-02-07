@@ -39,12 +39,21 @@
                 </div>
             </div>
         </div>
+    </div>
     <div id="conteiner">
+        <div id="searchR">
+            <p>' 아이 ' 에 대한 182,113개의 검색 결과</p>
+        </div>
         <div id="innerConteiner">
             <ul class="list">
                 {% for item in bookData %}
                 <li class="inner">
                     <img src="{{ item.cover }}">
+                    <div class="bookMark">
+                        <button>
+                            <img src ="/img/not.png" art="빈 이미지">
+                        </button>
+                    </div>
                     <p class="book">{{ item.title }}</p>
                     <p class="author">{{ item.author }}</p>
                     

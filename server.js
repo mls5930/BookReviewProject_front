@@ -22,6 +22,17 @@ app.get('/adi', (req,res, next) => {
   res.render('view/audioBookView.html', {bookData});
 })
 
+app.get('/listen', (req,res, next) => {
+
+  res.render('view/audioList.html', {bookData});
+})
+
+app.get('/lead', (req,res, next) => {
+
+  res.render('view/community.html', {bookData});
+})
+
+
 app.get('/', (req,res, next) => {
 
   res.render('view/bookView.html', {bookData});
