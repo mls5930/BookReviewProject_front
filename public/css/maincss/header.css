@@ -25,11 +25,7 @@ h4 {
 }
 
 #mainPage {
-    max-width: 1200px;
     margin: 0 auto;
-    /* background: #ffffff;
-    color: #A66D45; */
-    /* position: relative; */
 }
 #topbutton{
     display: flex;
@@ -37,6 +33,12 @@ h4 {
     position: fixed;
     bottom: 50px;
     right: 100px;
+}
+.topbuttonImg {
+    width:60px;
+    height:60px;
+    border-radius: 1000px;
+    
 }
 #header {
     height : 165px;
@@ -47,62 +49,63 @@ h4 {
     left : 0;
     right : 0;
     top : 0;
-    width: 1200px;
+    width: 100%;
     height: 56px;
     margin: 0 auto;
+<<<<<<< HEAD
     z-index: 2;
+=======
+>>>>>>> 8447d21648d93da3d8c3e445227b2201338bbd8e
     background-color: white;
-    /* border-bottom: 1px solid black; */
 }
 
 .headerBox {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    gap: 20px;
 }
 
 .search {
     width: 400px;
-    border-bottom: 1px solid black;
     display: flex;
     justify-content: center;
     font-size: 16px;
 }
 
 input {
-    height: 27px;
-    width: 300px;
+    height: 34px;
+    width: 360px;
     border: none;
     font-size: 16px;
     margin-bottom: 5px;
     text-align: left;
+    background-color: #f5f4f4;
+    border-radius: 20px;
+    padding-left: 30px;
 }
 
 #inner{
-    width: 1200px;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, .1);
     margin: 0 auto;
     padding-top: 60px;
-    padding-bottom : 50px;
+    padding-bottom : 45px;
     position: relative;
-    /* left: 200px; */
     background-color: white;
 }
 
 
 .banner {
     display: flex;
-    justify-content: left;
     gap: 120px;
-    list-style: none;
-    border-bottom: solid 1px black;
     position:fixed;
-    padding-bottom: 5px;
+    left: 200px;
     margin-left:40px;
 }
 
 .banner > li > a {
     padding: 15px;
-    font-size:20px;
+    font-size:24px;
     font-weight: 900;
     color:black;
     text-decoration: none;

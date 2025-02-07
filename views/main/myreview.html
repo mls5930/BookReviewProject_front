@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mypage</title>
     <link rel="stylesheet" href="/css/maincss/header.css">
-    <link rel="stylesheet" href="/css/mypage.css">
+    <link rel="stylesheet" href="/css/myreview.css">
     <link rel="stylesheet" href="/css/maincss/ad.css">
     <link rel="stylesheet" href="/css/maincss/inner.css">
     <link rel="stylesheet" href="/css/maincss/footer.css">
@@ -72,24 +72,27 @@
                             <a href="/myreview" class="myReview">리뷰</a>
                         </div>
                     </div>
-                    {% if mybookData %}
-                    <div class="bookData">
-                        {% for bookData in mybookData%}
-                        <div class="bookMarkBox">
-                            <img src="{{bookData.cover}}">
-                            <p>{{bookData.title}}</p>
-                            <p>{{bookData.author}}</p>
+                    {% if bookData %}
+                    <div class="bookReview">
+                        {%for Bookreview in bookData %}
+                        <div class="BookreviewBox">
+                            <div>{{Bookreview.title}}</div>
+                            <div class="imgBox" >
+                                <a href="#">
+                                    <img class="myimg" src="{{Bookreview.cover}}" alt="">
+                                </a>
+                                <div>{{Bookreview.author}}</div>
+                            </div>
                         </div>
                         {% endfor %}
                     </div>
                     {% else %}
                     <div class="rightBox" >
-                        <div>책장이 비어있어요.</div>
-                        <div>북마크를 추가해서 책을 저장할 수 있어요!</div>
-                        <a href="#" class="bookmarkBtn">북마크 하러가기</a>
+                        <div>리뷰가 비었어요.</div>
+                        <div>읽은책에 자신의 생각을 적어보세요!</div>
+                        <a href="#" class="bookmarkBtn">책 둘러보기</a>
                     </div>
                     {% endif %}
-                    
                 </div>
             </div>
         </div>
