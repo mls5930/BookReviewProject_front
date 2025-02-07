@@ -52,6 +52,10 @@ h4 {
     width: 100%;
     height: 56px;
     margin: 0 auto;
+<<<<<<< HEAD
+    z-index: 2;
+=======
+>>>>>>> 8447d21648d93da3d8c3e445227b2201338bbd8e
     background-color: white;
 }
 

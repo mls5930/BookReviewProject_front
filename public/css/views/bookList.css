@@ -1,0 +1,70 @@
+#conteiner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#searchR {
+    margin-top: 70px;
+    margin-left: 60px;
+    margin-bottom: 35px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#innerConteiner {
+    margin: 0 auto;
+    display: flex;
+    max-width: 1100px;                                                                                                                                                                                                                                                                                                                                                                              
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0 85px;
+    margin-left: 4px;
+}
+
+.inner {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.book {
+    margin-top: 9px;
+    font-weight: 1000;
+    margin-left: 4px;
+    width: 137px;
+}
+
+.bookMark {
+    margin-left: 50px;
+    margin-top: 7px;
+}
+
+.bookMark > button > img {
+    width: 19px;
+    height: 11px;
+    cursor: pointer;
+}
+
+.author {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 4px;
+    width: 145px;
+}
+
+img {
+    margin-left: 8px;
+    width: 118px;
+    height: 177px;
+    border-radius: 12px;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+}
