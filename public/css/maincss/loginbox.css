@@ -1,4 +1,4 @@
-* {
+.loginBox{
   margin: revert;
 }
 
@@ -8,14 +8,26 @@
     border-radius:10px;       
     overflow:hidden;         
     background-color: white; 
-    box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+    box-shadow: 5px 10px 10px 1px rgba(0,0,0,.8); 
   }
+.popup-head{
+  position: relative;
+}
 .popup-head > img {
     width: 100%;
     height: 300px;
 }
-.popupbtn {
-    position: absolute;;
+.closeBtn {
+  position: absolute; /* 절대 위치 설정 */
+  top: 10px; /* 이미지 내부에서 위쪽 여백 */
+  right: 10px; /* 이미지 내부에서 오른쪽 여백 */
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  color: white; /* 글자색 */
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 .body-titlebox > h3{
     font-weight: 600;

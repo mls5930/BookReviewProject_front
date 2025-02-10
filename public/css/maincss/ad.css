@@ -4,8 +4,16 @@
     padding-bottom:50px;
     /* background-color:#F3EAD6; */
 }
-
-
+.adName{
+    padding: 32px 24px;
+}
+.adName > h3{
+    margin: 0px;
+}
+.adName > h3 > a {
+    color: #1659cc;
+    font-weight: 900;
+}
 .adbox{
     display: flex;
     max-width: 1200px;
@@ -14,13 +22,13 @@
     margin-left: 80px;
 }
 .bookUpload{
-    max-width: 240px;
+    max-width: 180px;
     display: flex;
     justify-content:center;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    padding: 0 40px;
+    padding: 0 20px;
     font-size: 12px;
     color: black;
 
@@ -31,7 +39,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .bookUpload > div > img:hover{
-    transform: translateY(-24px);
+    transform: translateY(-17px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
@@ -39,7 +47,7 @@
 .bookImg{
     width: 150px;
     height: 200px;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 .bookUploadImg {
     display: flex;
