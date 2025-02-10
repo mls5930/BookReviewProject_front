@@ -16,15 +16,21 @@
 
 .textbox {
     outline: 0;
-    width: 455px;    
+    width: 555px;
+    height: 300px;    
     text-align: left;
    
 }
 
 #btnbox {
-    
+    display: flex;
+    margin-top: 20px;
+    margin-left: 200px;
 }
 
+.btn2 {
+    margin-left: 10px;
+}
 
 .show {
     border-top: 1px solid #efefef;
@@ -82,7 +88,19 @@
     margin-top: 31px;
 }
 
+#searchR {
+    padding: 32px 24px;
+}
+
 .writebox > div {
     display: flex;
     align-items: end;
+}
+/* 오디오북 버튼 */
+.btnImg {
+    margin-left: 76px;
+}
+
+.btnImg > button:nth-child(2){
+    margin-left: 20px;
 }
