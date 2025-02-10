@@ -75,7 +75,7 @@ router.get('/audiobook', (req, res) => {
             author: book.author.split(",")[0]
         };
     });
-    res.render(viewHtml +'bookList.html', {listBook} );
+    res.render(viewHtml +'audioList.html', {listBook} );
     })
 
 
@@ -104,6 +104,17 @@ router.get('/bookview', (req, res) => {
 
 router.get('/reviewwrite', (req, res) => {
     res.render(viewHtml +'reviewWrite.html', {bookData:bookData[0]} );
+})
+
+router.get('/reviewlist', (req, res) => {
+    const listBook = bookData.map( (book) => {
+        return{
+            cover: book.cover,
+            title: book.title.split("-")[0],
+            author: book.author.split(",")[0]
+        };
+    });
+    res.render(viewHtml +'reviewList.html', {listBook} );
 })
 
 router.get('/review', (req, res) => {

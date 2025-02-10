@@ -88,6 +88,10 @@
     margin-top: 31px;
 }
 
+#searchR {
+    padding: 32px 24px;
+}
+
 .writebox > div {
     display: flex;
     align-items: end;

@@ -11,13 +11,16 @@
     justify-content: center;
 }
 
+#searchR {
+    padding: 32px 24px;
+}
+
 .title {
     position: sticky;
     z-index: 1;
 }
 
 .bookImg > img  {
-    margin-top: 70px;
     margin-left: 34px;
     margin-bottom: 15px;
     border-radius: 8px;
@@ -36,7 +39,6 @@
 #attribute {
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
     margin-left: 46px;
     margin-right: 5px;
     height: 90vh; 
