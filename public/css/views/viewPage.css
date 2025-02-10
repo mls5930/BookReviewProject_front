@@ -86,7 +86,9 @@
 }
 
 .commentaryBtn {
+    /* display: none; */
     margin-left: 70px;
+    cursor: pointer;
 }
 
 /* audio book view 버튼 css */

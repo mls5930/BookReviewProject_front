@@ -1,0 +1,74 @@
+.bookReview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.BookreviewBox {
+    padding: 30px;
+    gap: 10px;
+    text-align: center;
+    border: solid 1px #efefef;
+    border-radius:18px;
+    height: 300px;
+}
+
+.write {
+    margin-top: 15px;
+}
+
+.imgBox{
+    display: flex;
+    gap: 10px;
+    margin-top: 160px;
+}
+
+.date {
+    margin-left: 300px;
+}
+
+#text {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.textbox {
+    
+}
+
+
+.write-btn {
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.show {
+    border-top: 1px solid #efefef;
+    margin-top: 30px;
+}
+
+.showbox {
+    border: 1px solid #efefef;
+    border-radius: 18px;
+    margin-top: 30px;
+}
+
+.imgBox > div {
+    display: flex;
+    align-items: end;
+}
+.myimg{
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.showcomment {
+    padding: 30px;
+    margin-top: 25px;
+    display: flex;
+    margin-left: 34px;
+}
