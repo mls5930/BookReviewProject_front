@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>책상세 페이지</title>
-    <link href="../../css/views/viewPage.css" rel="stylesheet">
-    <link href="../../css/maincss/header.css" rel="stylesheet">
-    <link href="../../css/views/reviewdetail.css" rel="stylesheet">
-    <link href="../../css/maincss/footer.css" rel="stylesheet">
+    <link href="/css/maincss/header.css" rel="stylesheet">
+    <link href="/css/maincss/footer.css" rel="stylesheet">
+    <link href="/css/views/viewPage.css" rel="stylesheet">
+    <link href="/css/views/reviewdetail.css" rel="stylesheet">
     <style>
         #attribute {
             margin-top: 38px;
@@ -19,12 +19,16 @@
         <div id="header">
             <div class="header-inner">
                 <div class="headerBox">
-                    <h1>LOGO</h1>
+                    <a href="/">
+                        <img src="/img/logo4.png">
+                    </a>
                     <div class="search">
-                        <input type="text" placeholder="원하는 책을 검색해보세요!" id="input">
-                        <div>검색</div>
+                        <a href="#" id="input">
+                            원하는 책을 검색해보세요!
+                            <img src="/img/readingGlasses2.png">
+                        </a>
                     </div>
-                    <a href="/login/page">로그인</a>
+                    <a href="/login/page" class="logoLogin">북아일렌드 시작하기</a>
                 </div>
                 <div id="inner">
                     <div class="innerbox">
@@ -70,32 +74,44 @@
                         </div>
                     </div>
                 </div>
-                <form id="text">
-                    <textarea class="textbox" name="comments"
-                         cols="55" 
-                         rows="3"
-                         value=""
-                     >
-                     </textarea>
-                     <button type="submit" class="write-btn">Submit</button>
-                </form>
+                <div id="textbox">
+                    <form class="text">
+                        <textarea class="textbox" name="comments"
+                            rows="3"
+                            value=""
+                        >
+                        </textarea>
+                        <button type="submit" class="write-btn">Submit</button>
+                    </form>
+                </div>
                 <div class="show">
-                    <div class="showbox">
-                        <div class="showcomment">
-                            <!-- 보여줄자리 -->hvhv
-                        </div>
+                    <div class="showcomment">
+                        <!-- 보여줄자리 -->
+                            <div class="reviewBox">
+                                <div class="commentwrite">{{bookData.title}}</div>
+                                <div class="writebox" >
+                                    <a href="#">
+                                        <img class="img" src={{bookData.cover}} alt="">
+                                    </a>
+                                    <div>{{bookData.author}}</div>
+                                    <div class="date">02-13</div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </article>
         </section>
     </main>
+    <div id="topbutton">
+        <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
+    </div>
     <div id="footer">
         <div class="footerbox">
             <div>(주)북아일랜드</div>
             <div>
-                <a href="#"><img width="30px" height="30px"></a>
-                <a href="#"><img width="30px" height="30px"></a>
-                <a href="#"><img width="30px" height="30px"></a>
+                <a href="https://www.youtube.com/"><img width="30px" height="30px" src="/img/youtubeLogo-removebg-preview.png"></a>
+                <a href="https://www.instagram.com/"><img width="35px" height="30px" src="/img/instagramLogo-removebg-preview.png"></a>
+                <a href="https://www.google.com"><img width="30px" height="30px" src="/img/glooglelogo.png"></a>
             </div>
         </div>
         <div>

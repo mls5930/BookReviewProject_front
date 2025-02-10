@@ -1,41 +1,15 @@
-.bookReview {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 32px;
-}
-
-.BookreviewBox {
-    padding: 30px;
-    gap: 10px;
-    border: solid 1px #efefef;
-    border-radius: 8px;
-    height: 300px;
-}
-
-.write {
-    margin-top: 10px;
-}
-
-.imgBox{
-    display: flex;
-    gap: 10px;
-    margin-top: 170px;
-}
-
-.date {
-    margin-left: 310px;
+#attribute {
+    margin-top: 38px;
 }
 
 #textbox {
-    display: f;
-    border-top: 1px solid black;
-    margin-top: 30px;
+    border-top: none; 
+    margin-top: 0;
 }
 
 .text {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 30px;
     margin-left: 20px;
 }
@@ -44,6 +18,7 @@
     outline: 0;
     width: 455px;    
     text-align: left;
+   
 }
 .write-btn {
     cursor: pointer;
