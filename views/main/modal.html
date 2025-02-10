@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog Modal Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        dialog {
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .modal-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .modal-footer {
+            text-align: right;
+            margin-top: 15px;
+        }
+        button {
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .open-btn {
+            background-color: #1659cc;
+            color: white;
+        }
+        .close-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="open-btn">모달 열기</button>
+
+    <dialog id="modal">
+        <div class="modal-header">모달 제목</div>
+        <div class="modal-body">
+            <p>이것은 모달 창입니다.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="close-btn" onclick="closeModal()">닫기</button>
+        </div>
+    </dialog>
+
+    <script>
+        const openBtn = document.querySelector('.open-btn');
+        const closeBtn = document.querySelector('.close-btn');
+
+        function openModal() {
+            modal.showModal();
+        }
+
+        function closeModal() {
+            modal.close();
+        }
+
+        openBtn.onclick = () => {
+            openModal();
+        }
+
+        closeBtn.onclick = () => {
+            closeModal();
+        }
+    </script>
+</body>
+</html>

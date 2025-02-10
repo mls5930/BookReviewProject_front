@@ -4,43 +4,62 @@
     padding-bottom:50px;
     border-bottom: solid 1px #ededed;
 }
-
+#mainBox {
+    display: flex;
+    gap: 60px;
+}
 .mainName {
-    padding:24px 16px;
+  width: 200px;
+  padding-top: 20px;
+  padding-left: 24px;
+}
+.mainName > h3{
+    margin: 0px;
+}
+.mainName > h3 > a {
+    color: #1659cc;
+    font-weight: 800;
 }
 
 .daybookbox{
     display: flex;
-    padding: 0 50px;
+    /* padding: 0 10px; */
+    width: 800px;
     overflow: hidden;
 }
 
 .daybookbox > ul {
     display:flex;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding:0 60px;
+    gap: 8px;
+    padding:0 16px;
 }
 
 .daybookbox > ul > .daybook-thumnail {
     object-fit: fill;
-    -webkit-box-shadow: 0px 0px 47px -4px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 0px 47px -4px rgba(66, 68, 90, 1);
-    box-shadow: 0px 0px 47px -4px rgba(66, 68, 90, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
 }
+.daybookbox > ul > .daybook-thumnail > img {
+    border-radius: 6px;
+    width: 170px;
+    height: 240px;
+}
+
 .daybookbox > ul > .daybook-thumnail:hover {
-    -webkit-box-shadow: 0px 0px 47px 1px rgba(59, 70, 167, 1);
-    -moz-box-shadow: 0px 0px 47px 1px rgba(59, 70, 167, 1);
-    box-shadow: 0px 0px 47px 1px rgba(59, 70, 167, 1);
+    transform: translateY(-17px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    
 }
+
 
 .daybookbox > ul > .daybook-title {
     font-size:16px;
     font-weight: bold;
 }
 
-.daybookbox > ul > li > .daybook-author {
+.daybookbox > ul > .daybook-author {
     font-size:12px;
     color:#333;
 }
@@ -55,7 +74,7 @@
     justify-content:center;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     font-size: 10px;
 }
 

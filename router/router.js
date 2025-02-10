@@ -2,13 +2,21 @@ const express= require("express");
 const router = express.Router()
 const path = require('path');
 const mainHtml = path.join(__dirname,`../views/main/`)
+const viewHtml = path.join(__dirname,`../views/view/`)
 require('dotenv').config();
 const {bookData,bookData2} = require("../public/js/main")
 router.get('/' , (req,res) => {
-    console.log(mainHtml);
+    const mybookData = bookData.map( (book) => {
+        return{
+            title: book.title.split("-")[0],
+            cover: book.cover,
+            author: book.author.split(",")[0],
+            customerReviewRank: book.customerReviewRank
+        };
+    });
     res.render(mainHtml+`main.html` ,{
-        bookData,
-        bookData2
+        mybookData,
+        // bookData
     })
 })
 const HOST = 'https://kauth.kakao.com'
@@ -24,11 +32,12 @@ router.get('/mypage', async (req, res) => {
         return{
             title: book.title.split("-")[0],
             cover: book.cover,
-            author: book.author.split("(")[0]
+            author: book.author.split(",")[0],
+            
         };
     });
     // if (titles)
-    console.log(mybookData);
+    // console.log(mybookData);
     res.render(mainHtml+`mypage.html`,{
         mybookData
     })
@@ -36,15 +45,88 @@ router.get('/mypage', async (req, res) => {
 
 router.get('/myreview', async (req, res) => {
     // const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
+    const mybookData = bookData.map( (book) => {
+        return{
+            title: book.title.split("-")[0],
+            cover: book.cover,
+            author: book.author.split(",")[0],
+            pubDate: book.pubDate
+        };
+    });
     res.render(mainHtml+`myreview.html`,{
-        bookData
+        mybookData
     })
 })
 
-router.get('/usermodify' , async (req, res) => {
+router.get('/usermodify' , (req, res) => {
+    // const bookdata = bookData.splice(0,1)
+    const bookdata =bookData[0]
+    // console.log(bookdata);
+    
     res.render('main/userModify.html' ,{
-        bookData
+        bookdata
     })
+})
+
+// 책 리스트 및 상세페이지에 관한 라우터 
+
+router.get('/audiobook', (req, res) => {
+    const listBook = bookData.map( (book) => {
+        return{
+            cover: book.cover,
+            title: book.title.split("-")[0],
+            author: book.author.split(",")[0]
+        };
+    });
+    res.render(viewHtml +'audioList.html', {listBook} );
+    })
+
+
+router.get('/audioview', (req, res) => {
+    res.render(viewHtml +'audioBookView.html', {bookData:bookData[0]}  );
+})
+
+router.get('/audiowrite', (req, res) => {
+    res.render(viewHtml +'audioWrite.html', {bookData:bookData[0]}  );
+})
+
+router.get('/booklist', (req, res) => {
+    const listBook = bookData.map( (book) => {
+        return{
+            cover: book.cover,
+            title: book.title.split("-")[0],
+            author: book.author.split(",")[0]
+        };
+    });
+    res.render(viewHtml +'bookList.html', {listBook} );
+})
+
+router.get('/bookview', (req, res) => {
+    res.render(viewHtml +'bookView.html', {bookData:bookData[0]} );
+})
+
+router.get('/reviewwrite', (req, res) => {
+    res.render(viewHtml +'reviewWrite.html', {bookData:bookData[0]} );
+})
+
+router.get('/reviewlist', (req, res) => {
+    const listBook = bookData.map( (book) => {
+        return{
+            cover: book.cover,
+            title: book.title.split("-")[0],
+            author: book.author.split(",")[0]
+        };
+    });
+    res.render(viewHtml +'reviewList.html', {listBook} );
+})
+
+router.get('/review', (req, res) => {
+    // console.log(bookData[0]);
+    res.render(viewHtml +'reviewDetail.html', {bookData:bookData[0]} );
+})
+
+router.get('/community', (req, res) => {
+    res.render(viewHtml +'community.html');
 })
 module.exports= router
 

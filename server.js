@@ -1,24 +1,25 @@
 const express = require('express');
+const nunjucks = require('nunjucks');
 const app = express();
 require('dotenv').config();
-const nunjucks = require('nunjucks');
 const cookieParser = require('cookie-parser');
-const router = require("./router/router.js")
-// const middlewarejwt = require('./middleware.js');
-// const axios = require('axios');
+const router = require("./router/router")
 
+app.use(router)
 app.use(cookieParser());
 app.use(express.static('public'));
+
 app.set('view engine', 'html');
+
 nunjucks.configure('views', {
   express: app
 });
-app.use(router)
 
 
 
 
-app.listen(3005,() => {
-    console.log("서버확인");
-    
+
+app.listen(3005, () => {
+  console.log("front opne");
+  
 })

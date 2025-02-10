@@ -7,20 +7,24 @@
     <link rel="stylesheet" href="/css/maincss/header.css">
     <link rel="stylesheet" href="/css/usermodify.css">
     <link rel="stylesheet" href="/css/maincss/ad.css">
-    <link rel="stylesheet" href="/css/maincss/inner.css">
     <link rel="stylesheet" href="/css/maincss/footer.css">
+    <link rel="stylesheet" href="/css/maincss/loginbox.css">
 </head>
 <body>
     <div id="mainPage">
         <div id="header">
             <div class="header-inner">
                 <div class="headerBox">
-                    <h1>LOGO</h1>
+                    <a href="/">
+                        <img src="/img/logo4.png">
+                    </a>
                     <div class="search">
-                        <input type="text" placeholder="원하는 책을 검색해보세요!" id="input">
-                        <div>검색</div>
+                        <a href="#" id="input">
+                            원하는 책을 검색해보세요!
+                            <img src="/img/readingGlasses2.png">
+                        </a>
                     </div>
-                    <a href="/mypage">로그인</a>
+                    <a href="/login/page" class="logoLogin">북아일렌드 사작하기</a>
                 </div>
                 <div id="inner">
                     <div class="innerbox">
@@ -51,16 +55,16 @@
                     <div>
                         <img class="mypoto" src="#" ait="#">
                     </div>
-                    <div>받은아이디</div>
+                    <div class="nikname">받은아이디</div>
                     <a href="/mypage" class="profileBtn">내 서재</a>
                     <div class="leftBottom">
                         <div>
-                            <div>평수가 추가될자리</div>
-                            <div>서재</div>
+                            <div>북마크 수</div>
+                            <div>북마크</div>
                         </div>
                         <div>
-                            <div>북마크 한책 권수 </div>
-                            <div>책</div>
+                            <div>감상문 수 </div>
+                            <div>감상문</div>
                         </div>
                     </div>
                 </div>
@@ -70,21 +74,17 @@
                             <h2 class="mydata">내정보</h2>
                         </div>
                     </div>
-                        {% for mydata in bookData %}
                         <div id="myModify">
-                            <div>
-                                <img class="modifyImg"src="{{mydata.cover}}">
-                            </div>
                             <div class="modifyBox">
                                 <div class="name">
-                                    <div>이름</div>
-                                    <div> {{mydata.author}}</div> 
+                                    <div>카카오 닉네임</div>
+                                    <p> {{bookdata.author}}</p> 
                                 </div>
-                                <div class="title">
-                                    <div>직업 타이틀</div>
-                                    <form class="modifyform" method="get" action="/modity/title">
-                                        <input type="text" name="title" placeholder="타이틀을 수정할 수 있습니다!">
-                                        <button type="submit">타이틀 수정</button>
+                                <div class="email">
+                                    <div>이메일</div>
+                                    <form class="modifyform" method="get" action="/modity/email">
+                                        <input type="text" name="title" placeholder="이메일을 수정할 수 있습니다!">
+                                        <button type="submit">이메일 수정</button>
                                     </form>
                                 </div>
                                 <div class="Introduce">
@@ -96,14 +96,8 @@
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
-                    <div class="rightBox" >
-                        <div>리뷰가 비었어요.</div>
-                        <div>읽은책에 자신의 생각을 적어보세요!</div>
-                        <a href="#" class="bookmarkBtn">책 둘러보기</a>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

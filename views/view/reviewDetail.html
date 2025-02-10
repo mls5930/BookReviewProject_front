@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>책 검색 페이지</title>
+    <title>리뷰상세 페이지</title>
     <link href="/css/maincss/header.css" rel="stylesheet">
     <link href="/css/maincss/footer.css" rel="stylesheet">
-    <link href="/css/views/bookList.css" rel="stylesheet">
+    <link href="/css/views/viewPage.css" rel="stylesheet">
+    <link href="/css/views/reviewdetail.css" rel="stylesheet">
 </head>
 <body>
     <div id="mainPage">
@@ -45,24 +46,60 @@
             </div>
         </div>
     </div>
-    <div id="conteiner">
+    <main id="container">
         <div id="searchR">
-            <h3>' 경제 ' 에 대한 182,113개의 검색 결과</h3>
+            <h3>홍길동님{{nickname}}</h3>
         </div>
-        <div id="innerConteiner">
-            {% for bookData  in listBook %}
-            <ul class="list">
-                <li class="inner">
-                    <img src="{{ bookData.cover }}">            
-                </li>
-                 <li>
-                    <p class="book">{{ bookData.title }}</p>
-                    <p class="author">{{ bookData.author }}</p>
-                 </li>
-            </ul>
-            {% endfor %}
-        </div>
-    </div>
+        <section id="innerContainer">
+            <aside class="title">
+                    <div class="bookImg">
+                        <img src="{{bookData.cover }}">
+                    </div>
+                    <button>
+                        <img src ="/img/not.png" art="빈 이미지">
+                    </button>
+            </aside>
+            <article id="attribute">
+                <div class="bookReview">
+                    <div class="BookreviewBox">
+                        <div class="write">{{bookData.title}}</div>
+                        <div class="imgBox" >
+                            <a href="#">
+                                <img class="myimg" src={{bookData.cover}} alt="">
+                            </a>
+                            <div>{{bookData.author}}</div>
+                            <div class="date">02-13</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="textbox">
+                    <form class="text">
+                        <textarea class="textbox" name="comments"
+                            rows="3"
+                            value=""
+                        >
+                        </textarea>
+                        <button type="submit" class="write-btn">Submit</button>
+                    </form>
+                </div>
+                <div class="show">
+                    <div class="showcomment">
+                        <!-- 보여줄자리 -->
+                            <div class="reviewBox">
+                                <div class="commentwrite">{{bookData.title}}</div>
+                                <div class="writebox" >
+                                    <a href="#">
+                                        <img class="img" src={{bookData.cover}} alt="">
+                                    </a>
+                                    <div>{{bookData.author}}</div>
+                                    <div class="date">02-13</div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
     <div id="topbutton">
         <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
     </div>
