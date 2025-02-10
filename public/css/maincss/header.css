@@ -84,7 +84,8 @@ h4 {
 
 #input {
     height: 40px;
-    width: 420px;
+    padding: 0 20px;
+    width: 400px;
     border: none;
     font-size: 16px;
     margin-bottom: 5px;
@@ -97,18 +98,22 @@ h4 {
     text-decoration: none;
     color: #999;
     font-weight: 500; 
-   
+    background-image:url("/img/readingGlasses.png");
+    background-size: 20px;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    outline: none;
 }
 #input:hover {
     color: #666;
     background-color: #e2e2e2;
+    border: solid 2px #1659cc;
+}
+#input:focus{
+    border: solid 2px #1659cc;
 }
 
-#input  > img {
-    width: 16px;
-    height: 16px;
-    
-}
+
 .logoLogin{
     font-size: 16px;
     color: white;

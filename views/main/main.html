@@ -9,6 +9,26 @@
     <link rel="stylesheet" href="/css/maincss/ad.css">
     <link rel="stylesheet" href="/css/maincss/footer.css">
     <link rel="stylesheet" href="/css/maincss/loginbox.css">
+    <style>
+
+        dialog {
+            display: block;
+            max-block-size: min(80vh, 100%);
+            overflow: hidden;
+            transition: all .3s;
+            border-radius: 0.5rem;
+            padding: 0;
+            scale: 1;
+        }
+        dialog:not([open]) {
+            pointer-events: none;
+            scale: 0.9;
+            opacity: 0;
+        }
+        dialog::backdrop {
+            backdrop-filter: blur(0.25rem);
+        }
+    </style>
 </head>
 <body>
     <div id="mainPage">
@@ -19,10 +39,8 @@
                         <img src="/img/logo4.png">
                     </a>
                     <div class="search">
-                        <a href="#" id="input">
-                            원하는 책을 검색해보세요!
-                            <img src="/img/readingGlasses2.png">
-                        </a>
+                        <input href="#" id="input"
+                            placeholder="리뷰하고 싶은 책을 검색해 보세요!">
                     </div>
                     <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
                 </div>
@@ -85,13 +103,16 @@
             <div class="adbox">
                 {% for item in mybookData %}
                     <div class="bookUpload">
-                        <div><img class="bookImg" src={{item.cover}}></div>
+                        <div>
+                            <img class="bookImg" src={{item.cover}}>
+                        </div>
                         <div class="bookUploadAuthor">{{item.author}}</div>
                         <div class="bookUploadImg">
                             <div>
                                 <img src="/img/kakaoLogo.png"></img>
-                            작성자 </div>
-                            <p>댓글 갯수</p>
+                                작성자
+                            </div>
+                            <p>[{{item.customerReviewRank}}]</p>
                         </div>
                     </div>
                 {% endfor %}

@@ -10,7 +10,8 @@ router.get('/' , (req,res) => {
         return{
             title: book.title.split("-")[0],
             cover: book.cover,
-            author: book.author.split(",")[0]
+            author: book.author.split(",")[0],
+            customerReviewRank: book.customerReviewRank
         };
     });
     res.render(mainHtml+`main.html` ,{
@@ -31,7 +32,8 @@ router.get('/mypage', async (req, res) => {
         return{
             title: book.title.split("-")[0],
             cover: book.cover,
-            author: book.author.split(",")[0]
+            author: book.author.split(",")[0],
+            
         };
     });
     // if (titles)
@@ -47,7 +49,8 @@ router.get('/myreview', async (req, res) => {
         return{
             title: book.title.split("-")[0],
             cover: book.cover,
-            author: book.author.split(",")[0]
+            author: book.author.split(",")[0],
+            pubDate: book.pubDate
         };
     });
     res.render(mainHtml+`myreview.html`,{
