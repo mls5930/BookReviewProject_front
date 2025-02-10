@@ -30,6 +30,9 @@ a {
     height: 100px;
     border-radius: 20px;
 }
+.nikname {
+    font-weight: 700;
+}
 .profileBtn {
     width: 250px;
     height: 40px;
@@ -47,13 +50,14 @@ a {
 }
 .leftBottom {
     display: flex;
-    justify-content: space-around;
+    gap: 16px;
 }
 .leftBottom > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-weight: 700;
 }
 .right {
     display: flex;
@@ -127,14 +131,16 @@ a {
 }
 
 .BookreviewBox {
+    width: 650px;
     padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    text-align: center;
+    text-align: left;
     justify-content: center;
     border: solid 1px #efefef;
-    border-radius:18px
+    border-radius:18px;
+    font-weight: 700;
 }
 .imgBox{
     display: flex;

@@ -7,20 +7,24 @@
     <link rel="stylesheet" href="/css/maincss/header.css">
     <link rel="stylesheet" href="/css/maincss/main.css">
     <link rel="stylesheet" href="/css/maincss/ad.css">
-    <link rel="stylesheet" href="/css/maincss/inner.css">
     <link rel="stylesheet" href="/css/maincss/footer.css">
+    <link rel="stylesheet" href="/css/maincss/loginbox.css">
 </head>
 <body>
     <div id="mainPage">
         <div id="header">
             <div class="header-inner">
                 <div class="headerBox">
-                    <h1>LOGO</h1>
+                    <a href="/">
+                        <img src="/img/logo4.png">
+                    </a>
                     <div class="search">
-                        <input type="text" placeholder="원하는 책을 검색해보세요!" id="input">
-                        <div>검색</div>
+                        <a href="#" id="input">
+                            원하는 책을 검색해보세요!
+                            <img src="/img/readingGlasses2.png">
+                        </a>
                     </div>
-                    <a href="/login/page">로그인</a>
+                    <a href="/login/page" class="logoLogin">북아일렌드 시작하기</a>
                 </div>
                 <div id="inner">
                     <div class="innerbox">
@@ -47,16 +51,16 @@
                 <h3>오늘의 책</h3>
             </div>
             <div class="daybookbox">
-                {% for item in bookData %}
+                {% for item in mybookData %}
                 <ul>
                     <li class="daybook-thumnail">
-                        <img width="170px" height="240px" src="{{item.cover}}" />
+                        <img src="{{item.cover}}" />
                     </li>
                     <li class="daybook-title">
-                        {{item.title}} -
-                        <span class="daybook-author">
-                            {{item.author}}
-                        </span>
+                        {{item.title}} 
+                    </li>
+                    <li class="daybook-author">
+                        {{item.author}}
                     </li>
                 </ul>
                 {% endfor %}
@@ -67,10 +71,16 @@
                 <h3>최근 감상문</h3>
             </div>
             <div class="adbox">
-                {% for item in bookData2 %}
+                {% for item in mybookData %}
                     <div class="bookUpload">
                         <div><img class="bookImg" src={{item.cover}}></div>
-                        <div>{{item.author}}</div>
+                        <div class="bookUploadAuthor">{{item.author}}</div>
+                        <div class="bookUploadImg">
+                            <div>
+                                <img src="/img/kakaoLogo.png"></img>
+                            작성자 </div>
+                            <p>댓글 갯수</p>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -82,9 +92,9 @@
             <div class="footerbox">
                 <div>(주)북아일랜드</div>
                 <div>
-                    <a href="#"><img width="30px" height="30px"></a>
-                    <a href="#"><img width="30px" height="30px"></a>
-                    <a href="#"><img width="30px" height="30px"></a>
+                    <a href="https://www.youtube.com/"><img width="30px" height="30px" src="/img/youtubeLogo-removebg-preview.png"></a>
+                    <a href="https://www.instagram.com/"><img width="35px" height="30px" src="/img/instagramLogo-removebg-preview.png"></a>
+                    <a href="https://www.google.com"><img width="30px" height="30px" src="/img/glooglelogo.png"></a>
                 </div>
             </div>
             <div>
@@ -110,8 +120,9 @@
             </div>
             <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
         </div>
-        <div class="loginBox">
-            <div>
+    </div>
+        <!-- <div class="loginBox">
+            <div class="login">
                 <div>로그인 이미지</div>
                 <div>반가워요 북커버리 시작하기</div>
                 <div class="logintext">요즘 일하는 사람들이 책을 찾는 새로운 방법</div>
@@ -128,7 +139,51 @@
                     에 동의하는 것을 의미합니다!
                 </p>
             </div>
+        </div> -->
+    <dialog class="loginBox">
+        <div class="login" id="popup"> 
+            <div class="popup">
+                <div class="popup-head">	
+                    <button class="closeBtn">x</button>
+                    <img class="head-title" src="/img/loginLogo.png">
+                </div>
+                <div class="popup-body">	
+                    <div class="body-content">
+                        <div class="body-titlebox">
+                            <h3>반가워요! <br> 북아일랜드 시작하기 </h3>
+                        </div>
+                        <div class="body-contentbox">
+                            <div class="logintext">요즘 일하는 사람들이 책을 찾는 새로운 방법<br> 뛰어난 커리어를 가진 사람들과 도서를 나누고, 나에게 꼭 필요한 책을 찾으세요.</div>
+                            <form method="get" action="/mypage">
+                                <button type="submit">
+                                    <img src="/img/kakaoLogo.png" width="30px" height="30px">
+                                    카카오로 3초만에 시작하기
+                                </button>
+                            </form>
+                        </div>
+                        <p>로그인은
+                            <a href="https://bookcovery.notion.site/7f574a4a03a540ea846dd638aa712b11">개인정보보호 정책</a>
+                            및
+                            <a href="https://bookcovery.notion.site/92c58cef635a4fd08663942a6d4e7288">서비스 약관</a>
+                            에 동의하는 것을 의미합니다!
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </dialog>
+    <script>
+        const logoLogin = document.querySelector('.logoLogin');
+        const closeBtn = document.querySelector('.closeBtn');
+        const modal = document.querySelector('.loginBox');
+        logoLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.showModal();
+        })
+   
+        closeBtn.onclick = () => {
+            modal.close();
+        }
+    </script>
 </body>
 </html>

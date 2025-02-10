@@ -41,7 +41,8 @@ h4 {
     
 }
 #header {
-    height : 165px;
+    height : 200px;
+
 }
 
 .header-inner {
@@ -54,50 +55,89 @@ h4 {
     margin: 0 auto;
     z-index: 2;
     background-color: white;
+  
 }
 
 .headerBox {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    gap: 20px;
+    justify-content: center;
+    gap: 220px;
+    background-color: white;
+    padding-top: 20px;
+    
+}
+.headerBox > a > img{
+    width: 150px;
+    height: 30px;
 }
 
 .search {
-    width: 400px;
+    width: 420px;
     display: flex;
     justify-content: center;
     font-size: 16px;
 }
+.search:hover {
+}
 
-input {
-    height: 34px;
-    width: 360px;
+#input {
+    height: 40px;
+    width: 420px;
     border: none;
     font-size: 16px;
     margin-bottom: 5px;
     text-align: left;
     background-color: #f5f4f4;
     border-radius: 20px;
-    padding-left: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    color: #999;
+    font-weight: 500; 
+   
+}
+#input:hover {
+    color: #666;
+    background-color: #e2e2e2;
+}
+
+#input  > img {
+    width: 16px;
+    height: 16px;
+    
+}
+.logoLogin{
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    background-color: #1659cc;
+    border-radius: 5px;
+    padding: 8px;
+    text-decoration: none;
+    
 }
 
 #inner{
-    box-shadow: 0 1px 0 0 rgba(0, 0, 0, .1);
     margin: 0 auto;
-    padding-top: 60px;
-    padding-bottom : 45px;
+    padding-top: 10px;
+    padding-bottom : 40px;
     position: relative;
     background-color: white;
+    border-bottom: solid 1px #e2e2e2;
+    height: 120px;
+    
 }
 
 
 .banner {
     display: flex;
     gap: 120px;
-    position:fixed;
-    left: 200px;
-    margin-left:40px;
+    padding: 30px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+
 }
 
 .banner > li > a {

@@ -30,6 +30,9 @@ a {
     height: 100px;
     border-radius: 20px;
 }
+.nikname {
+    font-weight: 700;
+}
 .profileBtn {
     width: 250px;
     height: 40px;
@@ -47,13 +50,14 @@ a {
 }
 .leftBottom {
     display: flex;
-    justify-content: space-around;
+    gap: 16px;
 }
 .leftBottom > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-weight: 700;
 }
 .right {
     display: flex;
@@ -62,7 +66,7 @@ a {
     width: 800px;
 }
 .bookcaseRoute {
-    padding-bottom: 30px;
+    /* padding-bottom: 32px; */
     font-size:16px;
     font-weight: 800;
 }
@@ -75,21 +79,32 @@ a {
     display: flex;
     gap: 20px;
     border: solid 1px #e2e2e2;
+    height: 700px;
+    padding: 60px;
+    border-radius: 12px;
+}
+.modifyform {
+    display: flex;
+    /* gap: 200px; */
+
 }
 .modifyform > input{
     background-color: white;
     border: none;
-    font-weight:400
+    font-weight:400;
+    /* border: solid 1px red; */
+    width: 400px;
+    height: 50px;
+    outline: none; 
 }
 .modifyform > button{
     background-color: white;
     border: none;
-    color: blue;
-    font-weight:400
+    color: #1659cc;
+    font-weight:600
 }
 
 .modifyImg{
-    
     width: 110px;
     height: 110px;
     border-radius: 12px;
@@ -97,11 +112,16 @@ a {
 .modifyBox {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+.modifyBox > div {
+    font-size: 16px;
+    font-weight: 800;
 }
 
 
-.name, .title , .Introduce{
+.name, .email, .title , .Introduce{
     display: flex;
     flex-direction: column;
     gap: 10px;

@@ -1,0 +1,67 @@
+* {
+  margin: revert;
+}
+
+.login{
+    width:100%;             
+    max-width:500px;         
+    border-radius:10px;       
+    overflow:hidden;         
+    background-color: white; 
+    box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+  }
+.popup-head > img {
+    width: 100%;
+    height: 300px;
+}
+.popupbtn {
+    position: absolute;;
+}
+.body-titlebox > h3{
+    font-weight: 600;
+}
+
+.body-content {
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: left;
+    justify-content: center;
+    word-break:break-word;    
+  }
+.body-contentbox  {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+   
+}
+.body-contentbox > form > button {
+    width: 350px;
+    padding: 10px 0 ;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    border: solid 1px #e2e2e2;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+.body-contentbox > form > button:hover{
+    background-color: #e2e2e2;
+  }
+.logintext {
+    font-size: 15px;
+    color: #666;
+
+}
+.body-content > p {
+    font-size: 12px;
+    color: #999;
+}
+.body-content > p > a {
+    color: #999;
+}

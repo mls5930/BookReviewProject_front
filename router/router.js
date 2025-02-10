@@ -5,10 +5,16 @@ const mainHtml = path.join(__dirname,`../views/main/`)
 require('dotenv').config();
 const {bookData,bookData2} = require("../public/js/main")
 router.get('/' , (req,res) => {
-    console.log(mainHtml);
+    const mybookData = bookData.map( (book) => {
+        return{
+            title: book.title.split("-")[0],
+            cover: book.cover,
+            author: book.author.split(",")[0]
+        };
+    });
     res.render(mainHtml+`main.html` ,{
-        bookData,
-        bookData2
+        mybookData,
+        // bookData
     })
 })
 const HOST = 'https://kauth.kakao.com'
@@ -24,7 +30,7 @@ router.get('/mypage', async (req, res) => {
         return{
             title: book.title.split("-")[0],
             cover: book.cover,
-            author: book.author.split("(")[0]
+            author: book.author.split(",")[0]
         };
     });
     // if (titles)
@@ -36,8 +42,15 @@ router.get('/mypage', async (req, res) => {
 
 router.get('/myreview', async (req, res) => {
     // const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
+    const mybookData = bookData.map( (book) => {
+        return{
+            title: book.title.split("-")[0],
+            cover: book.cover,
+            author: book.author.split(",")[0]
+        };
+    });
     res.render(mainHtml+`myreview.html`,{
-        bookData
+        mybookData
     })
 })
 

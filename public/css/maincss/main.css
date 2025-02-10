@@ -6,7 +6,7 @@
 }
 
 .mainName {
-    padding:24px 16px;
+    padding:32px 24px;
 }
 
 .daybookbox{
@@ -19,28 +19,34 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 10px;
     padding:0 60px;
 }
 
 .daybookbox > ul > .daybook-thumnail {
     object-fit: fill;
-    -webkit-box-shadow: 0px 0px 47px -4px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 0px 47px -4px rgba(66, 68, 90, 1);
-    box-shadow: 0px 0px 47px -4px rgba(66, 68, 90, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
 }
+.daybookbox > ul > .daybook-thumnail > img {
+    border-radius: 8px;
+    width: 170px;
+    height: 240px;
+}
+
 .daybookbox > ul > .daybook-thumnail:hover {
-    -webkit-box-shadow: 0px 0px 47px 1px rgba(59, 70, 167, 1);
-    -moz-box-shadow: 0px 0px 47px 1px rgba(59, 70, 167, 1);
-    box-shadow: 0px 0px 47px 1px rgba(59, 70, 167, 1);
+    transform: translateY(-24px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
+
 
 .daybookbox > ul > .daybook-title {
     font-size:16px;
     font-weight: bold;
 }
 
-.daybookbox > ul > li > .daybook-author {
+.daybookbox > ul > .daybook-author {
     font-size:12px;
     color:#333;
 }
