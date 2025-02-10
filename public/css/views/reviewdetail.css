@@ -7,11 +7,8 @@
 
 .BookreviewBox {
     padding: 30px;
- 
-
     gap: 10px;
     text-align: center;
-   
     border: solid 1px #efefef;
     border-radius:18px;
     height: 300px;
@@ -23,30 +20,40 @@
 
 .imgBox{
     display: flex;
-    justify-content: left;
     gap: 10px;
-    margin-top: 90px;
+    margin-top: 160px;
 }
 
-.comment {
-    margin-top: 35px;
+.date {
+    margin-left: 300px;
 }
 
-.write-comment {
-    outline: 0;
-}
-
-.writeCo-btn {
-    margin-left: 15px;
-    padding: 4px;
-    border-radius: 13px;
-    cursor: pointer;
-}
-
-.showcomment {
-    margin-top: 25px;
+#text {
     display: flex;
-    margin-left: 34px;
+    flex-direction: row;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.textbox {
+    
+}
+
+
+.write-btn {
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.show {
+    border-top: 1px solid #efefef;
+    margin-top: 30px;
+}
+
+.showbox {
+    border: 1px solid #efefef;
+    border-radius: 18px;
+    margin-top: 30px;
 }
 
 .imgBox > div {
@@ -57,4 +64,11 @@
     width: 40px;
     height: 40px;
     border-radius: 12px;
+}
+
+.showcomment {
+    padding: 30px;
+    margin-top: 25px;
+    display: flex;
+    margin-left: 34px;
 }

@@ -68,9 +68,9 @@ router.get('/bookview', (req, res) => {
 })
 
 router.get('/review', (req, res) => {
-    console.log(bookData);
+    console.log(bookData[0]);
     
-    res.render(viewHtml +'reviewDetail.html', {bookData} );
+    res.render(viewHtml +'reviewDetail.html', {bookData:bookData[0]} );
 })
 
 router.get('/community', (req, res) => {

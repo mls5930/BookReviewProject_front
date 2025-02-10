@@ -51,7 +51,7 @@
         <section id="innerContainer">
             <aside class="title">
                     <div class="bookImg">
-                        <img src="{{ item.cover }}">
+                        <img src="{{bookData.cover }}">
                     </div>
                     <button>
                         <img src ="/img/not.png" art="빈 이미지">
@@ -59,29 +59,32 @@
             </aside>
             <article id="attribute">
                 <div class="bookReview">
-                    {%for Bookreview in bookData %}
                     <div class="BookreviewBox">
-                        <div class="write">{{Bookreview.title}}</div>
+                        <div class="write">{{bookData.title}}</div>
                         <div class="imgBox" >
                             <a href="#">
-                                <img class="myimg" src="{{Bookreview.cover}}" alt="">
+                                <img class="myimg" src={{bookData.cover}} alt="">
                             </a>
-                            <div>{{Bookreview.author}}</div>
-                        </div>
-                        <form class="comment">
-                            <input class="write-comment"
-                            type="text"
-                            placeholder="입력해주세요"
-                            name="comments"
-                            value=""
-                        />
-                        <button type="submit" class="writeCo-btn">Submit</button>
-                        </form>
-                        <div class="showcomment">
-                            <!-- 보여줄자리 -->hhhhh
+                            <div>{{bookData.author}}</div>
+                            <div class="date">02-13</div>
                         </div>
                     </div>
-                    {% endfor %}
+                </div>
+                <form id="text">
+                    <textarea class="textbox" name="comments"
+                         cols="55" 
+                         rows="3"
+                         value=""
+                     >
+                     </textarea>
+                     <button type="submit" class="write-btn">Submit</button>
+                </form>
+                <div class="show">
+                    <div class="showbox">
+                        <div class="showcomment">
+                            <!-- 보여줄자리 -->hvhv
+                        </div>
+                    </div>
                 </div>
             </article>
         </section>
