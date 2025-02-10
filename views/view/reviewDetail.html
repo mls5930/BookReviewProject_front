@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오디오 책</title>
+    <title>책상세 페이지</title>
+    <link href="../../css/views/viewPage.css" rel="stylesheet">
     <link href="../../css/maincss/header.css" rel="stylesheet">
-    <link href="../../css/views/bookList.css" rel="stylesheet">
+    <link href="../../css/views/reviewdetail.css" rel="stylesheet">
     <link href="../../css/maincss/footer.css" rel="stylesheet">
+    <style>
+        #attribute {
+            margin-top: 38px;
+        }
+    </style>
 </head>
 <body>
     <div id="mainPage">
@@ -41,22 +47,45 @@
             </div>
         </div>
     </div>
-    <div id="conteiner">
-        <div id="searchR">
-            <p>오디오 북</p>
-        </div>
-        <div id="innerConteiner">
-            <ul class="list">
-                {% for item in bookData %}
-                <li class="inner">
-                    <img src="{{ item.cover }}">
-                    <p class="book">{{ item.title }}</p>
-                    <p class="author">{{ item.author }}</p>       
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    <main id="container">
+        <section id="innerContainer">
+            <aside class="title">
+                    <div class="bookImg">
+                        <img src="{{ item.cover }}">
+                    </div>
+                    <button>
+                        <img src ="/img/not.png" art="빈 이미지">
+                    </button>
+            </aside>
+            <article id="attribute">
+                <div class="bookReview">
+                    {%for Bookreview in bookData %}
+                    <div class="BookreviewBox">
+                        <div class="write">{{Bookreview.title}}</div>
+                        <div class="imgBox" >
+                            <a href="#">
+                                <img class="myimg" src="{{Bookreview.cover}}" alt="">
+                            </a>
+                            <div>{{Bookreview.author}}</div>
+                        </div>
+                        <form class="comment">
+                            <input class="write-comment"
+                            type="text"
+                            placeholder="입력해주세요"
+                            name="comments"
+                            value=""
+                        />
+                        <button type="submit" class="writeCo-btn">Submit</button>
+                        </form>
+                        <div class="showcomment">
+                            <!-- 보여줄자리 -->hhhhh
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </article>
+        </section>
+    </main>
     <div id="footer">
         <div class="footerbox">
             <div>(주)북아일랜드</div>

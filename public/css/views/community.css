@@ -1,20 +1,30 @@
-.listContainer {
+#listContainer {
+    max-width: 1100px;
     margin: 0 auto;
+    height: 500px;
 }
 
 h4 {
-  
-
+    font-size: 24px;
+    margin-top: 45px;
+    margin-left: 20px;
 }
 
-.content {
 
+#content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-left: 200px;
 }
 
 .write-btn {
-
+    margin-left: 10px;
+    cursor: pointer;
 }
 
-.comment-row {
 
+.comment-row {
+    margin-left: 300px;
+    margin-top: 45px;
 }

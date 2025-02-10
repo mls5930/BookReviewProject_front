@@ -6,9 +6,11 @@
     <title>책상세 페이지</title>
     <link href="../../css/views/viewPage.css" rel="stylesheet">
     <link href="../../css/maincss/header.css" rel="stylesheet">
+    <link href="../../css/views/reviewbox.css" rel="stylesheet">
+    <link href="../../css/maincss/footer.css" rel="stylesheet">
 </head>
 <body>
-     <div id="mainPage">
+    <div id="mainPage">
         <div id="header">
             <div class="header-inner">
                 <div class="headerBox">
@@ -39,6 +41,7 @@
                 </div>
             </div>
         </div>
+    </div>
     <main id="container">
         <section id="innerContainer">
             <aside class="title">
@@ -63,8 +66,54 @@
                     <div>감상문</div>
                     <button class="commentaryBtn">감상문 작성</button>
                 </div>
+                <div class="bookReview">
+                    {%for Bookreview in bookData %}
+                    <div class="BookreviewBox">
+                        <div>{{Bookreview.title}}</div>
+                        <div class="imgBox" >
+                            <a href="#">
+                                <img class="myimg" src="{{Bookreview.cover}}" alt="">
+                            </a>
+                            <div>{{Bookreview.author}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </article>
         </section>
     </main>
+    <div id="footer">
+        <div class="footerbox">
+            <div>(주)북아일랜드</div>
+            <div>
+                <a href="#"><img width="30px" height="30px"></a>
+                <a href="#"><img width="30px" height="30px"></a>
+                <a href="#"><img width="30px" height="30px"></a>
+            </div>
+        </div>
+        <div>
+            <ul class="footerUl">
+                <li><a href="#">이용약관 ></a></li>
+                <li><a href="#">개인정보처리방침 ></a></li>
+                <li><a href="#">청소년보호정책  ></a></li>
+                <li><a href="#">고객센터 ></a></li>
+                <li><a href="#">B2B 문의 ></a></li>
+                <li><a href="#">콘텐츠 제휴문의 ></a></li>
+                <li><a href="#">뷰어 다운로드 ></a></li>
+                <li><a href="#">회사 소개 </a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="footerUL">
+                <li><a><img width="40px" height="40px"></a></li>
+                <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
+                <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
+            </ul>
+        </div>
+        <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+    </div>
+    <script src="../../js/loginButton.js"></script>
 </body>
 </html>

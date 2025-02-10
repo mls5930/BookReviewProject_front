@@ -2,6 +2,7 @@ const express= require("express");
 const router = express.Router()
 const path = require('path');
 const mainHtml = path.join(__dirname,`../views/main/`)
+const viewHtml = path.join(__dirname,`../views/view/`)
 require('dotenv').config();
 const {bookData,bookData2} = require("../public/js/main")
 router.get('/' , (req,res) => {
@@ -41,10 +42,39 @@ router.get('/myreview', async (req, res) => {
     })
 })
 
-router.get('/usermodify' , async (req, res) => {
+router.get('/usermodify' , (req, res) => {
     res.render('main/userModify.html' ,{
         bookData
     })
+})
+
+// 책 리스트 및 상세페이지에 관한 라우터 
+
+router.get('/audiobook', (req, res) => {
+    res.render(viewHtml +'audioList.html', {bookData} );
+    })
+
+
+router.get('/audioview', (req, res) => {
+    res.render(viewHtml +'audioBookView.html', {bookData} );
+})
+
+router.get('/booklist', (req, res) => {
+    res.render(viewHtml +'bookList.html', {bookData} );
+})
+
+router.get('/bookview', (req, res) => {
+    res.render(viewHtml +'bookView.html', {bookData} );
+})
+
+router.get('/review', (req, res) => {
+    console.log(bookData);
+    
+    res.render(viewHtml +'reviewDetail.html', {bookData} );
+})
+
+router.get('/community', (req, res) => {
+    res.render(viewHtml +'community.html');
 })
 module.exports= router
 

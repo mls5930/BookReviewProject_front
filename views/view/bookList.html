@@ -6,6 +6,7 @@
     <title>책 검색 페이지</title>
     <link href="../../css/views/bookList.css" rel="stylesheet">
     <link href="../../css/maincss/header.css" rel="stylesheet">
+    <link href="../../css/maincss/footer.css" rel="stylesheet">
 </head>
 <body>
     <div id="mainPage">
@@ -49,18 +50,44 @@
                 {% for item in bookData %}
                 <li class="inner">
                     <img src="{{ item.cover }}">
-                    <div class="bookMark">
-                        <button>
-                            <img src ="/img/not.png" art="빈 이미지">
-                        </button>
-                    </div>
                     <p class="book">{{ item.title }}</p>
-                    <p class="author">{{ item.author }}</p>
-                    
+                    <p class="author">{{ item.author }}</p>       
                 </li>
                 {% endfor %}
             </ul>
         </div>
+    </div>
+    <div id="footer">
+        <div class="footerbox">
+            <div>(주)북아일랜드</div>
+            <div>
+                <a href="#"><img width="30px" height="30px"></a>
+                <a href="#"><img width="30px" height="30px"></a>
+                <a href="#"><img width="30px" height="30px"></a>
+            </div>
+        </div>
+        <div>
+            <ul class="footerUl">
+                <li><a href="#">이용약관 ></a></li>
+                <li><a href="#">개인정보처리방침 ></a></li>
+                <li><a href="#">청소년보호정책  ></a></li>
+                <li><a href="#">고객센터 ></a></li>
+                <li><a href="#">B2B 문의 ></a></li>
+                <li><a href="#">콘텐츠 제휴문의 ></a></li>
+                <li><a href="#">뷰어 다운로드 ></a></li>
+                <li><a href="#">회사 소개 </a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="footerUL">
+                <li><a><img width="40px" height="40px"></a></li>
+                <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
+                <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
+            </ul>
+        </div>
+        <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
     </div>
 </body>
 </html>

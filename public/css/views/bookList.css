@@ -1,6 +1,7 @@
 #conteiner {
     max-width: 1200px;
     margin: 0 auto;
+
 }
 
 #searchR {
@@ -23,6 +24,7 @@
     list-style: none;
     gap: 0 85px;
     margin-left: 4px;
+    padding-bottom: 50px;
 }
 
 .inner {
@@ -33,35 +35,31 @@
 
 .book {
     margin-top: 9px;
-    font-weight: 1000;
+    font-weight: 700;
     margin-left: 4px;
     width: 137px;
-}
-
-.bookMark {
-    margin-left: 50px;
-    margin-top: 7px;
-}
-
-.bookMark > button > img {
-    width: 19px;
-    height: 11px;
-    cursor: pointer;
+    font-size: 16px;
 }
 
 .author {
     margin-top: 8px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 400;
     margin-left: 4px;
     width: 145px;
+
 }
 
-img {
+.inner > img {
     margin-left: 8px;
     width: 118px;
     height: 177px;
     border-radius: 12px;
+	transition: 0.3s ease;
+    cursor: pointer;
+}
+.inner > img:hover {
+    transform: scale(1.1);
 }
 
 li {
