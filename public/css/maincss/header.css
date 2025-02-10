@@ -62,14 +62,15 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 220px;
+    gap: 210px;
     background-color: white;
     padding-top: 20px;
-    
+    max-width: 1200px;
+    margin: 0 auto;
 }
 .headerBox > a > img{
-    width: 150px;
-    height: 30px;
+    width: 190px;
+    height: 40px;
 }
 
 .search {
@@ -114,30 +115,27 @@ h4 {
     font-weight: 700;
     background-color: #1659cc;
     border-radius: 5px;
-    padding: 8px;
+    padding: 6px;
     text-decoration: none;
-    
 }
 
 #inner{
-    margin: 0 auto;
     padding-top: 10px;
-    padding-bottom : 40px;
-    position: relative;
     background-color: white;
     border-bottom: solid 1px #e2e2e2;
-    height: 120px;
+    height: 90px;
     
 }
 
 
 .banner {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 120px;
     padding: 30px 0;
     max-width: 1200px;
     margin: 0 auto;
-
 }
 
 .banner > li > a {

@@ -35,7 +35,7 @@ router.get('/mypage', async (req, res) => {
         };
     });
     // if (titles)
-    console.log(mybookData);
+    // console.log(mybookData);
     res.render(mainHtml+`mypage.html`,{
         mybookData
     })
@@ -56,8 +56,12 @@ router.get('/myreview', async (req, res) => {
 })
 
 router.get('/usermodify' , (req, res) => {
+    // const bookdata = bookData.splice(0,1)
+    const bookdata =bookData[0]
+    // console.log(bookdata);
+    
     res.render('main/userModify.html' ,{
-        bookData
+        bookdata
     })
 })
 
@@ -103,7 +107,7 @@ router.get('/reviewwrite', (req, res) => {
 })
 
 router.get('/review', (req, res) => {
-    
+    // console.log(bookData[0]);
     res.render(viewHtml +'reviewDetail.html', {bookData:bookData[0]} );
 })
 

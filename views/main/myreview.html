@@ -80,12 +80,16 @@
                     <div class="bookReview">
                         {%for Bookreview in mybookData %}
                         <div class="BookreviewBox">
-                            <div>{{Bookreview.title}}</div>
                             <div class="imgBox" >
                                 <a href="#">
                                     <img class="myimg" src="{{Bookreview.cover}}" alt="">
                                 </a>
-                                <div>{{Bookreview.author}}</div>
+                            </div>
+                            <div class="viewDate">
+                                <div>{{Bookreview.title}}</div>
+                                <div class="viewRight">
+                                    <div>작성일</div>
+                                </div>
                             </div>
                         </div>
                         {% endfor %}
