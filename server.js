@@ -16,9 +16,6 @@ nunjucks.configure('views', {
 });
 
 
-
-
-
 app.listen(3005, () => {
   console.log("front opne");
   
