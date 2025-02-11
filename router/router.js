@@ -141,8 +141,6 @@ router.get('/bookmark',authMe, async (req , res) => {
     try {
         const bookmark = await axios.post('http://localhost:3000/user/register',{
             nickname: nickname
-        } ,{
-            headers: { Authorization: jwt_token },
         })
      res.status(202).render("main/mypage.html",{
         bookmark
