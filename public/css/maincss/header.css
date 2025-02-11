@@ -42,7 +42,6 @@ h4 {
 }
 #header {
     height : 200px;
-
 }
 
 .header-inner {
@@ -157,3 +156,69 @@ h4 {
     text-decoration: underline;
 }
 
+.loginHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.loginLogo{
+    width: 40px;
+    height: 40px;
+}
+.loginThumbnail{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.userThumbInfo{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    transform: translate(592%, 60%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    max-width: 220px;
+    background: white;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.userThumbInfo > a {
+    color: #222429;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.625rem;
+    font-size: 1rem;
+    line-height: 1.35rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.userThumbInfo > a:hover {
+    color: #1659cc;
+    background: #e6e9ed;
+}
+
+.userThumbInfo > .logout, 
+.userThumbInfo > .logout:hover {
+    color: red;
+}
+.userInfoCloseBtn {
+    cursor: pointer;
+    font-size: 18px;
+    position: fixed;
+    transform: translate(820%, 350%);
+    z-index: 999;
+}
+.loginThumbnail:hover{
+    cursor: pointer;
+}

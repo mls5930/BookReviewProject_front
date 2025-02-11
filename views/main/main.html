@@ -42,7 +42,18 @@
                         <input href="#" id="input"
                             placeholder="리뷰하고 싶은 책을 검색해 보세요!">
                     </div>
+                    {% if user %}
+                    <div class="loginHeader">
+                        <div>
+                            <img class="loginLogo" src="/img/check.png">
+                        </div>
+                        <div>
+                            <img class="loginThumbnail" src="{{user.thumbnail}}">
+                        </div>
+                    </div>
+                    {% else %}
                     <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
+                    {% endif %}
                 </div>
                 <div id="inner">
                     <div class="innerbox">
@@ -186,18 +197,7 @@
             </div>
         </div>
     </dialog>
-    <script>
-        const logoLogin = document.querySelector('.logoLogin');
-        const closeBtn = document.querySelector('.closeBtn');
-        const modal = document.querySelector('.loginBox');
-        logoLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.showModal();
-        })
-   
-        closeBtn.onclick = () => {
-            modal.close();
-        }
-    </script>
+    <script src="/js/loginPopup.js"></script>
+    <script src="/js/userInfoButton.js"></script>
 </body>
 </html>
