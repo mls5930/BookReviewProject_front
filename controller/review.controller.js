@@ -37,9 +37,10 @@ const getReviewList = async (req, res) =>{
 }
 
 const getReviewDetail = async (req, res) => {
-    const isbn13 = req.params.isbn13;
+    const isbn13 = req.query;
+    const review_id = req.params.review_id;
     const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
-    res.render(viewHtml + "reviewDetail.html", { bookData: bookData[0] });
+    res.render(viewHtml + "reviewDetail.html", { bookData: bookDataOne });
 };
 
 

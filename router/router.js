@@ -72,7 +72,7 @@ router.get('/reviewWrite/:isbn13', getReviewWrite);
 router.get('/reviewlist', getReviewList)
 
 
-router.get("/reviewdetail", getReviewDetail);
+router.get("/reviewdetail/:review_id", getReviewDetail);
 
 //내 리뷰 수정
 router.get("/reviewmodify/:review_id", getReviewModify);
