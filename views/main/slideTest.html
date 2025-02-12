@@ -7,15 +7,17 @@
   <link rel="stylesheet" href="/css/maincss/slideTest.css">
 </head>
     <body>
-        <div class="slider">
-            <!-- 슬라이드 아이템들이 들어갈 영역 -->
-                <div class="slide-container" id="slideContainer">
-                <!-- 아이템들은 JS에서 이곳으로 동적으로 생성됩니다. -->
+        <div class= "sliderBox">
+            <div class="slider">
+                <!-- 슬라이드 아이템들이 들어갈 영역 -->
+                    <div class="slide-container" id="slideContainer">
+                    <!-- 아이템들은 JS에서 이곳으로 동적으로 생성됩니다. -->
+                    </div>
+                <!-- 좌우 이동 버튼 -->
+                <div class="controls">
+                    <button id="prevBtn">◁</button>
+                    <button id="nextBtn">▷</button>
                 </div>
-            <!-- 좌우 이동 버튼 -->
-            <div class="controls">
-                <button id="prevBtn">이전</button>
-                <button id="nextBtn">다음</button>
             </div>
         </div>
         <div id="dataHolder" style="display: none;">{{ items | dump }}</div>
@@ -39,16 +41,23 @@
                     // wrap-around 처리: 인덱스가 totalItems를 넘으면 0부터 다시 시작
                     const index = (currentIndex + i) % totalItems;
                     const item = items[index];
-                    console.log(item);
+                    // console.log(item);
                 
                     // 아이템 엘리먼트 생성 및 내용 채우기
                     const itemDiv = document.createElement("div");
+                    const itemText = document.createElement("div");
+                    const itemAuthor = document.createElement("div");
                     itemDiv.className = "item";
                     itemDiv.innerHTML = `<img src="${item.cover}" alt="이미지 없음 ㅠ">`;
+                    itemText.innerHTML =`${item.title}`
+                    itemAuthor.innerHTML =`${item.author}`
                     slideContainer.appendChild(itemDiv);
-                }
-            };
-
+                    itemDiv.append(itemText);
+                    itemText.append(itemAuthor)
+             
+                    }
+                };
+            slideContainer.classList.add("slideContainer")
             // 최초 렌더링: 처음 4개 아이템 표시
             renderSlides();
 
@@ -67,6 +76,11 @@
             currentIndex = (currentIndex + 1) % totalItems;
             renderSlides();
             }, 3000); // 3초 후 실행
+
+            slideContainer.addEventListener("hover" , () => {
+                e.preventdefault(setInterval())
+            })
+            
         
         </script>
     </body>
