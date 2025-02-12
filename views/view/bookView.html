@@ -94,12 +94,12 @@
               <div class="user_box">
                 <a href="/myreview/kim">
                   <!-- 작성자 thumbnail_img -->
-                  <img class="myimg" src="{{item.thumbnail}}" alt="" />
-                     {{item.context}}
+                  <img class="myimg" src="{{item.User.thumbnail}}" alt="" />
+                     {{item.User.nickname}}
                   <!-- {{Bookreview.author}} -->
                 </a>
                 <!-- <div>{Review model의 created_At}<div> -->
-                <div>02-12{{item.created_At}}</div>
+                <div>{{item.createdAt}}</div>
               </div>
             </div>
             {% endfor %}
