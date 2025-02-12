@@ -1,0 +1,38 @@
+
+    
+        .slide-container {
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .slider {
+        position: relative;
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        }
+    
+        .item {
+            width: 170px;
+            height: 240px;
+        /* background-color: #eaeaea; */
+        padding: 20px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+    
+        .controls {
+        margin-top: 20px;
+        }
+    
+        .controls button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 16px;
+        cursor: pointer;
+        }
+    

@@ -137,10 +137,10 @@ router.get('/community', (req, res) => {
 })
 
 router.get('/bookmark',authMe, async (req , res) => {
-    req.user.nickname
+    // req.user.nickname
     try {
         const bookmark = await axios.post('http://localhost:3000/user/register',{
-            nickname: nickname
+            // nickname: nickname
         })
      res.status(202).render("main/mypage.html",{
         bookmark
@@ -173,25 +173,13 @@ module.exports= router
 //     })
 // })
 
-/* axios.[HTTP메서드]([URL], [보낼데이터], [그외설정])
-    const response = await axios.post('/user/login', {
-        user_id: user_id.value,
-        user_pw: user_pw.value
-    }, {
-        headers: {
-            "Content-Type" : "application/json"
-        }
-    })
-    console.log(response.data);
-    if(response.data.success) window.location.href = response.data.redirect
-*/
 
 
-// const items = [];
-// for (let i = 1; i <= bookData.length; i++) {
-//   items.push(bookData[i]);
-// }
+const items = [];
+for (let i = 0; i < bookData.length; i++) {
+  items.push(bookData[i]);
+}
 
-// app.get('/slideTest', (req, res) => {
-//   res.render('main/slideTest.html', { items });
-// })
+router.get('/slideTest', (req, res) => {
+  res.render('main/slideTest.html', { items });
+})
