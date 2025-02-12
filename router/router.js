@@ -94,3 +94,40 @@ router.get("/community", getCommunity);
 router.get("/bookmark", authMe, getBookMark);
 
 module.exports = router;
+
+// router.get('/test' ,(req,res) => {
+//     const mybookData = bookData.map( (book) => {
+//         return{
+//             title: book.title.split("-")[0],
+//             cover: book.cover,
+//             author: book.author.split(",")[0],
+//             customerReviewRank: book.customerReviewRank
+//         };
+//     });
+//     res.render(mainHtml+`test.html` ,{
+//         mybookData,
+
+//     })
+// })
+
+/* axios.[HTTP메서드]([URL], [보낼데이터], [그외설정])
+    const response = await axios.post('/user/login', {
+        user_id: user_id.value,
+        user_pw: user_pw.value
+    }, {
+        headers: {
+            "Content-Type" : "application/json"
+        }
+    })
+    console.log(response.data);
+    if(response.data.success) window.location.href = response.data.redirect
+*/
+
+// const items = [];
+// for (let i = 1; i <= bookData.length; i++) {
+//   items.push(bookData[i]);
+// }
+
+// app.get('/slideTest', (req, res) => {
+//   res.render('main/slideTest.html', { items });
+// })

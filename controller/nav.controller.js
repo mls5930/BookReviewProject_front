@@ -31,17 +31,21 @@ const getList = async(req, res) =>{
     })
 }
 
-//검색 창에 책 검색색
+//검색 창에 책 검색
 const getSearchBook = async (req, res) => {
-    const { query } = req.query;
-    let bookDatalist = "";
-    if(query){
-        bookDatalist = await axios.get(`${BACK_URL}/search?query=${query}&SearchTarget=Book&amout=10`);
-    }else{
-        bookDatalist = await axios.get(`${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`);
-    }
-    res.render(viewHtml +'bookList.html', {listBook : bookDatalist.data} );
-}
+  const { query } = req.query;
+  let bookDatalist = "";
+  if (query) {
+    bookDatalist = await axios.get(
+      `${BACK_URL}/search?query=${query}&SearchTarget=Book&amout=10`
+    );
+  } else {
+    bookDatalist = await axios.get(
+      `${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`
+    );
+  }
+  res.render(viewHtml + "bookSearch.html", { listBook: bookDatalist.data });
+};
 
 const getCommunity = async (req, res) => {
     try {
