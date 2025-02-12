@@ -10,7 +10,7 @@ const BACK_URL = `http://${BACK_HOST}:${BACK_HOST_PORT}`;
 const getBookReview = async (req, res) => {
     const isbn13 = req.params.isbn13;
     const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
-    const reviewList = (await axios.get(`${BACK_URL}/review/ReivewAll?isbn13=${isbn13}`)).data
+    const reviewList = (await axios.get(`${BACK_URL}/review/ReviewAll?isbn13=${isbn13}`)).data
     res.render(viewHtml +'bookView.html', {bookData: bookDataOne , ReviewData : reviewList} );
 }
 

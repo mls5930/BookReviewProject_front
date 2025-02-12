@@ -18,33 +18,45 @@
                   <a href="/">
                       <img src="/img/logo4.png">
                   </a>
-                  <div class="search">
-                      <input href="#" id="input"
-                          placeholder="리뷰하고 싶은 책을 검색해 보세요!">
+                  <div class="search" tabindex="0">
+                      <form class="search_form" action="/booklist" method="get">
+                          <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
+                          <button type="submit"><img src="img/readingGlasses.png"></button>
+                      </form>
                   </div>
+                  {% if user %}
+                  <div class="loginHeader">
+                      <div>
+                          <img class="loginLogo" src="/img/check.png">
+                      </div>
+                      <div>
+                          <img class="loginThumbnail" src="{{user.thumbnail}}">
+                      </div>
+                  </div>
+                  {% else %}
                   <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
+                  {% endif %}
               </div>
               <div id="inner">
                   <div class="innerbox">
-                    <ul class="banner">
-                      <li>
-                          <a href="/reviewlist">감상문</a>
-                      </li>
-                      <li>
-                          <a href="/booklist">책</a>
-                      </li>
-                      <li>
-                          <a href="/audiolist">오디오북</a>
-                      </li>
-                      <li>
-                          <a href="/community">커뮤니티</a>
-                      </li>
-                  </ul>
+                      <ul class="banner">
+                          <li>
+                              <a href="/reviewlist">감상문</a>
+                          </li>
+                          <li>
+                              <a href="/booklist">책</a>
+                          </li>
+                          <li>
+                              <a href="/audiolist">오디오북</a>
+                          </li>
+                          <li>
+                              <a href="/community">커뮤니티</a>
+                          </li>
+                      </ul>
                   </div>
               </div>
           </div>
       </div>
-  </div>
     <main id="container">
         <div id="searchR">
             <!-- 수정 -->
@@ -73,11 +85,8 @@
           </aside>
         <article id="attribute">
           <div id="textbox">
-            <form class="text" action="http://192.168.0.23:3000/review/{{bookData.isbn13}}" method="post">
-              <textarea class="textbox" name="context" rows="3" value="">
-              </textarea>
-              <input type="text" name="cover" value="{{bookData.cover}}"> <!-- 추후 로그인 연결되면면 변경해야 할 부분 -->
-              <input type="text" name="nickname" value="kim" >            <!-- 추후 로그인 연결되면면 변경해야 할 부분 -->
+            <form class="text">
+              <textarea class="textbox" name="context"></textarea>
               <div id="btnbox">
                 <div class="btn2">
                   <button type="submit" class="write-btn">작 성</button>
@@ -90,7 +99,7 @@
     </main>
     <div id="topbutton">
       <a href="#mainPage"
-        ><img class="topbuttonImg" src="./img/topimg.png"
+        ><img class="topbuttonImg" src="/img/topimg.png"
       /></a>
     </div>
     <div id="footer">
@@ -139,5 +148,6 @@
       </div>
       <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
     </div>
+  </div>
   </body>
 </html>

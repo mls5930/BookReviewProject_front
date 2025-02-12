@@ -11,11 +11,6 @@
     width: 66px;
 }
 
-#btnbox {
-    padding-top: 25px;
-     
-}
-
 .write-btn2 {
     cursor: pointer;
     font-size: 17px;
@@ -29,5 +24,5 @@
 }
 
 .btn2 {
-    margin-left: 15px;
+    margin-left: 10px;
 }
