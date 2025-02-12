@@ -7,6 +7,7 @@
   #innerContainer {
     margin: 0 auto;
     display: flex;
+    padding: 0 0 50px;
   }
   
   #searchR {
@@ -132,6 +133,7 @@
     background-color: #1659cc;
     border-radius: 5px;
     padding: 6px;
+    border: none;
   }
   
   .btnImg {
