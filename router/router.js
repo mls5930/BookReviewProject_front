@@ -77,7 +77,7 @@ router.get('/usermodify' , (req, res) => {
 
 // 책 리스트 및 상세페이지에 관한 라우터 
 
-router.get('/audiobook', (req, res) => {
+router.get('/audiolist', (req, res) => {
     const listBook = bookData.map( (book) => {
         return{
             cover: book.cover,
@@ -105,6 +105,17 @@ router.get('/booklist', (req, res) => {
             author: book.author.split(",")[0]
         };
     });
+    res.render(viewHtml +'bookList2.html', {listBook} );
+})
+
+router.get('/booksearch', (req, res) => {
+    const listBook = bookData.map( (book) => {
+        return{
+            cover: book.cover,
+            title: book.title.split("-")[0],
+            author: book.author.split(",")[0]
+        };
+    });
     res.render(viewHtml +'bookList.html', {listBook} );
 })
 
@@ -117,19 +128,27 @@ router.get('/reviewwrite', (req, res) => {
 })
 
 router.get('/reviewlist', (req, res) => {
-    const listBook = bookData.map( (book) => {
+    const user = req.user
+    const mybookData = bookData.map( (book) => {
         return{
-            cover: book.cover,
             title: book.title.split("-")[0],
-            author: book.author.split(",")[0]
+            cover: book.cover,
+            author: book.author.split(",")[0],
+            customerReviewRank: book.customerReviewRank
         };
     });
-    res.render(viewHtml +'reviewList.html', {listBook} );
+    res.render(viewHtml +'reviewList.html' ,{
+        mybookData,
+        user
+    })
 })
 
-router.get('/review', (req, res) => {
-    // console.log(bookData[0]);
+router.get('/reviewdetail', (req, res) => {
     res.render(viewHtml +'reviewDetail.html', {bookData:bookData[0]} );
+})
+
+router.get('/reviewmodify', (req, res) => {
+    res.render(viewHtml +'reviewModify.html', {bookData:bookData[0]} );
 })
 
 router.get('/community', (req, res) => {

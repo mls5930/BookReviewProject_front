@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>책 상세 페이지</title>
-    <link rel="stylesheet" href="/css/maincss/header.css"/>
-    <link rel="stylesheet" href="/css/maincss/footer.css"/>
+    <title>감상문 수정페이지</title>
+    <link href="/css/maincss/header.css" rel="stylesheet"/>
+    <link href="/css/maincss/footer.css" rel="stylesheet"/>
     <link href="/css/views/viewPage.css" rel="stylesheet"/>
-    <link href="/css/views/reviewbox.css" rel="stylesheet"/>
+    <link href="/css/views/reviewdetail.css" rel="stylesheet"/>
+    <link href="/css/views/reviewwrite.css" rel="stylesheet"/>
+    <link href="/css/views/modifyreview.css" rel="stylesheet"/>
   </head>
   <body>
     <div id="mainPage">
@@ -45,61 +47,45 @@
       </div>
   </div>
     <main id="container">
-      <div id="searchR">
-        <!-- 수정 -->
-        <h3>
-          BOOK ISLAND
-          <span class="gray">></span>
-          <span class="blue">책</span>
-        </h3>
-      </div>
+        <div id="searchR">
+            <!-- 수정 -->
+            <h3>
+              BOOK ISLAND
+              <span class="gray">></span>
+              <span class="blue">감상문 수정</span>
+            </h3>
+          </div>
       <section id="innerContainer">
         <aside class="title">
-          <div class="bookImg">
-            <img src="{{ bookData.cover }}" />
-          </div>
-          <!-- class 이름 추가 -->
-          <div class="book_btn">
-            <button>
-              <!-- 이미지 변경 -->
-              <img
-                class="bookmark-btn"
-                src="/img/bookmark_empty_img.png"
-                art="비어있는 북마크 이미지"
-              />
-            </button>
-          </div>
-        </aside>
-        <article id="attribute">
-          <div class="items">
-            <h1 class="bookTitle">{{ bookData.title }}</h1>
-            <h3 class="bookAuthor">{{ bookData.author }}</h3>
-            <h4 class="bookDct">{{ bookData.description }}</h4>
-          </div>
-          <div id="content">
-            <div>감상문</div>
-            <!-- class commentaryBtn => commentary_btn-->
-            <button class="commentary_btn">감상문 작성</button>
-          </div>
-          <div class="bookreview">
-            <div class="BookreviewBox">
-              <!-- <div class="review_content">{{Bookreview.title}}</div> -->
-              <div class="review_content">
-                리뷰 미리보기다
-                으히히ㅣㅎ히히ㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅇㄻㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅣㅎ
-              </div>
-              <!-- class 이름 변경 .imgBox => user_box -->
-              <div class="user_box">
-                <a href="#">
-                  <!-- 작성자 thumbnail_img -->
-                  <img class="myimg" src="{{Bookreview.cover}}" alt="" />
-                  리뷰 작성자
-                  <!-- {{Bookreview.author}} -->
-                </a>
-                <!-- <div>{Review model의 created_At}<div> -->
-                <div>02-11</div>
-              </div>
+            <div class="bookImg">
+              <img src="{{ bookData.cover }}" />
             </div>
+            <!-- class 이름 추가 -->
+            <div class="book_btn">
+              <button>
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/bookmark_empty_img.png"
+                  art="비어있는 북마크 이미지"
+                />
+              </button>
+            </div>
+          </aside>
+        <article id="attribute">
+          <div id="textbox">
+            <form class="text">
+              <textarea class="textbox" name="context" rows="3" value="">
+              </textarea>
+              <div id="btnbox">
+                <div class="btn">
+                    <button type="submit" class="write-btn">수 정</button>
+                  </div>
+                <div class="btn2">
+                  <button type="submit" class="write-btn2">삭 제</button>
+                </div>
+              </div>
+            </form>
           </div>
         </article>
       </section>
