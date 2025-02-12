@@ -1,107 +1,100 @@
 .bookReview {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .BookreviewBox {
-    padding: 30px;
-    gap: 10px;
-    border: solid 1px #efefef;
-    border-radius: 8px;
-    height: 300px;
-    width: 815px;
+  padding: 30px;
+  gap: 10px;
+  border: solid 1px #efefef;
+  border-radius: 8px;
+  height: 300px;
+  width: 815px;
 }
 
 .write {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-.imgBox{
-    display: flex;
-    gap: 10px;
-    margin-top: 170px;
+.imgBox {
+  display: flex;
+  gap: 10px;
+  margin-top: 170px;
 }
 
 .date {
-    margin-left: 535px;
+  margin-left: 535px;
 }
 
-.text {
-    display: flex;
-    flex-direction: row;
-    margin-top: 30px;
-    margin-left: 20px;
-}
-
-.textbox {
-    outline: 0;
-    border-top: 1px solid black;
-    width: 712px;    
-    text-align: left;
-}
 .write-btn {
-    cursor: pointer;
-    margin-left: 16px;
+  cursor: pointer;
+  font-size: 17px;
+  color: white;
+  font-weight: 700;
+  background-color: #1659cc;
+  border-radius: 5px;
+  padding: 6px;
+  border: none;
+  width: 66px;
 }
 
 .show {
-    border-top: 1px solid #efefef;
-    margin-top: 30px;
+  border-top: 1px solid #efefef;
+  margin-top: 30px;
 }
 
 .showbox {
-    border: 1px solid #efefef;
-    border-radius: 18px;
-    margin-top: 30px;
+  border: 1px solid #efefef;
+  border-radius: 18px;
+  margin-top: 30px;
 }
 
 .imgBox > div {
-    display: flex;
-    align-items: end;
+  display: flex;
+  align-items: end;
 }
-.myimg{
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
+.myimg {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
 }
 
 .showcomment {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-
-}
-
-.writebox{
-    display: flex;
-    gap: 10px;
-    margin-top: 170px;
-}
-
-.reviewBox {
-    padding: 16px;
-    border: 1px solid #efefef;
-    border-radius:18px;
-    height: 135px;
-}
-
-.img {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-}
-
-.commentwrite {
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
 }
 
 .writebox {
-    display: flex;
-    margin-top: 31px;
+  display: flex;
+  gap: 10px;
+  margin-top: 170px;
+}
+
+.reviewBox {
+  padding: 16px;
+  border: 1px solid #efefef;
+  border-radius: 18px;
+  height: 135px;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+.commentwrite {
+  margin-top: 10px;
+}
+
+.writebox {
+  display: flex;
+  margin-top: 31px;
 }
 
 .writebox > div {
-    display: flex;
-    align-items: end;
+  display: flex;
+  align-items: end;
 }

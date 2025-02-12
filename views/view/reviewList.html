@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>감상문 리스트</title>
-    <link href="/css/maincss/header.css" rel="stylesheet">
-    <link href="/css/maincss/footer.css" rel="stylesheet">
-    <link href="/css/views/bookList.css" rel="stylesheet">
-    <link href="/css/maincss/ad.css" rel="stylesheet">
+    <link href="/css/maincss/header.css" rel="stylesheet"/>
+    <link href="/css/maincss/footer.css" rel="stylesheet"/>
+    <link href="/css/views/bookList.css" rel="stylesheet"/>
+    <link  href="/css/maincss/main.css" rel="stylesheet"/>
+    <link href="/css/maincss/ad.css" rel="stylesheet"/>
     <style>
         .adbox {
             padding-bottom: 50px;
@@ -23,10 +24,8 @@
                         <img src="/img/logo4.png">
                     </a>
                     <div class="search">
-                        <a href="#" id="input">
-                            원하는 책을 검색해보세요!
-                            <img src="/img/readingGlasses2.png">
-                        </a>
+                        <input href="#" id="input"
+                            placeholder="리뷰하고 싶은 책을 검색해 보세요!">
                     </div>
                     <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
                 </div>
@@ -34,16 +33,16 @@
                     <div class="innerbox">
                         <ul class="banner">
                             <li>
-                                <a href="#">감상문</a>
+                                <a href="/reviewlist">감상문</a>
                             </li>
                             <li>
-                                <a href="#">책</a>
+                                <a href="/booklist">책</a>
                             </li>
                             <li>
-                                <a href="#">오디오북</a>
+                                <a href="/audiolist">오디오북</a>
                             </li>
                             <li>
-                                <a href="#">커뮤니티</a>
+                                <a href="/community">커뮤니티</a>
                             </li>
                         </ul>
                     </div>
@@ -51,20 +50,27 @@
             </div>
         </div>
     </div>
-    <div id="conteiner">
+    <div id="container">
         <div id="searchR">
-            <h3>감상문</h3>
+            <h3>
+                BOOK ISLAND
+                <span class="gray">></span>
+                <span class="blue">감상문</span>
+            </h3>
         </div>
         <div class="adbox">
-            {% for bookData in listBook %}
+            {% for item in mybookData %}
                 <div class="bookUpload">
-                    <div><img class="bookImg" src={{bookData.cover}}></div>
-                    <div class="bookUploadAuthor">{{bookData.author}}</div>
+                    <div>
+                        <img class="bookImg" src={{item.cover}}>
+                    </div>
+                    <div class="bookUploadAuthor">{{item.author}}</div>
                     <div class="bookUploadImg">
                         <div>
                             <img src="/img/kakaoLogo.png"></img>
-                        작성자 </div>
-                        <p>댓글 갯수</p>
+                            작성자
+                        </div>
+                        <p>[{{item.customerReviewRank}}]</p>
                     </div>
                 </div>
             {% endfor %}

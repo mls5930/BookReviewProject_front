@@ -1,39 +1,44 @@
-const express= require("express");
-const router = express.Router()
-const path = require('path');
-const mainHtml = path.join(__dirname,`../views/main/`)
-const viewHtml = path.join(__dirname,`../views/view/`)
-require('dotenv').config();
-const {bookData,bookData2} = require("../public/js/main")
-const {attachAuthToken, authMe} = require('../middleware/middleware')
-const cookieParser = require('cookie-parser');
+const express = require("express");
+const { getList,getSearchBook,
+        getCommunity, getBookMark
+      } = require('../controller/nav.controller');
+
+const { getUserInfo, getUserPreview, 
+        getUserModify
+      } = require('../controller/user.controller');
+
+
+const { getAudioList, getAudioView, 
+        getAudioWrite,
+      } = require('../controller/audio.controller');
+
+
+const { getBookReview,getReviewWrite, 
+        getReviewList, getReviewDetail,
+        getReviewModify, 
+      } = require('../controller/review.controller');
+
+
+const router = express.Router();
+const path = require("path");
+const mainHtml = path.join(__dirname, `../views/main/`);
+const viewHtml = path.join(__dirname, `../views/view/`);
+require("dotenv").config();
+const { bookData, bookData2 } = require("../public/js/main");
+const { attachAuthToken, authMe } = require("../middleware/middleware");
+const cookieParser = require("cookie-parser");
 const { default: axios } = require("axios");
 
+//메인 페이지
+router.get('/' , getList);
 
+const HOST = "https://kauth.kakao.com";
+const REST_API_KEY = process.env.API_KEY;
 
-router.get('/' , async (req,res) => {
-    // console.log(req.user);
-    const user = req.user
-    const mybookData = bookData.map( (book) => {
-        return{
-            title: book.title.split("-")[0],
-            cover: book.cover,
-            author: book.author.split(",")[0],
-            customerReviewRank: book.customerReviewRank
-        };
-    });
-    res.render(mainHtml+`main.html` ,{
-        mybookData,
-        user
-    })
-})
-const HOST = 'https://kauth.kakao.com'
-const REST_API_KEY = process.env.API_KEY
-
-router.get('/login/page', async (req, res) => {
-    const REDIRECT_URI = "http://localhost:3000/oauth/kakao";
-    const redirectURL = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`
-    res.redirect(redirectURL);
+router.get("/login/page", async (req, res) => {
+  const REDIRECT_URI = "http://localhost:3000/oauth/kakao";
+  const redirectURL = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  res.redirect(redirectURL);
 });
 router.get('/mypage', async (req, res) => {
     const mybookData = bookData.map( (book) => {
@@ -137,10 +142,10 @@ router.get('/community', (req, res) => {
 })
 
 router.get('/bookmark',authMe, async (req , res) => {
-    // req.user.nickname
+    req.user.nickname
     try {
         const bookmark = await axios.post('http://localhost:3000/user/register',{
-            // nickname: nickname
+            nickname: nickname
         })
      res.status(202).render("main/mypage.html",{
         bookmark
@@ -169,16 +174,28 @@ module.exports= router
 //     });
 //     res.render(mainHtml+`test.html` ,{
 //         mybookData,
-        
+
 //     })
 // })
 
+/* axios.[HTTP메서드]([URL], [보낼데이터], [그외설정])
+    const response = await axios.post('/user/login', {
+        user_id: user_id.value,
+        user_pw: user_pw.value
+    }, {
+        headers: {
+            "Content-Type" : "application/json"
+        }
+    })
+    console.log(response.data);
+    if(response.data.success) window.location.href = response.data.redirect
+*/
 
 
-const items = [];
-for (let i = 0; i < bookData.length; i++) {
-  items.push(bookData[i]);
-}
+// const items = [];
+// for (let i = 1; i <= bookData.length; i++) {
+//   items.push(bookData[i]);
+// }
 
 router.get('/slideTest', (req, res) => {
   res.render('main/slideTest.html', { items });
