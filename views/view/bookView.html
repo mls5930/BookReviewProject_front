@@ -4,10 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>책 상세 페이지</title>
-    <link rel="stylesheet" href="/css/maincss/header.css"/>
-    <link rel="stylesheet" href="/css/maincss/footer.css"/>
+    <link href="/css/maincss/header.css" rel="stylesheet"/>
+    <link href="/css/maincss/footer.css" rel="stylesheet"/>
     <link href="/css/views/viewPage.css" rel="stylesheet"/>
     <link href="/css/views/reviewbox.css" rel="stylesheet"/>
+    <script>
+      let isLoggedIn = flase;
+      if (isLoggedIn) {
+        document.getElementById('commentary_btn').style.display = 'block';
+      } else {
+        document.getElementById('commentary_btn').style.display = 'none';
+      }
+    </script>
   </head>
   <body>
     <div id="mainPage">
@@ -88,18 +96,18 @@
             <div class="BookreviewBox">
               <!-- <div class="review_content">{{Bookreview.title}}</div> -->
               <div class="review_content">
-                <a href="/reviewdetail/{{item.review_id}}?isbn13={{item.isbn13}}"> {{item.context}}</a>
+                <a href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}"> {{item.context}}</a>
               </div>
               <!-- class 이름 변경 .imgBox => user_box -->
               <div class="user_box">
-                <a href="/myreview/kim">
-                  <!-- 작성자 thumbnail_img -->
-                  <img class="myimg" src="{{item.User.thumbnail}}" alt="" />
-                     {{item.User.nickname}}
-                  <!-- {{Bookreview.author}} -->
-                </a>
-                <!-- <div>{Review model의 created_At}<div> -->
-                <div>{{item.createdAt}}</div>
+                  <a href="/myreview/kim">
+                    <!-- 작성자 thumbnail_img -->
+                    <img class="myimg" src="{{item.User.thumbnail}}" alt="" />
+                      {{item.User.nickname}}
+                    <!-- {{Bookreview.author}} -->
+                  </a>
+                  <!-- <div>{Review model의 created_At}<div> -->
+                  <div>{{item.createdAt}}</div>
               </div>
             </div>
             {% endfor %}
@@ -109,7 +117,7 @@
     </main>
     <div id="topbutton">
       <a href="#mainPage"
-        ><img class="topbuttonImg" src="./img/topimg.png"
+        ><img class="topbuttonImg" src="/img/topimg.png"
       /></a>
     </div>
     <div id="footer">

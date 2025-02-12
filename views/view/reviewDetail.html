@@ -72,18 +72,18 @@
                         <div class="imgBox" >
                             <div>
                                 <a href="#">
-                                    <img class="myimg" src={{bookData.cover}} alt="">
+                                    <img class="myimg" src="{{item.User.thumbnail}}" alt="">
                                 </a>
-                                <div>{{bookData.author}}</div>
+                                <div>{{item.User.nickname}}</div>
                             </div>
                             <div class="date">02-13</div>
                         </div>
                     </div>
+                    <div class="reviewLine"></div>
                     <form class="textbox">
                         <textarea name="context"></textarea>
                         <button type="submit" class="write-btn">작 성</button>
                     </form>
-                    <div class="reviewLine"></div>
                     <div class="showcomment">
                         <div>
                             <!-- 보여줄자리 -->
@@ -91,9 +91,9 @@
                             <div class="writebox" >
                                 <div>
                                     <a href="#">
-                                        <img class="img" src={{bookData.cover}} alt="">
+                                        <img class="img" src="{{item.User.thumbnail}}" alt="">
                                     </a>
-                                    <div>{{bookData.author}}</div>
+                                    <div>{{item.User.nickname}}</div>
                                 </div>
                                 <div class="date">02-13</div>
                             </div>
@@ -103,7 +103,7 @@
             </section>
         </main>
         <div id="topbutton">
-            <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
+            <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png"></a>
         </div>
         <div id="footer">
             <div class="footerbox">
