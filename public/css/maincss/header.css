@@ -77,23 +77,20 @@ h4 {
     display: flex;
     justify-content: center;
     font-size: 16px;
-   
-    
+    background-color: white;
+    border-radius: 20px;
+    border: solid 2px #1659cc;
+    padding: 5px 20px;
+    height: 40px;
 }
 .search_form{
     display: flex;
-    background-color: #f5f4f4;
-    padding: 0 20px;
-    border-radius: 20px;
     color: #999;
-    justify-content: space-around;
-    text-align: left;
-    height: 40px;
 }
 .search_form > button {
     width: 40px;
     border: none;
-    background-color: #f5f4f4;
+    background-color: white;
     cursor: pointer;
 }
 .search_form > button > img{
@@ -106,26 +103,17 @@ h4 {
     text-decoration: none;
     width: 350px;
     font-size: 16px;
-    background-color: #f5f4f4;
+    background-color: white;
     display: flex;
     align-items: center;
     font-weight: 500; 
 }
-.search_form:hover {
-    /* background-color: #e2e2e2; */
-    border: solid 2px #1659cc;
-}
-.search_form:focus{
-    border: solid 2px #1659cc;
 
-}
 #input:focus {
     outline: none;
     border: none;
 }
-.search:focus{
-    border: solid 100px #1659cc;
-}
+
 
 .logoLogin{
     font-size: 16px;
@@ -166,7 +154,7 @@ h4 {
 }
 .banner > li > a:hover {
     border-radius: 800px;
-    color: black;
+    color: #1659cc;
     text-decoration: underline;
 }
 
@@ -181,8 +169,8 @@ h4 {
     height: 40px;
 }
 .loginThumbnail{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
 }
 
