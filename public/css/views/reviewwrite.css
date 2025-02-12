@@ -1,103 +1,109 @@
-/* #attribute {
-    margin-top: 38px;
-} */
-
-/* #textbox {
-  border-top: none;
+#textbox {
+  border-top: none; 
   margin-top: 0;
-} */
+}
 
 .text {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .textbox {
-    outline: 0;
-    width: 100%;
-    height: 245px;
-    text-align: left;
-  }
-  
-  #btnbox {
-    display: flex;
-    justify-content: end;
-    padding-top: 25px;
-  }
-  
-  .btn2 {
-    margin-right: 12spx;
-  }
-  
-  .show {
-    border-top: 1px solid #efefef;
-    margin-top: 30px;
-  }
-  
-  .showbox {
-    border: 1px solid #efefef;
-    border-radius: 18px;
-    margin-top: 30px;
-  }
-  
-  .imgBox > div {
-    display: flex;
-    align-items: end;
-  }
-  .myimg {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-  }
-  
-  .showcomment {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-  }
-  
-  .writebox {
-    display: flex;
-    gap: 10px;
-    margin-top: 170px;
-  }
-  
-  .reviewBox {
-    padding: 16px;
-    border: 1px solid #efefef;
-    border-radius: 18px;
-    height: 135px;
-  }
-  
-  .img {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-  }
-  
-  .commentwrite {
-    margin-top: 10px;
-  }
-  
-  .writebox {
-    display: flex;
-    margin-top: 31px;
-  }
-  
-  #searchR {
-    padding: 32px 24px;
-  }
-  
-  .writebox > div {
-    display: flex;
-    align-items: end;
-  }
-  /* 오디오북 버튼 */
-  .btnImg {
-    margin-left: 76px;
-  }
-  
-  .btnImg > button:nth-child(2) {
-    margin-left: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.textbox {
+  outline: 0;
+  width: 100%;
+  height: 300px;    
+  text-align: left;
+ 
+}
+
+#btnbox {
+  display: flex;
+  justify-content: end;
+  margin: 20px 12px 0 0;
+}
+
+.write-btn {
+  cursor: pointer;
+  font-size: 17px;
+  color: white;
+  font-weight: 700;
+  background-color: #1659cc;
+  border-radius: 8px;
+  padding: 6px;
+  border: none;
+  width: 66px;
+}
+
+.show {
+  border-top: 1px solid #efefef;
+  margin-top: 30px;
+}
+
+.showbox {
+  border: 1px solid #efefef;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.imgBox > div {
+  display: flex;
+  align-items: end;
+}
+.myimg{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+.showcomment {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+
+}
+
+.writebox{
+  display: flex;
+  gap: 10px;
+  margin-top: 170px;
+}
+
+.reviewBox {
+  padding: 16px;
+  border: 1px solid #efefef;
+  border-radius:18px;
+  height: 135px;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+.commentwrite {
+  margin-top: 10px;
+}
+
+.writebox {
+  display: flex;
+  margin-top: 31px;
+}
+
+#searchR {
+  padding: 32px 24px;
+}
+
+.writebox > div {
+  display: flex;
+  align-items: end;
+}
+/* 오디오북 버튼 */
+.btnImg {
+  margin-left: 76px;
+}
+
+.btnImg > button:nth-child(2){
+  margin-left: 20px;
+}
