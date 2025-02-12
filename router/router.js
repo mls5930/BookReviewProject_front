@@ -5,7 +5,15 @@ const mainHtml = path.join(__dirname,`../views/main/`)
 const viewHtml = path.join(__dirname,`../views/view/`)
 require('dotenv').config();
 const {bookData,bookData2} = require("../public/js/main")
-router.get('/' , (req,res) => {
+const {attachAuthToken, authMe} = require('../middleware/middleware')
+const cookieParser = require('cookie-parser');
+const { default: axios } = require("axios");
+
+
+
+router.get('/' , async (req,res) => {
+    // console.log(req.user);
+    const user = req.user
     const mybookData = bookData.map( (book) => {
         return{
             title: book.title.split("-")[0],
@@ -16,7 +24,7 @@ router.get('/' , (req,res) => {
     });
     res.render(mainHtml+`main.html` ,{
         mybookData,
-        // bookData
+        user
     })
 })
 const HOST = 'https://kauth.kakao.com'
@@ -26,7 +34,7 @@ router.get('/login/page', async (req, res) => {
     const REDIRECT_URI = "http://localhost:3000/oauth/kakao";
     const redirectURL = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`
     res.redirect(redirectURL);
-  });
+});
 router.get('/mypage', async (req, res) => {
     const mybookData = bookData.map( (book) => {
         return{
@@ -36,7 +44,6 @@ router.get('/mypage', async (req, res) => {
             
         };
     });
-    // if (titles)
     // console.log(mybookData);
     res.render(mainHtml+`mypage.html`,{
         mybookData
@@ -128,8 +135,43 @@ router.get('/review', (req, res) => {
 router.get('/community', (req, res) => {
     res.render(viewHtml +'community.html');
 })
+
+router.get('/bookmark',authMe, async (req , res) => {
+    req.user.nickname
+    try {
+        const bookmark = await axios.post('http://localhost:3000/user/register',{
+            nickname: nickname
+        })
+     res.status(202).render("main/mypage.html",{
+        bookmark
+    })
+
+    } catch (error) {
+        return res.status(401).send()
+    }
+
+})
 module.exports= router
 
+
+
+
+
+
+// router.get('/test' ,(req,res) => {
+//     const mybookData = bookData.map( (book) => {
+//         return{
+//             title: book.title.split("-")[0],
+//             cover: book.cover,
+//             author: book.author.split(",")[0],
+//             customerReviewRank: book.customerReviewRank
+//         };
+//     });
+//     res.render(mainHtml+`test.html` ,{
+//         mybookData,
+        
+//     })
+// })
 
 /* axios.[HTTP메서드]([URL], [보낼데이터], [그외설정])
     const response = await axios.post('/user/login', {
@@ -143,3 +185,13 @@ module.exports= router
     console.log(response.data);
     if(response.data.success) window.location.href = response.data.redirect
 */
+
+
+// const items = [];
+// for (let i = 1; i <= bookData.length; i++) {
+//   items.push(bookData[i]);
+// }
+
+// app.get('/slideTest', (req, res) => {
+//   res.render('main/slideTest.html', { items });
+// })

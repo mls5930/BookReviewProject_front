@@ -38,11 +38,24 @@
                     <a href="/">
                         <img src="/img/logo4.png">
                     </a>
-                    <div class="search">
-                        <input href="#" id="input"
-                            placeholder="리뷰하고 싶은 책을 검색해 보세요!">
+                    <div class="search" tabindex="0">
+                        <form class="search_form" action="/booklist" method="get">
+                            <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
+                            <button type="submit"><img src="img/readingGlasses.png"></button>
+                        </form>
                     </div>
+                    {% if user %}
+                    <div class="loginHeader">
+                        <div>
+                            <img class="loginLogo" src="/img/check.png">
+                        </div>
+                        <div>
+                            <img class="loginThumbnail" src="{{user.thumbnail}}">
+                        </div>
+                    </div>
+                    {% else %}
                     <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
+                    {% endif %}
                 </div>
                 <div id="inner">
                     <div class="innerbox">
@@ -159,7 +172,7 @@
             <div class="popup">
                 <div class="popup-head">	
                     <button class="closeBtn">x</button>
-                    <img class="head-title" src="/img/loginLogo.png">
+                    <img class="head-title" src="/img/loginLogo2.png">
                 </div>
                 <div class="popup-body">	
                     <div class="body-content">
@@ -186,18 +199,7 @@
             </div>
         </div>
     </dialog>
-    <script>
-        const logoLogin = document.querySelector('.logoLogin');
-        const closeBtn = document.querySelector('.closeBtn');
-        const modal = document.querySelector('.loginBox');
-        logoLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.showModal();
-        })
-   
-        closeBtn.onclick = () => {
-            modal.close();
-        }
-    </script>
+    <script src="/js/loginPopup.js"></script>
+    <script src="/js/userInfoButton.js"></script>
 </body>
 </html>

@@ -1,0 +1,85 @@
+#main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom:50px;
+    border-bottom: solid 1px #ededed;
+}
+#mainBox {
+    display: flex;
+    gap: 60px;
+}
+.mainName {
+  width: 200px;
+  padding-top: 20px;
+  padding-left: 24px;
+}
+.mainName > h3{
+    margin: 0px;
+}
+.mainName > h3 > a {
+    color: #1659cc;
+    font-weight: 800;
+}
+
+.daybookbox{
+    display: flex;
+    /* padding: 0 10px; */
+    width: 800px;
+    /* overflow: hidden; */
+}
+
+.daybookbox > ul {
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+    padding:0 16px;
+}
+
+.daybookbox > ul > .daybook-thumnail {
+    object-fit: fill;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
+}
+.daybookbox > ul > .daybook-thumnail > img {
+    border-radius: 6px;
+    width: 170px;
+    height: 240px;
+}
+
+.daybookbox > ul > .daybook-thumnail:hover {
+    transform: translateY(-17px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    
+}
+
+
+.daybookbox > ul > .daybook-title {
+    font-size:16px;
+    font-weight: bold;
+}
+
+.daybookbox > ul > .daybook-author {
+    font-size:12px;
+    color:#333;
+}
+
+.daybookbox > ul > .daybook-description {
+    font-size:12px;
+    color:#666;
+}
+
+.daybookUpload{
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+}
+
+.daybookImg{
+    width: 160px;
+    height: 200px;
+}
+
