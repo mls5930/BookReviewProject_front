@@ -58,10 +58,10 @@
                     </form>
                     <div class="community-list">
                         {% for item in communitiesData %}
-                        <div class="list-area">
-                            <div class="context">{{item.context}}</div>
-                            <div class="date">{{item.createdAt}}</div>
-                        </div>
+                        <ul class="list-area">
+                            <li class="context">{{item.context}}</li>
+                            <li class="date">{{item.createdAt}}</li>
+                        </ul>
                         {% endfor %}
                     </div>
                 </div>
