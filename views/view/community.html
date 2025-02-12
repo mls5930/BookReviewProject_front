@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>커뮤니티</title>
-    <link href="/css/maincss/header.css" rel="stylesheet"/>
-    <link href="/css/maincss/footer.css" rel="stylesheet"/>
-    <link href="/css/views/community.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/maincss/header.css">
+    <link rel="stylesheet" href="/css/maincss/footer.css">
+    <link href="/css/views/community.css" rel="stylesheet">
 </head>
 <body>
     <div id="mainPage">
@@ -42,23 +42,32 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="listContainer">
-        <div class="container">
-            <h4>커뮤니티</h4>
-            <form id="content">
-               <textarea class="textbox" name="comments"
-                    rows="4"
-                    value=""
-                >
-                </textarea>
-                <button type="submit" class="write-btn">Submit</button>
-            </form>
-            <div class="comment-row"> 
-            <!--   보여줄자리 -->jjj
+        <div id="content">
+            <div id="container">
+                <div class="nav">
+                    <h3>
+                      BOOK ISLAND
+                      <span class="gray">></span>
+                      <span class="blue">커뮤니티</span>
+                    </h3>
+                </div>
+                <div class="community-area">
+                    <form class="community-write" action="http://localhost:3000/community/write" method="post">
+                        <textarea name="context" value="" rows="4" maxlength="100" placeholder="자유롭게 대화해요"></textarea>
+                        <button class="write-btn" type="submit" >작성</button>
+                    </form>
+                    <div class="community-list">
+                        {% for item in communitiesData %}
+                        <div class="list-area">
+                            <div class="context">{{item.context}}</div>
+                            <div class="date">{{item.createdAt}}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </div> 
+        </div> 
     <div id="topbutton">
         <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
     </div>
