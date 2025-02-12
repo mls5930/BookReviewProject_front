@@ -1,6 +1,5 @@
 const axios = require('axios');
 const path = require('path');
-const mainHtml = path.join(__dirname,`../views/main/`)
 const viewHtml = path.join(__dirname,`../views/view/`)
 require('dotenv').config();
 const BACK_HOST = process.env.BACK_HOST;
