@@ -25,20 +25,20 @@
               </div>
               <div id="inner">
                   <div class="innerbox">
-                      <ul class="banner">
-                          <li>
-                              <a href="#">감상문</a>
-                          </li>
-                          <li>
-                              <a href="#">책</a>
-                          </li>
-                          <li>
-                              <a href="#">오디오북</a>
-                          </li>
-                          <li>
-                              <a href="#">커뮤니티</a>
-                          </li>
-                      </ul>
+                    <ul class="banner">
+                      <li>
+                          <a href="/reviewlist">감상문</a>
+                      </li>
+                      <li>
+                          <a href="/booklist">책</a>
+                      </li>
+                      <li>
+                          <a href="/audiolist">오디오북</a>
+                      </li>
+                      <li>
+                          <a href="/community">커뮤니티</a>
+                      </li>
+                  </ul>
                   </div>
               </div>
           </div>
@@ -78,28 +78,31 @@
           </div>
           <div id="content">
             <div>감상문</div>
+              <a href = "/reviewWrite/{{bookData.isbn13}}">
             <!-- class commentaryBtn => commentary_btn-->
-            <button class="commentary_btn">감상문 작성</button>
+                <button class="commentary_btn">감상문 작성</button>
+              </a>
           </div>
           <div class="bookreview">
+            {% for item in ReviewData %}
             <div class="BookreviewBox">
               <!-- <div class="review_content">{{Bookreview.title}}</div> -->
               <div class="review_content">
-                리뷰 미리보기다
-                으히히ㅣㅎ히히ㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅇㄻㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅣㅎ
+                <a href="/reviewmodify/{{item.review_id}}?isbn13={{item.isbn13}}"> {{item.context}}</a>
               </div>
               <!-- class 이름 변경 .imgBox => user_box -->
               <div class="user_box">
-                <a href="#">
+                <a href="/myreview/kim">
                   <!-- 작성자 thumbnail_img -->
-                  <img class="myimg" src="{{Bookreview.cover}}" alt="" />
-                  리뷰 작성자
+                  <img class="myimg" src="{{item.thumbnail}}" alt="" />
+                     {{item.context}}
                   <!-- {{Bookreview.author}} -->
                 </a>
                 <!-- <div>{Review model의 created_At}<div> -->
-                <div>02-11</div>
+                <div>02-12{{item.created_At}}</div>
               </div>
             </div>
+            {% endfor %}
           </div>
         </article>
       </section>

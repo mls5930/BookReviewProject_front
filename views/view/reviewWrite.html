@@ -26,20 +26,20 @@
               </div>
               <div id="inner">
                   <div class="innerbox">
-                      <ul class="banner">
-                          <li>
-                              <a href="#">감상문</a>
-                          </li>
-                          <li>
-                              <a href="#">책</a>
-                          </li>
-                          <li>
-                              <a href="#">오디오북</a>
-                          </li>
-                          <li>
-                              <a href="#">커뮤니티</a>
-                          </li>
-                      </ul>
+                    <ul class="banner">
+                      <li>
+                          <a href="/reviewlist">감상문</a>
+                      </li>
+                      <li>
+                          <a href="/booklist">책</a>
+                      </li>
+                      <li>
+                          <a href="/audiolist">오디오북</a>
+                      </li>
+                      <li>
+                          <a href="/community">커뮤니티</a>
+                      </li>
+                  </ul>
                   </div>
               </div>
           </div>
@@ -73,9 +73,11 @@
           </aside>
         <article id="attribute">
           <div id="textbox">
-            <form class="text">
+            <form class="text" action="http://192.168.0.23:3000/review/{{bookData.isbn13}}" method="post">
               <textarea class="textbox" name="context" rows="3" value="">
               </textarea>
+              <input type="text" name="cover" value="{{bookData.cover}}"> <!-- 추후 로그인 연결되면면 변경해야 할 부분 -->
+              <input type="text" name="nickname" value="kim" >            <!-- 추후 로그인 연결되면면 변경해야 할 부분 -->
               <div id="btnbox">
                 <div class="btn2">
                   <button type="submit" class="write-btn">작 성</button>

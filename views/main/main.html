@@ -61,16 +61,16 @@
                     <div class="innerbox">
                         <ul class="banner">
                             <li>
-                                <a href="#">감상문</a>
+                                <a href="/reviewlist">감상문</a>
                             </li>
                             <li>
-                                <a href="#">책</a>
+                                <a href="/booklist">책</a>
                             </li>
                             <li>
-                                <a href="#">오디오북</a>
+                                <a href="/audiolist">오디오북</a>
                             </li>
                             <li>
-                                <a href="#">커뮤니티</a>
+                                <a href="/community">커뮤니티</a>
                             </li>
                         </ul>
                     </div>
@@ -92,7 +92,9 @@
                     {% for item in mybookData %}
                     <ul>
                         <li class="daybook-thumnail">
-                            <img src="{{item.cover}}" />
+                            <a href ="/bookview/{{ item.isbn13 }}">
+                                <img src="{{ item.cover }}">
+                            </a> 
                         </li>
                         <li class="daybook-title">
                             {{item.title}} 
@@ -114,20 +116,21 @@
                 </h3>
             </div>
             <div class="adbox">
-                {% for item in mybookData %}
-                    <div class="bookUpload">
-                        <div>
+                {% for item in bookDataViews %}
+                <div class="bookUpload">
+                    <div>
+                        <a href ="/bookview/{{ item.isbn13 }}">
                             <img class="bookImg" src={{item.cover}}>
-                        </div>
-                        <div class="bookUploadAuthor">{{item.author}}</div>
-                        <div class="bookUploadImg">
-                            <div>
-                                <img src="/img/kakaoLogo.png"></img>
-                                작성자
-                            </div>
-                            <p>[{{item.customerReviewRank}}]</p>
-                        </div>
+                        </a>
                     </div>
+                    <div class="bookUploadAuthor">{{item.author}}</div>
+                    <div class="bookUploadImg">
+                        <div>
+                            <img src="{{item.thumbnail}}"></img>
+                            {{item.nickname}} </div>
+                        <p style="font-size: 12px; color: red;">[{{item.count}}]</p>
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>

@@ -1,4 +1,24 @@
 const express = require("express");
+const { getList,getSearchBook,
+        getCommunity, getBookMark
+      } = require('../controller/nav.controller');
+
+const { getUserInfo, getUserPreview, 
+        getUserModify
+      } = require('../controller/user.controller');
+
+
+const { getAudioList, getAudioView, 
+        getAudioWrite,
+      } = require('../controller/audio.controller');
+
+
+const { getBookReview,getReviewWrite, 
+        getReviewList, getReviewDetail,
+        getReviewModify, 
+      } = require('../controller/review.controller');
+
+
 const router = express.Router();
 const path = require("path");
 const mainHtml = path.join(__dirname, `../views/main/`);
@@ -9,22 +29,9 @@ const { attachAuthToken, authMe } = require("../middleware/middleware");
 const cookieParser = require("cookie-parser");
 const { default: axios } = require("axios");
 
-router.get("/", async (req, res) => {
-  // console.log(req.user);
-  const user = req.user;
-  const mybookData = bookData.map((book) => {
-    return {
-      title: book.title.split("-")[0],
-      cover: book.cover,
-      author: book.author.split(",")[0],
-      customerReviewRank: book.customerReviewRank,
-    };
-  });
-  res.render(mainHtml + `main.html`, {
-    mybookData,
-    user,
-  });
-});
+//메인 페이지
+router.get('/' , getList);
+
 const HOST = "https://kauth.kakao.com";
 const REST_API_KEY = process.env.API_KEY;
 
@@ -33,76 +40,42 @@ router.get("/login/page", async (req, res) => {
   const redirectURL = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   res.redirect(redirectURL);
 });
-router.get("/mypage", async (req, res) => {
-  const mybookData = bookData.map((book) => {
-    return {
-      title: book.title.split("-")[0],
-      cover: book.cover,
-      author: book.author.split(",")[0],
-    };
-  });
-  // console.log(mybookData);
-  res.render(mainHtml + `mypage.html`, {
-    mybookData,
-  });
-});
 
-router.get("/myreview", async (req, res) => {
-  // const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
-  const mybookData = bookData.map((book) => {
-    return {
-      title: book.title.split("-")[0],
-      cover: book.cover,
-      author: book.author.split(",")[0],
-      pubDate: book.pubDate,
-    };
-  });
-  res.render(mainHtml + `myreview.html`, {
-    mybookData,
-  });
-});
+//내 북마크
+router.get("/mybookmark", getUserInfo);
 
-router.get("/usermodify", (req, res) => {
-  // const bookdata = bookData.splice(0,1)
-  const bookdata = bookData[0];
-  // console.log(bookdata);
+//내 감상문
+router.get("/myreview", getUserPreview);
 
-  res.render("main/userModify.html", {
-    bookdata,
-  });
-});
+//내 정보
+router.get("/usermodify", getUserModify);
 
-// 책 리스트 및 상세페이지에 관한 라우터
+// 오디오
+router.get("/audiolist", getAudioList);
 
-router.get("/audiolist", (req, res) => {
-  const listBook = bookData.map((book) => {
-    return {
-      cover: book.cover,
-      title: book.title.split("-")[0],
-      author: book.author.split(",")[0],
-    };
-  });
-  res.render(viewHtml + "audioList.html", { listBook });
-});
+router.get("/audioview", getAudioView);
 
-router.get("/audioview", (req, res) => {
-  res.render(viewHtml + "audioBookView.html", { bookData: bookData[0] });
-});
+router.get("/audiowrite", getAudioWrite);
 
-router.get("/audiowrite", (req, res) => {
-  res.render(viewHtml + "audioWrite.html", { bookData: bookData[0] });
-});
 
-router.get("/booklist", (req, res) => {
-  const listBook = bookData.map((book) => {
-    return {
-      cover: book.cover,
-      title: book.title.split("-")[0],
-      author: book.author.split(",")[0],
-    };
-  });
-  res.render(viewHtml + "bookList2.html", { listBook });
-});
+//검색창에 책 검색
+router.get('/booklist', getSearchBook);
+
+//책 리뷰
+router.get('/bookview/:isbn13', getBookReview);
+
+//책 리뷰에 대한 감상문 
+router.get('/reviewWrite/:isbn13', getReviewWrite);
+
+
+//리뷰 감상문 전체 목록
+router.get('/reviewlist', getReviewList)
+
+
+router.get("/reviewdetail", getReviewDetail);
+
+//내 리뷰 수정
+router.get("/reviewmodify/:review_id", getReviewModify);
 
 router.get("/booksearch", (req, res) => {
   const listBook = bookData.map((book) => {
@@ -115,61 +88,10 @@ router.get("/booksearch", (req, res) => {
   res.render(viewHtml + "bookList.html", { listBook });
 });
 
-router.get("/bookview", (req, res) => {
-  res.render(viewHtml + "bookView.html", { bookData: bookData[0] });
-});
+router.get("/community", getCommunity);
 
-router.get("/reviewwrite", (req, res) => {
-  res.render(viewHtml + "reviewWrite.html", { bookData: bookData[0] });
-});
+router.get("/bookmark", authMe, getBookMark);
 
-router.get("/reviewlist", (req, res) => {
-  const user = req.user;
-  const mybookData = bookData.map((book) => {
-    return {
-      title: book.title.split("-")[0],
-      cover: book.cover,
-      author: book.author.split(",")[0],
-      customerReviewRank: book.customerReviewRank,
-    };
-  });
-  res.render(viewHtml + "reviewList.html", {
-    mybookData,
-    user,
-  });
-});
-
-router.get("/reviewdetail", (req, res) => {
-  res.render(viewHtml + "reviewDetail.html", { bookData: bookData[0] });
-});
-
-router.get("/reviewmodify", (req, res) => {
-  res.render(viewHtml + "reviewModify.html", { bookData: bookData[0] });
-});
-
-router.get("/community", async (req, res) => {
-  try {
-    const response = await fetch("http://localhost:3000/community/list");
-    const communitiesData = await response.json();
-    res.render(viewHtml + "community.html", { communitiesData });
-  } catch (error) {
-    res.render(viewHtml + "community.html", { communitiesData: [] });
-  }
-});
-
-router.get("/bookmark", authMe, async (req, res) => {
-  req.user.nickname;
-  try {
-    const bookmark = await axios.post("http://localhost:3000/user/register", {
-      nickname: nickname,
-    });
-    res.status(202).render("main/mypage.html", {
-      bookmark,
-    });
-  } catch (error) {
-    return res.status(401).send();
-  }
-});
 module.exports = router;
 
 // router.get('/test' ,(req,res) => {

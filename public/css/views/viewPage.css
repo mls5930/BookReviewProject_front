@@ -125,7 +125,7 @@
   }
   
   /* BTN 이름 변경 후 새로 만듦 */
-  #attribute > #content > .commentary_btn {
+  #attribute > #content > a > .commentary_btn {
     font-size: 16px;
     color: white;
     font-weight: 700;
