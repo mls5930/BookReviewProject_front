@@ -33,8 +33,8 @@ const getList = async (req, res) => {
   });
 };
 
-//검색 창에 책 검색색
-const getSearchBook = async (req, res) => {
+//검색 창에 책 검색
+const getBookList = async (req, res) => {
   const { query } = req.query;
   let bookDatalist = "";
   if (query) {
@@ -46,7 +46,7 @@ const getSearchBook = async (req, res) => {
       `${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`
     );
   }
-  res.render(viewHtml + "bookList.html", { listBook: bookDatalist.data });
+  res.render(viewHtml + "bookList2.html", { listBook: bookDatalist.data });
 };
 
 const getCommunity = async (req, res) => {
@@ -78,4 +78,4 @@ const getBookMark = async (req, res) => {
   }
 };
 
-module.exports = { getList, getSearchBook, getCommunity, getBookMark };
+module.exports = { getList, getBookList, getCommunity, getBookMark };

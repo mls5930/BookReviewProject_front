@@ -1,5 +1,5 @@
 const express = require("express");
-const { getList,getSearchBook,
+const { getList,getBookList,
         getCommunity, getBookMark
       } = require('../controller/nav.controller');
 
@@ -58,8 +58,8 @@ router.get("/audioview", getAudioView);
 router.get("/audiowrite", getAudioWrite);
 
 
-//검색창에 책 검색
-router.get('/booklist', getSearchBook);
+// 책 
+router.get('/booklist', getBookList);
 
 //책 리뷰
 router.get('/bookview/:isbn13', getBookReview);
@@ -77,6 +77,7 @@ router.get("/reviewdetail/:review_id", getReviewDetail);
 //내 리뷰 수정
 router.get("/reviewmodify/:review_id", getReviewModify);
 
+//검색창에 책 검색
 router.get("/booksearch", (req, res) => {
   const listBook = bookData.map((book) => {
     return {
