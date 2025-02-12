@@ -4,61 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>책 상세 페이지</title>
-    <link href="/css/maincss/header.css" rel="stylesheet"/>
-    <link href="/css/maincss/footer.css" rel="stylesheet"/>
-    <link href="/css/views/viewPage.css" rel="stylesheet"/>
-    <link href="/css/views/reviewbox.css" rel="stylesheet"/>
+    <link href="/css/maincss/header.css" rel="stylesheet" />
+    <link href="/css/maincss/footer.css" rel="stylesheet" />
+    <link href="/css/views/viewPage.css" rel="stylesheet" />
+    <link href="/css/views/reviewbox.css" rel="stylesheet" />
     <script>
       let isLoggedIn = flase;
       if (isLoggedIn) {
-        document.getElementById('commentary_btn').style.display = 'block';
+        document.getElementById("commentary_btn").style.display = "block";
       } else {
-        document.getElementById('commentary_btn').style.display = 'none';
+        document.getElementById("commentary_btn").style.display = "none";
       }
     </script>
   </head>
   <body>
     <div id="mainPage">
       <div id="header">
-          <div class="header-inner">
-              <div class="headerBox">
-                  <a href="/">
-                      <img src="/img/logo4.png">
-                  </a>
-                  <div class="search">
-                      <input href="#" id="input"
-                          placeholder="리뷰하고 싶은 책을 검색해 보세요!">
-                  </div>
-                  <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
-              </div>
-              <div id="inner">
-                  <div class="innerbox">
-                    <ul class="banner">
-                      <li>
-                          <a href="/reviewlist">감상문</a>
-                      </li>
-                      <li>
-                          <a href="/booklist">책</a>
-                      </li>
-                      <li>
-                          <a href="/audiolist">오디오북</a>
-                      </li>
-                      <li>
-                          <a href="/community">커뮤니티</a>
-                      </li>
-                  </ul>
-                  </div>
-              </div>
+        <div class="header-inner">
+          <div class="headerBox">
+            <a href="/">
+              <img src="/img/logo4.png" />
+            </a>
+            <div class="search">
+              <input
+                href="#"
+                id="input"
+                placeholder="리뷰하고 싶은 책을 검색해 보세요!"
+              />
+            </div>
+            <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
           </div>
+          <div id="inner">
+            <div class="innerbox">
+              <ul class="banner">
+                <li>
+                  <a href="/reviewlist">감상문</a>
+                </li>
+                <li>
+                  <a href="/booklist">책</a>
+                </li>
+                <li>
+                  <a href="/audiolist">오디오북</a>
+                </li>
+                <li>
+                  <a href="/community">커뮤니티</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
+    </div>
     <main id="container">
       <div id="searchR">
         <!-- 수정 -->
         <h3>
           BOOK ISLAND
           <span class="gray">></span>
-          <span class="blue">책</span>
+          <span class="blue">책 보기</span>
         </h3>
       </div>
       <section id="innerContainer">
@@ -86,28 +89,32 @@
           </div>
           <div id="content">
             <div>감상문</div>
-              <a href = "/reviewWrite/{{bookData.isbn13}}">
-            <!-- class commentaryBtn => commentary_btn-->
-                <button class="commentary_btn">감상문 작성</button>
-              </a>
+            <a href="/reviewWrite/{{bookData.isbn13}}">
+              <!-- class commentaryBtn => commentary_btn-->
+              <button class="commentary_btn">감상문 작성</button>
+            </a>
           </div>
           <div class="bookreview">
             {% for item in ReviewData %}
             <div class="BookreviewBox">
               <!-- <div class="review_content">{{Bookreview.title}}</div> -->
               <div class="review_content">
-                <a href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}"> {{item.context}}</a>
+                <a
+                  href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}"
+                >
+                  {{item.context}}</a
+                >
               </div>
               <!-- class 이름 변경 .imgBox => user_box -->
               <div class="user_box">
-                  <a href="/myreview/kim">
-                    <!-- 작성자 thumbnail_img -->
-                    <img class="myimg" src="{{item.User.thumbnail}}" alt="" />
-                      {{item.User.nickname}}
-                    <!-- {{Bookreview.author}} -->
-                  </a>
-                  <!-- <div>{Review model의 created_At}<div> -->
-                  <div>{{item.createdAt}}</div>
+                <a href="/myreview/kim">
+                  <!-- 작성자 thumbnail_img -->
+                  <img class="myimg" src="{{item.User.thumbnail}}" alt="" />
+                  {{item.User.nickname}}
+                  <!-- {{Bookreview.author}} -->
+                </a>
+                <!-- <div>{Review model의 created_At}<div> -->
+                <div>{{item.createdAt}}</div>
               </div>
             </div>
             {% endfor %}
@@ -116,9 +123,7 @@
       </section>
     </main>
     <div id="topbutton">
-      <a href="#mainPage"
-        ><img class="topbuttonImg" src="/img/topimg.png"
-      /></a>
+      <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png" /></a>
     </div>
     <div id="footer">
       <div class="footerbox">

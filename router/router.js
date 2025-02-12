@@ -1,23 +1,30 @@
 const express = require("express");
-const { getList, getSearchBook,
-        getCommunity, getBookMark
-      } = require('../controller/nav.controller');
+const {
+  getList,
+  getSearchBook,
+  getCommunity,
+  getBookMark,
+} = require("../controller/nav.controller");
 
-const { getUserInfo, getUserPreview, 
-        getUserModify
-      } = require('../controller/user.controller');
+const {
+  getUserInfo,
+  getUserPreview,
+  getUserModify,
+} = require("../controller/user.controller");
 
+const {
+  getAudioList,
+  getAudioView,
+  getAudioWrite,
+} = require("../controller/audio.controller");
 
-const { getAudioList, getAudioView, 
-        getAudioWrite,
-      } = require('../controller/audio.controller');
-
-
-const { getBookReview,getReviewWrite, 
-        getReviewList, getReviewDetail,
-        getReviewModify, 
-      } = require('../controller/review.controller');
-
+const {
+  getBookReview,
+  getReviewWrite,
+  getReviewList,
+  getReviewDetail,
+  getReviewModify,
+} = require("../controller/review.controller");
 
 const router = express.Router();
 const path = require("path");
@@ -30,7 +37,7 @@ const cookieParser = require("cookie-parser");
 const { default: axios } = require("axios");
 
 //메인 페이지
-router.get('/' , getList);
+router.get("/", getList);
 
 const HOST = "https://kauth.kakao.com";
 const REST_API_KEY = process.env.API_KEY;
@@ -53,15 +60,15 @@ router.get("/usermodify", getUserModify);
 // 오디오
 router.get("/audiolist", getAudioList);
 
-router.get("/audioview", getAudioView);
+router.get("/audioview/:isbn13", getAudioView);
 
 router.get("/audiowrite", getAudioWrite);
 
-
-// 책 
+// 책
 router.get("/booklist", (req, res) => {
   const listBook = bookData.map((book) => {
     return {
+      isbn13: book.isbn13,
       cover: book.cover,
       title: book.title.split("-")[0],
       author: book.author.split(",")[0],
@@ -71,18 +78,16 @@ router.get("/booklist", (req, res) => {
 });
 
 // 책 검색
-router.get('/booksearch', getSearchBook);
+router.get("/booksearch", getSearchBook);
 
 //책 리뷰
-router.get('/bookview/:isbn13', getBookReview);
+router.get("/bookview/:isbn13", getBookReview);
 
-//책 리뷰에 대한 감상문 
-router.get('/reviewWrite/:isbn13', getReviewWrite);
-
+//책 리뷰에 대한 감상문
+router.get("/reviewWrite/:isbn13", getReviewWrite);
 
 //리뷰 감상문 전체 목록
-router.get('/reviewlist', getReviewList)
-
+router.get("/reviewlist", getReviewList);
 
 router.get("/reviewdetail/:review_id", getReviewDetail);
 
