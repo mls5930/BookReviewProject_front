@@ -83,16 +83,16 @@
               </button>
             </div>
           </aside>
-          <article id="attribute">
-            <div id="textbox">
-              <form class="text" action="http://192.168.0.23:3000/review/{{bookData.isbn13}}" method="post">
-                <textarea class="textbox" name="context"></textarea>
-                  <input type="text" name="cover" value="{{bookData.cover}}" hidden>
-                  <input type="text" name="nickname" value="kim" hidden>
-                <div id="btnbox">
-                  <div class="btn2">
-                    <button type="submit" class="write-btn">작 성</button>
-                  </div>
+        <article id="attribute">
+          <div id="textbox">
+            <form class="text" action="http://localhost:3000/review/{{bookData.isbn13}}" method="post">
+              <textarea class="textbox" name="context">
+              </textarea>
+                <input type="text" name="cover" value="{{bookData.cover}}" hidden>
+                <input type="text" name="nickname" value="kim" hidden>
+              <div id="btnbox">
+                <div class="btn2">
+                  <button type="submit" class="write-btn">작 성</button>
                 </div>
               </form>
             </div>

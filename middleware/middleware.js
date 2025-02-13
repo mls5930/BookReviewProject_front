@@ -30,13 +30,15 @@ const authMe = async (req, res, next) => {
       req.user = null;
       return next();
     }
+
     const token = authHeader.split(" ")[1]; // `Bearer ${Token}`에서 Token값만 가져옴
     //  Token decoding + 검증 후 req.user에 저장
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {
-    req.user = null; // 검증 실패 시 user를 null로 설정
+    console.error("JWT 검증 실패:", error.message); // 에러 로그 추가
+    req.user = null; 
     return res.status(401).json({ message: "유효하지 않은 JWT_Token입니다." });
   }
 };
