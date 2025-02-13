@@ -45,16 +45,72 @@
             </div>
           </div>
         </div>
-      </div>
-      <main id="container">
-        <div id="searchR">
-          <h3>
-            BOOK ISLAND
-            <span class="gray">></span>
-            감상문 보기
-            <span class="gray">></span>
-            <span class="blue">홍길동 님</span>
-          </h3>
+        <main id="container">
+            <div id="searchR">
+                <h3>
+                    BOOK ISLAND
+                    <span class="gray">></span>
+                    <span class="blue">홍길동 님</span>
+                  </h3>
+              </div>
+            <section id="innerContainer">
+                <aside class="title">
+                    <div class="bookImg">
+                      <img src="{{ bookData.cover }}" />
+                    </div>
+                    <!-- class 이름 추가 -->
+                    <div class="book_btn">
+                        <!-- 이미지 변경 -->
+                        <img
+                          class="bookmark-btn"
+                          src="/img/bookmark_empty_img.png"
+                          art="비어있는 북마크 이미지"
+                        />
+                    </div>
+                  </aside>
+                <article id="attribute">
+                    <div class="bookReview">
+                        <div class="write">{{bookData.title}}</div>
+                        <div class="imgBox" >
+                            <div>
+                                <a href="#">
+                                    <img class="myimg" src="{{item.User.thumbnail}}" alt="">
+                                </a>
+                                <div>{{item.User.nickname}}</div>
+                            </div>
+                            <div class="date">02-13</div>
+                        </div>
+                    </div>
+                    <div class="reviewLine"></div>
+                    <form
+                        class="textbox"
+                        action="http://localhost:3000/comment/{{bookData.review_id}}"
+                        method="post"
+                    >
+                        <textarea name="context"></textarea>
+                        <input type="text" name="nickname" value="kim" hidden />
+                        <button type="submit" class="write-btn">작 성</button>
+                    </form>
+                    <div class="showcomment">
+                        <div>
+                            <!-- 보여줄자리 -->
+                            <div class="commentwrite">{{bookData.title}}</div>
+                            <div class="writebox" >
+                                <div>
+                                    <a href="#">
+                                        <img class="img" src="{{item.User.thumbnail}}" alt="">
+                                    </a>
+                                    <div>{{item.User.nickname}}</div>
+                                </div>
+                                <div class="date">02-13</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <div id="topbutton">
+            <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png"></a>
         </div>
         <section id="innerContainer">
           <aside class="title">

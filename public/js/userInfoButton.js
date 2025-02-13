@@ -26,7 +26,7 @@ loginThumbnail.addEventListener('click', (e) => {
     userThumbInfo.append(commentary);
     userThumbInfo.append(logout);
     bookmark.href="/mybookmark";
-    mypage.href="/mypage";
+    mypage.href="/usermodify";
     commentary.href="/commentary";
     logout.href="/logout"; 
 });

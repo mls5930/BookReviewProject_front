@@ -87,19 +87,19 @@
                             <a href="/myreview" class="myReview">감상문</a>
                         </div>
                     </div>
-                    {% if mybookData %}
+                    {% if myReviewData.data %}
                     <div class="bookReview">
-                        {%for Bookreview in mybookData %}
+                        {%for reviewItem in myReviewData %}
                         <div class="BookreviewBox">
                             <div class="imgBox" >
                                 <a href="#">
-                                    <img class="myimg" src="{{Bookreview.cover}}" alt="">
+                                    <img class="myimg" src="{{reviewItem.cover}}" alt="">
                                 </a>
                             </div>
                             <div class="viewDate">
-                                <div>{{Bookreview.title}}</div>
+                                <div>{{reviewItem.title}}</div>
                                 <div class="viewRight">
-                                    <div>{{Bookreview.pubDate}}</div>
+                                    <div>{{reviewItem.pubDate}}</div>
                                 </div>
                             </div>
                         </div>
