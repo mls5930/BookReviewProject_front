@@ -49,20 +49,20 @@ router.get('/' , authMe, getList);
 router.get("/mybookmark",authMe, getUserInfo);
 
 //내 감상문
-router.get("/myreview", getUserPreview);
+router.get("/myreview", authMe, getUserPreview);
 
 //내 정보
-router.get("/usermodify", getUserModify);
+router.get("/usermodify",authMe, getUserModify);
 
 // 오디오
-router.get("/audiolist", getAudioList);
+router.get("/audiolist", authMe, getAudioList);
 
-router.get("/audioview/:isbn13", getAudioView);
+router.get("/audioview/:isbn13", authMe, getAudioView);
 
-router.get("/audiowrite", getAudioWrite);
+router.get("/audiowrite", authMe ,getAudioWrite);
 
 // 책
-router.get("/booklist", (req, res) => {
+router.get("/booklist", authMe, (req, res) => {
   const listBook = bookData.map((book) => {
     return {
       isbn13: book.isbn13,
@@ -71,27 +71,27 @@ router.get("/booklist", (req, res) => {
       author: book.author.split(",")[0],
     };
   });
-  res.render(viewHtml + "bookList.html", { listBook });
+  res.render(viewHtml + "bookList.html", { listBook, user:req.user });
 });
 
 // 책 검색
-router.get("/booksearch", getSearchBook);
+router.get("/booksearch", authMe, getSearchBook);
 
 //책 리뷰
-router.get("/bookview/:isbn13", getBookReview);
+router.get("/bookview/:isbn13", authMe, getBookReview);
 
 //책 리뷰에 대한 감상문
-router.get("/reviewWrite/:isbn13", getReviewWrite);
+router.get("/reviewWrite/:isbn13", authMe, getReviewWrite);
 
 //리뷰 감상문 전체 목록
-router.get("/reviewlist", getReviewList);
+router.get("/reviewlist", authMe, getReviewList);
 
-router.get("/reviewdetail/:review_id", getReviewDetail);
+router.get("/reviewdetail/:review_id", authMe, getReviewDetail);
 
 //내 리뷰 수정
-router.get("/reviewmodify/:review_id", getReviewModify);
+router.get("/reviewmodify/:review_id", authMe, getReviewModify);
 
-router.get("/community", getCommunity);
+router.get("/community", authMe, getCommunity);
 
 router.get("/bookmark", authMe, getBookMark);
 

@@ -10,7 +10,7 @@ const BACK_URL = `http://${BACK_HOST}:${BACK_HOST_PORT}`;
 const getUserInfo = async (req, res) => {
     try {
       // 나중에 북마크 데이터 가져올거임 myBookMarkData
-      const myReviewData = await axios.get(`${BACK_URL}/review/list?nickname=${req.user.nickname}`, {
+      const mybookmark = await axios.get(`${BACK_URL}/review/list?nickname=${req.user.nickname}`, {
         nickname: req.user.nickname
       });
       console.log(myReviewData);
@@ -26,7 +26,7 @@ const getUserInfo = async (req, res) => {
 
   const getUserPreview = async (req, res) => {
     try {
-      // const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
+      const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
       const mybookData = bookData.map((book) => {
         return {
           title: book.title.split("-")[0],
@@ -46,11 +46,15 @@ const getUserInfo = async (req, res) => {
 
   const getUserModify = async (req, res) => {
     try {
-      const isbn13 = req.params.isbn13;
-      const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
-
-      res.render(mainHtml+ "userModify.html", {
-        bookdata : bookDataOne,
+      const [userInfo] = await axios.get(`${BACK_URL}/myInfo`, {
+        data: {
+          nickname: req.user.nickname
+        }
+      }).data
+      console.log("userInfo", userInfo);
+      
+      res.render(mainHtml+ "usermodify.html", {
+        userInfo,
       });
     } catch (error) {
       console.log(error);
