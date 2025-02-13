@@ -46,10 +46,10 @@ router.get("/login/page", async (req, res) => {
 router.get('/' , authMe, getList);
 
 //내 북마크
-router.get("/mybookmark",authMe, getUserInfo);
+router.get("/mybookmark", authMe, getUserInfo);
 
 //내 감상문
-router.get("/myreview", authMe, getUserPreview);
+router.get("/myreview",  getUserPreview);
 
 //내 정보
 router.get("/usermodify",authMe, getUserModify);

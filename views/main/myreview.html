@@ -26,9 +26,9 @@
                     </div>
                     {% if user %}
                     <div class="loginHeader">
-                        <div>
+                        <a href="/mybookmark">
                             <img class="loginLogo" src="/img/bookmark_empty_img.png">
-                        </div>
+                        </a>
                         <div>
                             <img class="loginThumbnail" src="{{user.thumbnail}}">
                         </div>
@@ -68,11 +68,11 @@
                     <a href="/usermodify" class="profileBtn">프로필수정</a>
                     <div class="leftBottom">
                         <div>
-                            <div>{{mybookmark}}</div>
+                            <!-- <div>{{mybookmark}}</div> -->
                             <div>북마크</div>
                         </div>
                         <div>
-                            <div>{{}}</div>
+                            <!-- <div>{{}}</div> -->
                             <div>감상문</div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                     </div>
                     {% if myReviewData.data %}
                     <div class="bookReview">
-                        {%for reviewItem in myReviewData %}
+                        {% for reviewItem in myReviewData %}
                         <div class="BookreviewBox">
                             <div class="imgBox" >
                                 <a href="#">

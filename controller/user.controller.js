@@ -20,21 +20,20 @@ const getUserInfo = async (req, res) => {
       });
     } catch (error) {
       console.log(error);
-      throw new Error("에러임")
     }
   };
 
   const getUserPreview = async (req, res) => {
     try {
-      // const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
-      // const mybookData = bookData.map((book) => {
-      //   return {
-      //     title: book.title.split("-")[0],
-      //     cover: book.cover,
-      //     author: book.author.split(",")[0],
-      //     pubDate: book.pubDate,
-      //   };
-      // });
+      const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
+      const mybookData = bookData.map((book) => {
+        return {
+          title: book.title.split("-")[0],
+          cover: book.cover,
+          author: book.author.split(",")[0],
+          pubDate: book.pubDate,
+        };
+      });
       res.render(mainHtml + `myreview.html`, {
         // mybookData,
         user: req.user

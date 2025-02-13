@@ -20,11 +20,10 @@ loginThumbnail.addEventListener('click', (e) => {
     commentary.classList.add("commentary");
     logout.classList.add("logout");
     loginHeader.append(userThumbInfo);
-    loginHeader.append(userInfoCloseBtn);
     userThumbInfo.append(bookmark);
     userThumbInfo.append(mypage);
     userThumbInfo.append(commentary);
-    userThumbInfo.append(logout);
+    userThumbInfo.append(logout,userInfoCloseBtn);
     bookmark.href="/mybookmark";
     mypage.href="/usermodify";
     commentary.href="/myreview";
