@@ -31,12 +31,12 @@
     color: black;
 
 }
-.bookUpload > div > img {
+.bookUpload > div > a > img {
     object-fit: fill;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.bookUpload > div > img:hover{
+.bookUpload > div > a > img:hover{
     transform: translateY(-17px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;

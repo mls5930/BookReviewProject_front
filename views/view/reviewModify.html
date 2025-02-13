@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>감상문 작성페이지</title>
+    <title>감상문 수정페이지</title>
     <link href="/css/maincss/header.css" rel="stylesheet"/>
     <link href="/css/maincss/footer.css" rel="stylesheet"/>
     <link href="/css/views/viewPage.css" rel="stylesheet"/>
     <link href="/css/views/reviewdetail.css" rel="stylesheet"/>
     <link href="/css/views/reviewwrite.css" rel="stylesheet"/>
+    <link href="/css/views/modifyreview.css" rel="stylesheet"/>
   </head>
   <body>
     <div id="mainPage">
@@ -63,7 +64,7 @@
             <h3>
               BOOK ISLAND
               <span class="gray">></span>
-              <span class="blue">감상문 작성</span>
+              <span class="blue">감상문 수정</span>
             </h3>
           </div>
       <section id="innerContainer">
@@ -83,21 +84,21 @@
               </button>
             </div>
           </aside>
-          <article id="attribute">
-            <div id="textbox">
-              <form class="text" action="http://192.168.0.23:3000/review/{{bookData.isbn13}}" method="post">
-                <textarea class="textbox" name="context">
-                </textarea>
-                  <input type="text" name="cover" value="{{bookData.cover}}" hidden>
-                  <input type="text" name="nickname" value="kim" hidden>
-                <div id="btnbox">
-                  <div class="btn2">
-                    <button type="submit" class="write-btn">작 성</button>
+        <article id="attribute">
+          <div id="textbox">
+            <form class="text">
+              <textarea class="textbox" name="context" rows="3" value=""></textarea>
+              <div id="btnbox">
+                <div class="btn">
+                    <button type="submit" class="write-btn">수 정</button>
                   </div>
+                <div class="btn2">
+                  <button type="submit" class="write-btn2">삭 제</button>
                 </div>
-              </form>
-            </div>
-          </article>
+              </div>
+            </form>
+          </div>
+        </article>
       </section>
     </main>
     <div id="topbutton">

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/css/maincss/footer.css">
     <link rel="stylesheet" href="/css/maincss/loginbox.css">
     <style>
-
         dialog {
             display: block;
             max-block-size: min(80vh, 100%);
@@ -39,7 +38,7 @@
                         <img src="/img/logo4.png">
                     </a>
                     <div class="search" tabindex="0">
-                        <form class="search_form" action="/booklist" method="get">
+                        <form class="search_form" action="/booksearch" method="get">
                             <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
                             <button type="submit"><img src="img/readingGlasses.png"></button>
                         </form>
@@ -61,16 +60,16 @@
                     <div class="innerbox">
                         <ul class="banner">
                             <li>
-                                <a href="#">감상문</a>
+                                <a href="/reviewlist">감상문</a>
                             </li>
                             <li>
-                                <a href="#">책</a>
+                                <a href="/booklist">책</a>
                             </li>
                             <li>
-                                <a href="#">오디오북</a>
+                                <a href="/audiolist">오디오북</a>
                             </li>
                             <li>
-                                <a href="#">커뮤니티</a>
+                                <a href="/community">커뮤니티</a>
                             </li>
                         </ul>
                     </div>
@@ -89,19 +88,20 @@
                     </h3>
                 </div>
                 <div class="daybookbox">
-                    {% for item in mybookData %}
-                    <ul>
-                        <li class="daybook-thumnail">
-                            <img src="{{item.cover}}" />
-                        </li>
-                        <li class="daybook-title">
-                            {{item.title}} 
-                        </li>
-                        <li class="daybook-author">
-                            {{item.author}}
-                        </li>
-                    </ul>
-                    {% endfor %}
+                        <div class= "sliderBox">
+                            <div class="slider">
+                                <!-- 슬라이드 아이템들이 들어갈 영역 -->
+                                    <div class="slide-container" id="slideContainer">
+                                    <!-- 아이템들은 JS에서 이곳으로 동적으로 생성됩니다. -->
+                                    </div>
+                                <!-- 좌우 이동 버튼 -->
+                                <div class="controls">
+                                    <button id="prevBtn">◁</button>
+                                    <button id="nextBtn">▷</button>
+                                </div>
+                            </div>
+                        </div>
+                    <div id="dataHolder" style="display: none;">{{ mybookData | dump }}</div>
                 </div>
             </div>
         </div>
@@ -114,20 +114,21 @@
                 </h3>
             </div>
             <div class="adbox">
-                {% for item in mybookData %}
-                    <div class="bookUpload">
-                        <div>
+                {% for item in bookDataViews %}
+                <div class="bookUpload">
+                    <div>
+                        <a href ="/bookview/{{ item.isbn13 }}">
                             <img class="bookImg" src={{item.cover}}>
-                        </div>
-                        <div class="bookUploadAuthor">{{item.author}}</div>
-                        <div class="bookUploadImg">
-                            <div>
-                                <img src="/img/kakaoLogo.png"></img>
-                                작성자
-                            </div>
-                            <p>[{{item.customerReviewRank}}]</p>
-                        </div>
+                        </a>
                     </div>
+                    <div class="bookUploadAuthor">{{item.author}}</div>
+                    <div class="bookUploadImg">
+                        <div>
+                            <img src="{{item.thumbnail}}"></img>
+                            {{item.nickname}} </div>
+                        <p style="font-size: 12px; color: red;">[{{item.count}}]</p>
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>
@@ -157,7 +158,6 @@
             </div>
             <div>
                 <ul class="footerUL">
-                    <li><a><img width="40px" height="40px"></a></li>
                     <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
                     <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
                     <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
@@ -201,5 +201,6 @@
     </dialog>
     <script src="/js/loginPopup.js"></script>
     <script src="/js/userInfoButton.js"></script>
+    <script src="/js/slide.js"></script>
 </body>
 </html>

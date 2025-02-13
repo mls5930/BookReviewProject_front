@@ -1,107 +1,108 @@
 .bookReview {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 30px;
+  border: solid 1px #efefef;
+  border-radius: 8px;
+  min-height: 300px;
 }
 
-.BookreviewBox {
-    padding: 30px;
-    gap: 10px;
-    border: solid 1px #efefef;
-    border-radius: 8px;
-    height: 300px;
-    width: 815px;
+.bookReview > .imgBox {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-.write {
-    margin-top: 10px;
-}
-
-.imgBox{
-    display: flex;
-    gap: 10px;
-    margin-top: 170px;
-}
-
-.date {
-    margin-left: 535px;
-}
-
-.text {
-    display: flex;
-    flex-direction: row;
-    margin-top: 30px;
-    margin-left: 20px;
+.bookReview > .imgBox > div > div {
+  margin: 0 0 0 10px;
 }
 
 .textbox {
-    outline: 0;
-    border-top: 1px solid black;
-    width: 712px;    
-    text-align: left;
-}
-.write-btn {
-    cursor: pointer;
-    margin-left: 16px;
+  width: 100%;
+  padding: 30px 0 0 0;
+  text-align: right;
 }
 
-.show {
-    border-top: 1px solid #efefef;
-    margin-top: 30px;
+.textbox > textarea {
+  width: 100%;
+  min-height: 100px;
+  border-radius: 8px;
+}
+
+.textbox > .write-btn {
+  cursor: pointer;
+  font-size: 17px;
+  color: white;
+  font-weight: 700;
+  background-color: #1659cc;
+  border-radius: 5px;
+  padding: 6px;
+  border: none;
+  width: 66px;
+  margin: 20px 12px 0 0;
 }
 
 .showbox {
-    border: 1px solid #efefef;
-    border-radius: 18px;
-    margin-top: 30px;
+  border: 1px solid #efefef;
+  border-radius: 18px;
+}
+
+.book_btn > .bookmark-btn {
+  width: 20px;
+  height: 30px;
+  margin: 0 10px 0 0;
 }
 
 .imgBox > div {
-    display: flex;
-    align-items: end;
+  display: flex;
+  align-items: end;
 }
-.myimg{
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
+.myimg {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+#attribute > .reviewLine {
+  border: solid 1px #efefef;
+  margin: 20px 0 0 0;
 }
 
 .showcomment {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-
+  padding: 30px 0 0 0;
 }
 
-.writebox{
-    display: flex;
-    gap: 10px;
-    margin-top: 170px;
-}
-
-.reviewBox {
-    padding: 16px;
-    border: 1px solid #efefef;
-    border-radius:18px;
-    height: 135px;
-}
-
-.img {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-}
-
-.commentwrite {
-    margin-top: 10px;
+.showcomment > div {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #efefef;
+  padding: 30px;
+  border: 1px solid #efefef;
+  border-radius: 18px;
+  min-height: 140px;
+  justify-content: space-between;
 }
 
 .writebox {
-    display: flex;
-    margin-top: 31px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .writebox > div {
-    display: flex;
-    align-items: end;
+  display: flex;
+  gap: 10px;
+}
+
+.writebox > div > div,
+.writebox > .date {
+  display: flex;
+  align-items: end;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
 }

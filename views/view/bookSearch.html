@@ -3,19 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>책 상세 페이지</title>
+    <title>책 검색 목록</title>
     <link href="/css/maincss/header.css" rel="stylesheet" />
     <link href="/css/maincss/footer.css" rel="stylesheet" />
-    <link href="/css/views/viewPage.css" rel="stylesheet" />
-    <link href="/css/views/reviewbox.css" rel="stylesheet" />
-    <script>
-      let isLoggedIn = flase;
-      if (isLoggedIn) {
-        document.getElementById("commentary_btn").style.display = "block";
-      } else {
-        document.getElementById("commentary_btn").style.display = "none";
-      }
-    </script>
+    <link href="/css/views/bookList.css" rel="stylesheet" />
   </head>
   <body>
     <div id="mainPage">
@@ -55,75 +46,37 @@
         </div>
       </div>
     </div>
-    <main id="container">
+    <div id="container">
       <div id="searchR">
-        <!-- 수정 -->
         <h3>
           BOOK ISLAND
           <span class="gray">></span>
-          <span class="blue">책 보기</span>
+          <span class="blue">검색</span>
         </h3>
+        <h4>'' 검색 결과</h4>
       </div>
-      <section id="innerContainer">
-        <aside class="title">
-          <div class="bookImg">
-            <img src="{{ bookData.cover }}" />
-          </div>
-          <!-- class 이름 추가 -->
-          <div class="book_btn">
-            <button>
-              <!-- 이미지 변경 -->
-              <img
-                class="bookmark-btn"
-                src="/img/bookmark_empty_img.png"
-                art="비어있는 북마크 이미지"
-              />
-            </button>
-          </div>
-        </aside>
-        <article id="attribute">
-          <div class="items">
-            <h1 class="bookTitle">{{ bookData.title }}</h1>
-            <h3 class="bookAuthor">{{ bookData.author }}</h3>
-            <h4 class="bookDct">{{ bookData.description }}</h4>
-          </div>
-          <div id="content">
-            <div>감상문</div>
-            <a href="/reviewWrite/{{bookData.isbn13}}">
-              <!-- class commentaryBtn => commentary_btn-->
-              <button class="commentary_btn">감상문 작성</button>
+      <div id="book-box">
+        {% for bookData in listBook %}
+        <div class="book-list">
+          <a href="/bookview/{{ bookData.isbn13 }}">
+            <img class="book-cover" src="{{ bookData.cover }}" />
+          </a>
+          <div class="book-info">
+            <a href="/bookview/{{ bookData.isbn13 }}" class="book-title">
+              {{ bookData.title }}
+            </a>
+            <a href="/bookview/{{ bookData.isbn13 }}" class="book-author">
+              {{ bookData.author }}
             </a>
           </div>
-          <div class="bookreview">
-            {% for item in ReviewData %}
-            <div class="BookreviewBox">
-              <!-- <div class="review_content">{{Bookreview.title}}</div> -->
-              <div class="review_content">
-                <a
-                  href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}"
-                >
-                  {{item.context}}</a
-                >
-              </div>
-              <!-- class 이름 변경 .imgBox => user_box -->
-              <div class="user_box">
-                <a href="/myreview/kim">
-                  <!-- 작성자 thumbnail_img -->
-                  <img class="myimg" src="{{item.User.thumbnail}}" alt="" />
-                  {{item.User.nickname}}
-                  <!-- {{Bookreview.author}} -->
-                </a>
-                <!-- <div>{Review model의 created_At}<div> -->
-                <div>{{item.createdAt}}</div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </article>
-      </section>
-    </main>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
     <div id="topbutton">
-      <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png" /></a>
+      <a href="#mainPage"
+        ><img class="topbuttonImg" src="./img/topimg.png"
+      /></a>
     </div>
     <div id="footer">
       <div class="footerbox">

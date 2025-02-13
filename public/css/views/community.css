@@ -1,30 +1,100 @@
-#listContainer {
-    max-width: 1100px;
-    margin: 0 auto;
-    height: 500px;
+#content > #container {
+  max-width: 1200px;
+  height: 900px;
+  margin: 0 auto;
+  background-color: white;
 }
 
-h4 {
-    font-size: 24px;
-    margin-top: 45px;
-    margin-left: 20px;
+#content > #container > .nav {
+  padding: 32px 24px;
 }
 
-
-#content {
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-    margin-left: 200px;
+#content > #container > .nav > h3 {
+  font-size: 24px;
 }
 
-.write-btn {
-    margin-left: 10px;
-    cursor: pointer;
+#content > #container > .nav > h3 > .gray {
+  color: #857e7e;
 }
 
+#content > #container > .nav > h3 > .blue {
+  color: #1659cc;
+}
 
-.comment-row {
-    margin-left: 300px;
-    margin-top: 45px;
+#content > #container > .community-area {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+#content > #container > .community-area > .community-write {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#content > #container > .community-area > .community-write > textarea {
+  width: 85%;
+  height: 90px;
+  padding: 15px 10px;
+  resize: none;
+  font-size: 16px;
+  border: 1px solid #857e7e;
+  border-radius: 5px;
+}
+
+#content > #container > .community-area > .community-write > .write-btn {
+  width: 10%;
+  height: 90px;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  background-color: #1659cc;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#content > #container > .community-area > .community-list {
+  border-top: 2px solid #efefef;
+}
+
+#content > #container > .community-area > .community-list > .list-area {
+  margin-top: 20px;
+  padding: 15px 10px;
+  border: 1px solid #efefef;
+  border-radius: 8px;
+}
+
+#content
+  > #container
+  > .community-area
+  > .community-list
+  > .list-area:nth-child(odd) {
+  background-color: #d2e2fc;
+}
+
+#content
+  > #container
+  > .community-area
+  > .community-list
+  > .list-area:nth-child(even) {
+  background: #efefef;
+}
+
+#content
+  > #container
+  > .community-area
+  > .community-list
+  > .list-area
+  > .context {
+  font-size: 16px;
+}
+
+#content > #container > .community-area > .community-list > .list-area > .date {
+  display: flex;
+  justify-content: end;
+  font-size: 14px;
 }
