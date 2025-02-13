@@ -82,6 +82,10 @@
   display: none;
 }
 
+#attribute > .items {
+  border-bottom: 2px solid #efefef;
+}
+
 /* font-size 변경 */
 .bookTitle {
   font-size: 24px;
@@ -107,7 +111,6 @@
   padding-top: 30px;
   flex-direction: row;
   justify-content: space-between;
-  border-top: 2px solid #efefef;
 }
 
 /* padding-left 삭제, font-size 변경 */
