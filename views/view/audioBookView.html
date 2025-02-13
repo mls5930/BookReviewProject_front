@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>오디오북 상세 페이지</title>
-    <link href="/css/maincss/header.css" rel="stylesheet"/>
-    <link href="/css/maincss/footer.css" rel="stylesheet"/>
-    <link href="/css/views/viewPage.css" rel="stylesheet"/>
-    <link href="/css/views/reviewbox.css" rel="stylesheet"/>
+    <link href="/css/maincss/header.css" rel="stylesheet" />
+    <link href="/css/maincss/footer.css" rel="stylesheet" />
+    <link href="/css/views/viewPage.css" rel="stylesheet" />
+    <link href="/css/views/reviewbox.css" rel="stylesheet" />
     <style>
       .btnImg {
         margin-left: 76px;
@@ -21,164 +21,154 @@
   <body>
     <div id="mainPage">
       <div id="header">
-          <div class="header-inner">
-              <div class="headerBox">
-                  <a href="/">
-                      <img src="/img/logo4.png">
-                  </a>
-                  <div class="search" tabindex="0">
-                      <form class="search_form" action="/booklist" method="get">
-                          <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
-                          <button type="submit"><img src="img/readingGlasses.png"></button>
-                      </form>
-                  </div>
-                  {% if user %}
-                  <div class="loginHeader">
-                      <div>
-                          <img class="loginLogo" src="/img/check.png">
-                      </div>
-                      <div>
-                          <img class="loginThumbnail" src="{{user.thumbnail}}">
-                      </div>
-                  </div>
-                  {% else %}
-                  <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
-                  {% endif %}
+        <div class="header-inner">
+          <div class="headerBox">
+            <a href="/">
+              <img src="/img/logo4.png" />
+            </a>
+            <div class="search" tabindex="0">
+              <form class="search_form" action="/booklist" method="get">
+                <input
+                  class="search_bar"
+                  id="input"
+                  name="query"
+                  value=""
+                  type="text"
+                  placeholder="리뷰하고 싶은 책을 검색해 보세요!"
+                />
+                <button type="submit">
+                  <img src="img/readingGlasses.png" />
+                </button>
+              </form>
+            </div>
+            {% if user %}
+            <div class="loginHeader">
+              <div>
+                <img class="loginLogo" src="/img/check.png" />
               </div>
-              <div id="inner">
-                  <div class="innerbox">
-                      <ul class="banner">
-                          <li>
-                              <a href="/reviewlist">감상문</a>
-                          </li>
-                          <li>
-                              <a href="/booklist">책</a>
-                          </li>
-                          <li>
-                              <a href="/audiolist">오디오북</a>
-                          </li>
-                          <li>
-                              <a href="/community">커뮤니티</a>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-    <main id="container">
-      <div id="searchR">
-        <!--  수정  -->
-        <h3>
-          BOOK ISLAND
-          <span class="gray">></span>
-          <span class="blue">오디오북</span>
-        </h3>
-      </div>
-      <section id="innerContainer">
-        <aside class="title">
-          <div class="bookImg">
-            <img src="{{ bookData.cover }}" />
-          </div>
-          <!-- class 이름 변경 -->
-          <div class="book_btn">
-            <!-- 이미지 변경, class 추가 -->
-            <button>
-              <img
-                class="audio-btn"
-                src="/img/audio_img.jpeg"
-                art="오디오 이미지"
-              />
-            </button>
-            <button>
-              <img
-                class="bookmark-btn"
-                src="/img/bookmark_empty_img.png"
-                art="비어있는 북마크 이미지"
-              />
-            </button>
-          </div>
-        </aside>
-        <article id="attribute">
-          <div class="items">
-            <h1 class="bookTitle">{{ bookData.title }}</h1>
-            <h3 class="bookAuthor">{{ bookData.author }}</h3>
-            <h4 class="bookDct">{{ bookData.description }}</h4>
-          </div>
-          <div id="content">
-            <div>감상문</div>
-          </div>
-          <div class="bookReview">
-            <div class="BookreviewBox">
-              <div>{{Bookreview.title}}</div>
-              <!-- class 이름 변경 .imgBox => user_box -->
-              <div class="user_box">
-                <a href="#">
-                  <!-- 작성자 thumbnail_img -->
-                  <img class="myimg" src="{{Bookreview.cover}}" alt="" />
-                  리뷰 작성자
-                  <!-- {{Bookreview.author}} -->
-                </a>
-                <!-- <div>{Review model의 created_At}<div> -->
-                <div>02-11</div>
+              <div>
+                <img class="loginThumbnail" src="{{user.thumbnail}}" />
               </div>
             </div>
+            {% else %}
+            <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
+            {% endif %}
           </div>
-        </article>
-      </section>
-    </main>
-    <div id="topbutton">
-      <a href="#mainPage"
-        ><img class="topbuttonImg" src="./img/topimg.png"
-      /></a>
-    </div>
-    <div id="footer">
-      <div class="footerbox">
-        <div>(주)북아일랜드</div>
-        <div>
-          <a href="https://www.youtube.com/">
-            <img
-              width="30px"
-              height="30px"
-              src="/img/youtubeLogo-removebg-preview.png"
-            />
-          </a>
-          <a href="https://www.instagram.com/">
-            <img
-              width="35px"
-              height="30px"
-              src="/img/instagramLogo-removebg-preview.png"
-             />
-          </a>
-          <a href="https://www.google.com">
-            <img width="30px" height="30px" src="/img/glooglelogo.png"/>
-          </a>
+          <div id="inner">
+            <div class="innerbox">
+              <ul class="banner">
+                <li>
+                  <a href="/reviewlist">감상문</a>
+                </li>
+                <li>
+                  <a href="/booklist">책</a>
+                </li>
+                <li>
+                  <a href="/audiolist">오디오북</a>
+                </li>
+                <li>
+                  <a href="/community">커뮤니티</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <ul class="footerUl">
-          <li><a href="#">이용약관 ></a></li>
-          <li><a href="#">개인정보처리방침 ></a></li>
-          <li><a href="#">청소년보호정책 ></a></li>
-          <li><a href="#">고객센터 ></a></li>
-          <li><a href="#">B2B 문의 ></a></li>
-          <li><a href="#">콘텐츠 제휴문의 ></a></li>
-          <li><a href="#">뷰어 다운로드 ></a></li>
-          <li><a href="#">회사 소개 </a></li>
-        </ul>
+      <main id="container">
+        <div id="searchR">
+          <!--  수정  -->
+          <h3>
+            BOOK ISLAND
+            <span class="gray">></span>
+            <span class="blue">오디오북 듣기</span>
+          </h3>
+        </div>
+        <section id="innerContainer">
+          <aside class="title">
+            <div class="bookImg">
+              <img src="{{ bookData.cover }}" />
+            </div>
+            <!-- class 이름 변경 -->
+            <div class="book_btn">
+              <!-- 이미지 변경, class 추가 -->
+              <button>
+                <img
+                  class="audio-btn"
+                  src="/img/audio_img.jpeg"
+                  art="오디오 이미지"
+                />
+              </button>
+              <button>
+                <img
+                  class="bookmark-btn"
+                  src="/img/bookmark_empty_img.png"
+                  art="비어있는 북마크 이미지"
+                />
+              </button>
+            </div>
+          </aside>
+          <article id="attribute">
+            <div class="items">
+              <h1 class="bookTitle">{{ bookData.title }}</h1>
+              <h3 class="bookAuthor">{{ bookData.author }}</h3>
+              <h4 class="bookDct">{{ bookData.description }}</h4>
+            </div>
+          </article>
+        </section>
+      </main>
+      <div id="topbutton">
+        <a href="#mainPage"
+          ><img class="topbuttonImg" src="./img/topimg.png"
+        /></a>
       </div>
-      <div>
-        <ul class="footerUL">
-          <li>
-            <a><img width="40px" height="40px" /></a>
-          </li>
-          <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
-          <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
-          <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
-          <p>유효기간: 2025-02-01 ~ 2026-02-04</p>
-        </ul>
+      <div id="footer">
+        <div class="footerbox">
+          <div>(주)북아일랜드</div>
+          <div>
+            <a href="https://www.youtube.com/">
+              <img
+                width="30px"
+                height="30px"
+                src="/img/youtubeLogo-removebg-preview.png"
+              />
+            </a>
+            <a href="https://www.instagram.com/">
+              <img
+                width="35px"
+                height="30px"
+                src="/img/instagramLogo-removebg-preview.png"
+              />
+            </a>
+            <a href="https://www.google.com">
+              <img width="30px" height="30px" src="/img/glooglelogo.png" />
+            </a>
+          </div>
+        </div>
+        <div>
+          <ul class="footerUl">
+            <li><a href="#">이용약관 ></a></li>
+            <li><a href="#">개인정보처리방침 ></a></li>
+            <li><a href="#">청소년보호정책 ></a></li>
+            <li><a href="#">고객센터 ></a></li>
+            <li><a href="#">B2B 문의 ></a></li>
+            <li><a href="#">콘텐츠 제휴문의 ></a></li>
+            <li><a href="#">뷰어 다운로드 ></a></li>
+            <li><a href="#">회사 소개 </a></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="footerUL">
+            <li>
+              <a><img width="40px" height="40px" /></a>
+            </li>
+            <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
+            <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+            <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+            <p>유효기간: 2025-02-01 ~ 2026-02-04</p>
+          </ul>
+        </div>
+        <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
       </div>
-      <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
     </div>
-</div>
   </body>
 </html>

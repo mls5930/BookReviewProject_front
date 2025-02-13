@@ -41,19 +41,19 @@
   color: black;
 }
 
-#book-box > .book-list > div > img {
+#book-box > .book-list > a > img {
   object-fit: fill;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#book-box > .book-list > div > img:hover {
+#book-box > .book-list > a > img:hover {
   transform: translateY(-17px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
-#book-box > .book-list > div > .book-cover {
+#book-box > .book-list > a > .book-cover {
   width: 150px;
   height: 200px;
   border-radius: 8px;
@@ -63,9 +63,16 @@
   margin-top: 5px;
 }
 
+#book-box > .book-list > .book-info > a {
+  text-decoration: none;
+  color: black;
+}
+
 #book-box > .book-list > .book-info > .book-title {
   font-size: 16px;
   font-weight: 700;
+  display: block;
+  /* color: black; */
 }
 
 #book-box > #book-list > .book-info > .book-author {

@@ -4,67 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>책 검색 목록</title>
-    <link href="/css/maincss/header.css" rel="stylesheet"/>
-    <link href="/css/maincss/footer.css" rel="stylesheet"/>
-    <link href="/css/views/bookList.css" rel="stylesheet"/>
+    <link href="/css/maincss/header.css" rel="stylesheet" />
+    <link href="/css/maincss/footer.css" rel="stylesheet" />
+    <link href="/css/views/bookList.css" rel="stylesheet" />
   </head>
   <body>
     <div id="mainPage">
-        <div id="header">
-            <div class="header-inner">
-                <div class="headerBox">
-                    <a href="/">
-                        <img src="/img/logo4.png">
-                    </a>
-                    <div class="search">
-                        <input href="#" id="input"
-                            placeholder="리뷰하고 싶은 책을 검색해 보세요!">
-                    </div>
-                    <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
-                </div>
-                <div id="inner">
-                    <div class="innerbox">
-                      <ul class="banner">
-                        <li>
-                            <a href="/reviewlist">감상문</a>
-                        </li>
-                        <li>
-                            <a href="/booklist">책</a>
-                        </li>
-                        <li>
-                            <a href="/audiolist">오디오북</a>
-                        </li>
-                        <li>
-                            <a href="/community">커뮤니티</a>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
+      <div id="header">
+        <div class="header-inner">
+          <div class="headerBox">
+            <a href="/">
+              <img src="/img/logo4.png" />
+            </a>
+            <div class="search">
+              <input
+                href="#"
+                id="input"
+                placeholder="리뷰하고 싶은 책을 검색해 보세요!"
+              />
             </div>
-        </div>
-    </div>
-      <div id="container">
-        <div id="searchR">
-            <h3>
-                BOOK ISLAND
-                <span class="gray">></span>
-                <span class="blue">검색</span>
-              </h3>
-              <h4>'' 검색 결과</h4>
+            <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
           </div>
-        <div id="book-box">
-            {% for bookData in listBook %}
-                <div class="book-list">
-                    <div>
-                        <img class="book-cover" src="{{ bookData.cover }}">
-                    </div>
-                    <div class="book-info">
-                        <div class="book-title">{{ bookData.title }}</div>
-                        <div class="book-author">{{ bookData.author }}</div>
-                    </div>
-                </div>
-            {% endfor %}
+          <div id="inner">
+            <div class="innerbox">
+              <ul class="banner">
+                <li>
+                  <a href="/reviewlist">감상문</a>
+                </li>
+                <li>
+                  <a href="/booklist">책</a>
+                </li>
+                <li>
+                  <a href="/audiolist">오디오북</a>
+                </li>
+                <li>
+                  <a href="/community">커뮤니티</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div id="container">
+      <div id="searchR">
+        <h3>
+          BOOK ISLAND
+          <span class="gray">></span>
+          <span class="blue">검색</span>
+        </h3>
+        <h4>'' 검색 결과</h4>
+      </div>
+      <div id="book-box">
+        {% for bookData in listBook %}
+        <div class="book-list">
+          <a href="/bookview/{{ bookData.isbn13 }}">
+            <img class="book-cover" src="{{ bookData.cover }}" />
+          </a>
+          <div class="book-info">
+            <a href="/bookview/{{ bookData.isbn13 }}" class="book-title">
+              {{ bookData.title }}
+            </a>
+            <a href="/bookview/{{ bookData.isbn13 }}" class="book-author">
+              {{ bookData.author }}
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
     <div id="topbutton">
       <a href="#mainPage"
