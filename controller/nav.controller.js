@@ -25,9 +25,6 @@ const getList = async(req, res) =>{
   
     const bookDataViews = bookDataView.data;
 
-    console.log(mybookData);
-    console.log(bookDataViews);
-    
     res.render(mainHtml+`main.html` ,{
         mybookData,
         bookDataViews, // : mybookData
@@ -53,7 +50,7 @@ const getSearchBook = async (req, res) => {
 
 const getCommunity = async (req, res) => {
     try {
-      const response = await fetch("http://localhost:3000/community/list");
+      const response = await fetch(`${BACK_URL}/community/list`);
       const communitiesData = await response.json();
       res.render(viewHtml + "community.html", { communitiesData });
     } catch (error) {
@@ -64,7 +61,7 @@ const getCommunity = async (req, res) => {
 const getBookMark = async (req, res) => {
     req.user.nickname;
     try {
-      const bookmark = await axios.post("http://localhost:3000/user/register", {
+      const bookmark = await axios.post(`${BACK_URL}/user/register`, {
         nickname: nickname,
       });
       res.status(202).render("main/mypage.html", {

@@ -71,18 +71,20 @@
             </h3>
         </div>
         <div class="adbox">
-            {% for item in mybookData %}
+            {% for item in listBook %}
                 <div class="bookUpload">
                     <div>
-                        <img class="bookImg" src={{item.cover}}>
+                        <a href ="/bookview/{{ item.isbn13 }}">
+                            <img class="bookImg" src={{item.cover}}>
+                        </a>
                     </div>
-                    <div class="bookUploadAuthor">{{item.author}}</div>
+                    <div class="bookUploadAuthor"></div>
                     <div class="bookUploadImg">
                         <div>
-                            <img src="/img/kakaoLogo.png"></img>
-                            작성자
+                            <img src="{{item.thumbnail}}"></img>
+                            {{item.nickname}}
                         </div>
-                        <p>[{{item.customerReviewRank}}]</p>
+                        <p>[{{item.count}}]</p>
                     </div>
                 </div>
             {% endfor %}

@@ -27,16 +27,16 @@
                     <div class="innerbox">
                         <ul class="banner">
                             <li>
-                                <a href="#">감상문</a>
+                                <a href="/reviewlist">감상문</a>
                             </li>
                             <li>
-                                <a href="#">책</a>
+                                <a href="/booklist">책</a>
                             </li>
                             <li>
-                                <a href="#">오디오북</a>
+                                <a href="/audiolist">오디오북</a>
                             </li>
                             <li>
-                                <a href="#">커뮤니티</a>
+                                <a href="/community">커뮤니티</a>
                             </li>
                         </ul>
                     </div>
@@ -66,28 +66,29 @@
                         />
                     </div>
                   </aside>
-                <article id="attribute">
+                  <article id="attribute">
                     <div class="bookReview">
-                        <div class="write">{{bookData.title}}</div>
+                        <div class="write">{{bookData.context}}</div>
                         <div class="imgBox" >
                             <div>
                                 <a href="#">
-                                    <img class="myimg" src="{{item.User.thumbnail}}" alt="">
+                                    <img class="myimg" src={{bookData.User.thumbnail}} alt="">
                                 </a>
-                                <div>{{item.User.nickname}}</div>
+                                <div>{{bookData.User.nickname}}</div>
                             </div>
-                            <div class="date">02-13</div>
+                            <div class="date">{{bookData.updatedAt}}</div>
                         </div>
                     </div>
-                    <div class="reviewLine"></div>
-                    <form class="textbox">
+                    <form class="textbox" action="http://192.168.0.23:3000/comment/{{bookData.review_id}}" method="post">
                         <textarea name="context"></textarea>
+                        <input type="text" name="nickname" value="kim" hidden>
                         <button type="submit" class="write-btn">작 성</button>
                     </form>
+                    <div class="reviewLine"></div>
+                    {% for item in CommentList %}
                     <div class="showcomment">
                         <div>
-                            <!-- 보여줄자리 -->
-                            <div class="commentwrite">{{bookData.title}}</div>
+                            <div class="commentwrite">{{item.context}}</div>
                             <div class="writebox" >
                                 <div>
                                     <a href="#">
@@ -95,10 +96,11 @@
                                     </a>
                                     <div>{{item.User.nickname}}</div>
                                 </div>
-                                <div class="date">02-13</div>
+                                <div class="date">{{item.updatedAt}}</div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </article>
             </section>
         </main>
