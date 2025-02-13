@@ -49,7 +49,7 @@ router.get('/' , authMe, getList);
 router.get("/mybookmark", authMe, getUserInfo);
 
 //내 감상문
-router.get("/myreview",  getUserPreview);
+router.get("/myreview", authMe, getUserPreview);
 
 //내 정보
 router.get("/usermodify",authMe, getUserModify);
@@ -94,5 +94,6 @@ router.get("/reviewmodify/:review_id", authMe, getReviewModify);
 router.get("/community", authMe, getCommunity);
 
 router.get("/bookmark", authMe, getBookMark);
+
 
 module.exports = router;

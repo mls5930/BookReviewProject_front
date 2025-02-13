@@ -40,7 +40,6 @@ const getUserInfo = async (req, res) => {
       });
     } catch (error) {
       console.log(error);
-      throw new Error("에러 발생");
     }
   }
 
@@ -58,8 +57,6 @@ const getUserInfo = async (req, res) => {
       });
     } catch (error) {
       console.log(error);
-      throw new Error("에러 발생");
-      
     }
   }
 
