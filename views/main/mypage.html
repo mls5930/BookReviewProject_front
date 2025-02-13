@@ -59,20 +59,20 @@
         </div>
         <div id="mymain">
             <div class="mypage">
-                <h3>받은아이디 의 서재</h3>
+                <h3>{{user.nickname}} 의 서재</h3>
             </div>
             <div class="profile">
                 <div class="left">
-                    <div><img class="mypoto" src="#" ait="#"></div>
-                    <div class="nikname">받은아이디</div>
+                    <div><img class="mypoto" src="{{user.thumbnail}}" ait="#"></div>
+                    <div class="nikname">{{user.nickname}}</div>
                     <a href="/usermodify" class="profileBtn">프로필수정</a>
                     <div class="leftBottom">
                         <div>
-                            <div>북마크 수</div>
+                            <div>{{mybookmark}}</div>
                             <div>북마크</div>
                         </div>
                         <div>
-                            <div>감상문 수</div>
+                            <div>{{}}</div>
                             <div>감상문</div>
                         </div>
                     </div>
@@ -87,13 +87,13 @@
                             <a href="/myreview" class="myReview">감상문</a>
                         </div>
                     </div>
-                    {% if mybookData %}
+                    {% if mybookmark %}
                     <div class="bookData">
-                        {% for bookData in mybookData%}
+                        {% for bookData in mybookmark%}
                         <div class="bookMarkBox">
                             <img src="{{bookData.cover}}">
-                            <h4 class="title">{{bookData.title}}</h4>
-                            <h4 class="author">{{bookData.author}}</h4>
+                            <h4 class="title">{{mybookmark.title}}</h4>
+                            <h4 class="author">{{mybookmark.author}}</h4>
                         </div>
                         {% endfor %}
                     </div>

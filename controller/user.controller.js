@@ -15,7 +15,7 @@ const getUserInfo = async (req, res) => {
       });
       console.log(myReviewData);
       res.render(mainHtml + `mypage.html`, {
-        myReviewData,
+        mybookmark,
         user: req.user
       });
     } catch (error) {
@@ -26,17 +26,18 @@ const getUserInfo = async (req, res) => {
 
   const getUserPreview = async (req, res) => {
     try {
-      const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
-      const mybookData = bookData.map((book) => {
-        return {
-          title: book.title.split("-")[0],
-          cover: book.cover,
-          author: book.author.split(",")[0],
-          pubDate: book.pubDate,
-        };
-      });
+      // const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
+      // const mybookData = bookData.map((book) => {
+      //   return {
+      //     title: book.title.split("-")[0],
+      //     cover: book.cover,
+      //     author: book.author.split(",")[0],
+      //     pubDate: book.pubDate,
+      //   };
+      // });
       res.render(mainHtml + `myreview.html`, {
-        mybookData,
+        // mybookData,
+        user: req.user
       });
     } catch (error) {
       console.log(error);
