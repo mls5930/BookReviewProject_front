@@ -19,7 +19,7 @@
                         <img src="/img/logo4.png">
                     </a>
                     <div class="search" tabindex="0">
-                        <form class="search_form" action="/booklist" method="get">
+                        <form class="search_form" action="/booksearch" method="get">
                             <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
                             <button type="submit"><img src="img/readingGlasses.png"></button>
                         </form>
@@ -27,7 +27,7 @@
                     {% if user %}
                     <div class="loginHeader">
                         <div>
-                            <img class="loginLogo" src="/img/check.png">
+                            <img class="loginLogo" src="/img/bookmark_empty_img.png">
                         </div>
                         <div>
                             <img class="loginThumbnail" src="{{user.thumbnail}}">
@@ -101,7 +101,7 @@
                     <div class="rightBox" >
                         <div>책장이 비어있어요.</div>
                         <div>북마크를 추가해서 책을 저장할 수 있어요!</div>
-                        <a href="#" class="bookmarkBtn">북마크 하러가기</a>
+                        <a href="/" class="bookmarkBtn">북마크 하러가기</a>
                     </div>
                     {% endif %}
                 </div>

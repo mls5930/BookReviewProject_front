@@ -9,24 +9,14 @@ const BACK_URL = `http://${BACK_HOST}:${BACK_HOST_PORT}`;
 
 const getUserInfo = async (req, res) => {
     try {
-      const bookDatalist = await axios.get(`${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`);
-      // bookDataViews = bookDataView.data;
-      const mybookData = bookDatalist.data?.map((book) => {
-        return {
-          title: book.title.split("-")[0],
-          cover: book.cover,
-          author: book.author.split(",")[0],
-          isbn13 : book.isbn13,
-        };
-      });
-      const userRegister = await axios.post(`${BACK_URL}/user/register`, {
-        id: req.user.id,
+      // 나중에 북마크 데이터 가져올거임 myBookMarkData
+      const mybookmark = await axios.get(`${BACK_URL}/review/list?nickname=${req.user.nickname}`, {
         nickname: req.user.nickname
       });
-      console.log(mybookData);
-      console.log(userRegister);
+      console.log(myReviewData);
       res.render(mainHtml + `mypage.html`, {
-        mybookData,
+        myReviewData,
+        user: req.user
       });
     } catch (error) {
       console.log(error);
@@ -35,29 +25,42 @@ const getUserInfo = async (req, res) => {
   };
 
   const getUserPreview = async (req, res) => {
-    // const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
-    const mybookData = bookData.map((book) => {
-      return {
-        title: book.title.split("-")[0],
-        cover: book.cover,
-        author: book.author.split(",")[0],
-        pubDate: book.pubDate,
-      };
-    });
-    res.render(mainHtml + `myreview.html`, {
-      mybookData,
-    });
+    try {
+      const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
+      const mybookData = bookData.map((book) => {
+        return {
+          title: book.title.split("-")[0],
+          cover: book.cover,
+          author: book.author.split(",")[0],
+          pubDate: book.pubDate,
+        };
+      });
+      res.render(mainHtml + `myreview.html`, {
+        mybookData,
+      });
+    } catch (error) {
+      console.log(error);
+      throw new Error("에러 발생");
+    }
   }
 
   const getUserModify = async (req, res) => {
-    // const bookdata = bookData.splice(0,1)
-    const isbn13 = req.params.isbn13;
-    const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
-    // console.log(bookdata);
-
-    res.render("main/userModify.html", {
-      bookdata : bookDataOne,
-    });
+    try {
+      const [userInfo] = await axios.get(`${BACK_URL}/myInfo`, {
+        data: {
+          nickname: req.user.nickname
+        }
+      }).data
+      console.log("userInfo", userInfo);
+      
+      res.render(mainHtml+ "usermodify.html", {
+        userInfo,
+      });
+    } catch (error) {
+      console.log(error);
+      throw new Error("에러 발생");
+      
+    }
   }
 
   module.exports = {getUserInfo, getUserPreview, getUserModify};
