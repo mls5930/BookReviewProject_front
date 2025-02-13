@@ -8,14 +8,7 @@
     <link href="/css/maincss/footer.css" rel="stylesheet" />
     <link href="/css/views/viewPage.css" rel="stylesheet" />
     <link href="/css/views/reviewbox.css" rel="stylesheet" />
-    <script>
-      let isLoggedIn = flase;
-      if (isLoggedIn) {
-        document.getElementById("commentary_btn").style.display = "block";
-      } else {
-        document.getElementById("commentary_btn").style.display = "none";
-      }
-    </script>
+
   </head>
   <body>
     <div id="mainPage">
@@ -99,17 +92,17 @@
             <div class="BookreviewBox">
               <!-- <div class="review_content">{{Bookreview.title}}</div> -->
               <div class="review_content">
-                <a
-                  href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}"
-                >
-                  {{item.context}}</a
-                >
+                <a class="commentwrite" id="commentwritey"
+                  href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}">
+                  {{item.context}}
+                </a>
+                <span class="more-text" id="toggleButton"></span>
               </div>
               <!-- class 이름 변경 .imgBox => user_box -->
               <div class="user_box">
                 <a href="/myreview/kim">
                   <!-- 작성자 thumbnail_img -->
-                  <img class="myimg" src="{{item.User.thumbnail}}" alt="" />
+                  <img class="myimg" src="{{item.User.thumbnail}}" alt=""/>
                   {{item.User.nickname}}
                   <!-- {{Bookreview.author}} -->
                 </a>
@@ -172,4 +165,5 @@
       <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
     </div>
   </body>
+  <!-- <script src="/js/moreText.js"></script> -->
 </html>
