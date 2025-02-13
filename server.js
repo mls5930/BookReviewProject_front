@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const router = require("./router/router");
 const { attachAuthToken, authMe } = require("./middleware/middleware");
 app.use(cookieParser());
-app.use("/", attachAuthToken, authMe);
+app.use(attachAuthToken);
 app.use(router);
 app.use(express.static("public"));
 

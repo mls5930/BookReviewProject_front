@@ -21,16 +21,10 @@ const { getBookReview,getReviewWrite,
 
 const router = express.Router();
 const path = require("path");
-const mainHtml = path.join(__dirname, `../views/main/`);
 const viewHtml = path.join(__dirname, `../views/view/`);
 require("dotenv").config();
-const { bookData, bookData2 } = require("../public/js/main");
-const { attachAuthToken, authMe } = require("../middleware/middleware");
-const cookieParser = require("cookie-parser");
-const { default: axios } = require("axios");
-
-//메인 페이지
-router.get('/' , getList);
+const { bookData } = require("../public/js/main");
+const {  authMe } = require("../middleware/middleware");
 
 const HOST = "https://kauth.kakao.com";
 const REST_API_KEY = process.env.API_KEY;
@@ -41,8 +35,11 @@ router.get("/login/page", async (req, res) => {
   res.redirect(redirectURL);
 });
 
+//메인 페이지
+router.get('/' , authMe, getList);
+
 //내 북마크
-router.get("/mybookmark", getUserInfo);
+router.get("/mybookmark",authMe, getUserInfo);
 
 //내 감상문
 router.get("/myreview", getUserPreview);
@@ -94,40 +91,3 @@ router.get("/community", getCommunity);
 router.get("/bookmark", authMe, getBookMark);
 
 module.exports = router;
-
-// router.get('/test' ,(req,res) => {
-//     const mybookData = bookData.map( (book) => {
-//         return{
-//             title: book.title.split("-")[0],
-//             cover: book.cover,
-//             author: book.author.split(",")[0],
-//             customerReviewRank: book.customerReviewRank
-//         };
-//     });
-//     res.render(mainHtml+`test.html` ,{
-//         mybookData,
-
-//     })
-// })
-
-/* axios.[HTTP메서드]([URL], [보낼데이터], [그외설정])
-    const response = await axios.post('/user/login', {
-        user_id: user_id.value,
-        user_pw: user_pw.value
-    }, {
-        headers: {
-            "Content-Type" : "application/json"
-        }
-    })
-    console.log(response.data);
-    if(response.data.success) window.location.href = response.data.redirect
-*/
-
-// const items = [];
-// for (let i = 1; i <= bookData.length; i++) {
-//   items.push(bookData[i]);
-// }
-
-// app.get('/slideTest', (req, res) => {
-//   res.render('main/slideTest.html', { items });
-// })

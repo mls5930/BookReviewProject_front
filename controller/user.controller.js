@@ -8,20 +8,30 @@ const BACK_HOST_PORT = process.env.BACK_HOST_PORT;
 const BACK_URL = `http://${BACK_HOST}:${BACK_HOST_PORT}`;
 
 const getUserInfo = async (req, res) => {
-    const bookDatalist = await axios.get(`${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`);
-    mybookData = bookDatalist.data;
-    const mybookData = bookData.map((book) => {
-      return {
-        title: book.title.split("-")[0],
-        cover: book.cover,
-        author: book.author.split(",")[0],
-        isbn13 : book.isbn13,
-      };
-    });
-    // console.log(mybookData);
-    res.render(mainHtml + `mypage.html`, {
-      mybookData,
-    });
+    try {
+      const bookDatalist = await axios.get(`${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`);
+      // bookDataViews = bookDataView.data;
+      const mybookData = bookDatalist.data?.map((book) => {
+        return {
+          title: book.title.split("-")[0],
+          cover: book.cover,
+          author: book.author.split(",")[0],
+          isbn13 : book.isbn13,
+        };
+      });
+      const userRegister = await axios.post(`${BACK_URL}/user/register`, {
+        id: req.user.id,
+        nickname: req.user.nickname
+      });
+      console.log(mybookData);
+      console.log(userRegister);
+      res.render(mainHtml + `mypage.html`, {
+        mybookData,
+      });
+    } catch (error) {
+      console.log(error);
+      throw new Error("에러임")
+    }
   };
 
   const getUserPreview = async (req, res) => {

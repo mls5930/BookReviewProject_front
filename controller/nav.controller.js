@@ -13,21 +13,25 @@ const getList = async(req, res) =>{
     const bookDataView = await axios.get(`${BACK_URL}/review`);
     //책 신간 전체 리스트
     const bookDatalist = await axios.get(`${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`);
-    bookDatalists = bookDatalist.data;
-    bookDataViews = bookDataView.data;
     
-    const mybookData = bookDatalists.map( (book) => {
-        return{
+    const mybookData = bookDatalist.data?.map( (book) => {
+        return {
             title: book.title.split("-")[0],
             cover: book.cover,
             author: book.author.split(",")[0],
             isbn13 : book.isbn13
         };
     });
+  
+    const bookDataViews = bookDataView.data;
 
+    console.log(mybookData);
+    console.log(bookDataViews);
+    
     res.render(mainHtml+`main.html` ,{
         mybookData,
-        bookDataViews // : mybookData
+        bookDataViews, // : mybookData
+        user: req.user
     })
 }
 
