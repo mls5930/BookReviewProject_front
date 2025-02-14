@@ -89,13 +89,23 @@
                   art="오디오 이미지"
                 />
               </button>
-              <button>
+              {% if true %}
+              <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
                 <img
                   class="bookmark-btn"
                   src="/img/bookmark_empty_img.png"
                   art="비어있는 북마크 이미지"
-                />
-              </button>
+                >
+              </a>
+              {% else %}
+              <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <img
+                  class="bookmark-btn"
+                  src="/img/booktmark_full_img.png"
+                  art="북마크 이미지"
+                >
+              </a>
+              {% endif %}
             </div>
           </aside>
           <article id="attribute">
