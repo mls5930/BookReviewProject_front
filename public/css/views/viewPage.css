@@ -105,6 +105,10 @@
   font-weight: 400;
 }
 
+#bookId {
+  display: none;
+}
+
 /* padding-top, border-top */
 #content {
   display: flex;

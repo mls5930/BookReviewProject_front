@@ -1,58 +1,102 @@
-const axios = require('axios');
-const path = require('path');
+const axios = require("axios");
+const path = require("path");
 
-const viewHtml = path.join(__dirname,`../views/view/`)
-require('dotenv').config();
+const viewHtml = path.join(__dirname, `../views/view/`);
+require("dotenv").config();
 const BACK_HOST = process.env.BACK_HOST;
 const BACK_HOST_PORT = process.env.BACK_HOST_PORT;
 const BACK_URL = `http://${BACK_HOST}:${BACK_HOST_PORT}`;
 
 const getBookReview = async (req, res) => {
-    const isbn13 = req.params.isbn13;
-    const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
-    const reviewList = (await axios.get(`${BACK_URL}/review/ReviewAll?isbn13=${isbn13}`)).data
-    res.render(viewHtml +'bookView.html', {bookData: bookDataOne , ReviewData : reviewList} );
+  const isbn13 = req.params.isbn13;
+  const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`))
+    .data;
+  const reviewList = (
+    await axios.get(`${BACK_URL}/review/ReviewAll?isbn13=${isbn13}`)
+  ).data;
+  res.render(viewHtml + "bookView.html", {
+    bookData: bookDataOne,
+    ReviewData: reviewList,
+  });
 };
 
 const getReviewWrite = async (req, res) => {
-    const isbn13 = req.params.isbn13;
-    const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
-    res.render(viewHtml +'reviewWrite.html', {bookData:bookDataOne});
+  const isbn13 = req.params.isbn13;
+  const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`))
+    .data;
+  res.render(viewHtml + "reviewWrite.html", { bookData: bookDataOne });
 };
 
-const getReviewList = async (req, res) =>{
-    //리뷰 검색
-    const bookDataView = await axios.get(`${BACK_URL}/search?query=비트코인&SearchTarget=Book&amout=20`);
-    bookDataViews = bookDataView.data;
+const getReviewList = async (req, res) => {
+  //리뷰 검색
+  const bookDataView = await axios.get(
+    `${BACK_URL}/search?query=비트코인&SearchTarget=Book&amout=20`
+  );
+  bookDataViews = bookDataView.data;
 
-    const listBook = bookDataViews.map( (book) => {
-        return{
-            title: book.title.split("-")[0],
-            cover: book.cover,
-            author: book.author.split(",")[0],
-            isbn13 : book.isbn13
-        };
-    });
-    res.render(viewHtml +'reviewList.html', {listBook} );
-}
+  const listBook = bookDataViews.map((book) => {
+    return {
+      title: book.title.split("-")[0],
+      cover: book.cover,
+      author: book.author.split(",")[0],
+      isbn13: book.isbn13,
+    };
+  });
+  res.render(viewHtml + "reviewList.html", { listBook });
+};
 
 const getReviewDetail = async (req, res) => {
-    const isbn13 = req.query;
-    const review_id = req.params.review_id;
-    const [bookDataOne] = (await axios.get(`${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`)).data;
-    const CommentList = (await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)).data;
-    console.log("CommentList", CommentList);
-    
-    res.status(201).render(viewHtml + "reviewDetail.html", { bookData: bookDataOne ,CommentList:CommentList});
+  const isbn13 = req.query;
+  const review_id = req.params.review_id;
+  const [bookDataOne] = (
+    await axios.get(
+      `${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`
+    )
+  ).data;
+  const CommentList = (
+    await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)
+  ).data;
+  console.log("CommentList", CommentList);
+
+  res.status(201).render(viewHtml + "reviewDetail.html", {
+    bookData: bookDataOne,
+    CommentList: CommentList,
+  });
 };
 
-
+// 감상문 수정 페이지 요청
 const getReviewModify = async (req, res) => {
-//const review_id = req.params.review_id;
-const review_id = req.params.review_id;
-const {isbn13} = req.query;
-const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
-  res.render(viewHtml + "reviewModify.html", { bookData: bookDataOne });
-}
+  const review_id = req.params.review_id;
+  const { nickname } = req.query;
+  const [bookDataOne] = (
+    await axios.get(
+      `${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`
+    )
+  ).data;
 
-module.exports = {getBookReview, getReviewWrite, getReviewList, getReviewDetail, getReviewModify};
+  res.render(viewHtml + "reviewModify.html", { bookData: bookDataOne });
+};
+
+const deleteReview = async (req, res) => {
+  const review_id = req.params.review_id;
+  const { nickname } = req.query;
+
+  try {
+    const response = await axios.delete(`${BACK_URL}/review/${review_id}`, {
+      data: { nickname },
+    });
+
+    res.json({ success: true });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = {
+  getBookReview,
+  getReviewWrite,
+  getReviewList,
+  getReviewDetail,
+  getReviewModify,
+  deleteReview,
+};

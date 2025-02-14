@@ -1,28 +1,12 @@
-.write-btn {
-    cursor: pointer;
-    font-size: 17px;
-    color: white;
-    font-weight: 700;
-    background-color: #1659cc;
-    border-radius: 8px;
-    padding: 6px;
-    border: none;
-    margin-left: 705px;
-    width: 66px;
-}
-
-.write-btn2 {
-    cursor: pointer;
-    font-size: 17px;
-    color: white;
-    font-weight: 700;
-    background-color: #1659cc;
-    border-radius: 8px;
-    padding: 6px;
-    border: none;
-    width: 66px;
-}
-
-.btn2 {
-    margin-left: 10px;
+.reviewUpdate-btn {
+  width: 110px;
+  height: 35px;
+  cursor: pointer;
+  color: white;
+  background-color: #1659cc;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
 }
