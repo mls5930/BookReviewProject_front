@@ -9,6 +9,7 @@ const BACK_URL = `http://${BACK_HOST}:${BACK_HOST_PORT}`;
 
 const getBookReview = async (req, res) => {
   const isbn13 = req.params.isbn13;
+  loginUser = req.user?.nickname || "";
   const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`))
     .data;
   const reviewList = (
@@ -17,6 +18,7 @@ const getBookReview = async (req, res) => {
   res.render(viewHtml + "bookView.html", {
     bookData: bookDataOne,
     ReviewData: reviewList,
+    loginUser: loginUser,
   });
 };
 
@@ -52,13 +54,11 @@ const getReviewDetail = async (req, res) => {
   ).data;
   //console.log("CommentList", CommentList);
 
-  res
-    .status(201)
-    .render(viewHtml + "reviewDetail.html", {
-      bookData: bookDataOne,
-      CommentList: CommentList,
-      user: user,
-    });
+  res.status(201).render(viewHtml + "reviewDetail.html", {
+    bookData: bookDataOne,
+    CommentList: CommentList,
+    user: user,
+  });
 };
 
 // 감상문 수정 페이지 요청

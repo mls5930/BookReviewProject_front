@@ -11,9 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const userNickname = loginUser.innerHTML.trim(); // Cookie에서 가져온 JWT_Token nickname
   const reviewNickname = kakaoNickname.innerHTML.trim(); // backend에서 받아온 nickname
 
-  console.log(kakaoNickname.innerHTML);
-  console.log(loginUser.innerHTML);
-
   //   nickname 일치할 경우에만 버튼 보여주기
   if (userNickname === reviewNickname) {
     console.log("작성자 본인 감상문 => 버튼 표시");
