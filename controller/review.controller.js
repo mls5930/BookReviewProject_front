@@ -23,36 +23,52 @@ const getBookReview = async (req, res) => {
 const getReviewWrite = async (req, res) => {
   const user = req.user;
   const isbn13 = req.params.isbn13;
-  const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
-  res.render(viewHtml +'reviewWrite.html', {bookData:bookDataOne ,user : user});
+  const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`))
+    .data;
+  res.render(viewHtml + "reviewWrite.html", {
+    bookData: bookDataOne,
+    user: user,
+  });
 };
 
 const getReviewList = async (req, res) => {
   //감상문 전체 검색
   const bookDataView = await axios.get(`${BACK_URL}/review`);
   const bookDataViews = bookDataView.data;
-  res.render(viewHtml +'reviewList.html', {listBook : bookDataViews} );
+  res.render(viewHtml + "reviewList.html", { listBook: bookDataViews });
 };
 
 const getReviewDetail = async (req, res) => {
   const user = req.user;
-  const {nickname} = req.query;
+  const { nickname } = req.query;
   const review_id = req.params.review_id;
-  const [bookDataOne] = (await axios.get(`${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`)).data;
-  const CommentList = (await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)).data;
+  const [bookDataOne] = (
+    await axios.get(
+      `${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`
+    )
+  ).data;
+  const CommentList = (
+    await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)
+  ).data;
   //console.log("CommentList", CommentList);
-  
-  res.status(201).render(viewHtml + "reviewDetail.html", { bookData: bookDataOne ,
-      CommentList:CommentList, user:user});
+
+  res
+    .status(201)
+    .render(viewHtml + "reviewDetail.html", {
+      bookData: bookDataOne,
+      CommentList: CommentList,
+      user: user,
+    });
 };
 
 // 감상문 수정 페이지 요청
 const getReviewModify = async (req, res) => {
-    //const review_id = req.params.review_id;
-    const review_id = req.params.review_id;
-    const {isbn13} = req.query;
-    const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data;
-    res.render(viewHtml + "reviewModify.html", { bookData: bookDataOne });
+  //const review_id = req.params.review_id;
+  const review_id = req.params.review_id;
+  const { isbn13 } = req.query;
+  const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`))
+    .data;
+  res.render(viewHtml + "reviewModify.html", { bookData: bookDataOne });
 };
 
 const deleteReview = async (req, res) => {
