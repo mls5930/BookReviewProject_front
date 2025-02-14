@@ -8,11 +8,6 @@
     <link href="/css/maincss/footer.css" rel="stylesheet" />
     <link href="/css/views/viewPage.css" rel="stylesheet" />
     <link href="/css/views/reviewdetail.css" rel="stylesheet" />
-    <style>
-      #bookId {
-        display: none;
-      }
-    </style>
   </head>
   <body>
     <div id="mainPage">
@@ -85,9 +80,7 @@
             <div class="bookImg">
               <img src="{{ bookData.cover }}" />
             </div>
-            <!-- class 이름 추가 -->
             <a>
-              <!-- 이미지 변경 -->
               <img
                 class="bookmark-btn"
                 src="/img/bookmark_empty_img.png"
@@ -119,12 +112,12 @@
               >
                 삭제
               </button>
-              <button
-                data-review-id="{{bookData.review_id}}"
+              <a
+                href="/reviewModify/{{bookData.review_id}}?nickname={{bookData.User.nickname}}"
                 class="reviewUpdate"
               >
                 수정
-              </button>
+              </a>
             </div>
             <div class="reviewLine"></div>
             <div id="bookId">{{ bookData.isbn13 }}</div>
@@ -208,6 +201,6 @@
         <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
       </div>
     </div>
-    <script src="/js/review.js"></script>
+    <script src="/js/reviewDelete.js"></script>
   </body>
 </html>

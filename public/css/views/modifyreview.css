@@ -1,28 +1,12 @@
 .write-btn {
-    cursor: pointer;
-    font-size: 17px;
-    color: white;
-    font-weight: 700;
-    background-color: #1659cc;
-    border-radius: 8px;
-    padding: 6px;
-    border: none;
-    margin-left: 705px;
-    width: 66px;
-}
-
-.write-btn2 {
-    cursor: pointer;
-    font-size: 17px;
-    color: white;
-    font-weight: 700;
-    background-color: #1659cc;
-    border-radius: 8px;
-    padding: 6px;
-    border: none;
-    width: 66px;
-}
-
-.btn2 {
-    margin-left: 10px;
+  cursor: pointer;
+  font-size: 17px;
+  color: white;
+  font-weight: 700;
+  background-color: #1659cc;
+  border-radius: 8px;
+  padding: 6px;
+  border: none;
+  margin-left: 705px;
+  width: 66px;
 }

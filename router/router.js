@@ -90,7 +90,7 @@ router.get("/reviewlist", authMe, getReviewList);
 router.get("/reviewdetail/:review_id", authMe, getReviewDetail);
 
 // 감상문 수정
-router.put("/review/:review_id", authMe, getReviewModify);
+router.get("/reviewModify/:review_id", authMe, getReviewModify);
 
 // 감상문 삭제
 router.delete("/review/:review_id", deleteReview);
