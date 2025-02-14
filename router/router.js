@@ -4,6 +4,7 @@ const {
   getSearchBook,
   getCommunity,
   getBookMark,
+  getBookList
 } = require("../controller/nav.controller");
 
 const {
@@ -63,17 +64,7 @@ router.get("/audioview/:isbn13", authMe, getAudioView);
 router.get("/audiowrite", authMe, getAudioWrite);
 
 // 책
-router.get("/booklist", authMe, (req, res) => {
-  const listBook = bookData.map((book) => {
-    return {
-      isbn13: book.isbn13,
-      cover: book.cover,
-      title: book.title.split("-")[0],
-      author: book.author.split(",")[0],
-    };
-  });
-  res.render(viewHtml + "bookList.html", { listBook, user: req.user });
-});
+router.get("/booklist", authMe, getBookList);
 
 // 책 검색
 router.get("/booksearch", authMe, getSearchBook);

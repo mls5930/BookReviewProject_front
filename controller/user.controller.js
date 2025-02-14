@@ -15,54 +15,52 @@ const getUserInfo = async (req, res) => {
       });
       console.log(myReviewData);
       res.render(mainHtml + `mypage.html`, {
-        mybookmark,
+        myReviewData,
         user: req.user
       });
     } catch (error) {
       console.log(error);
+      throw new Error("에러임")
     }
   };
 
   const getUserPreview = async (req, res) => {
-    console.log(req.user);
-    
-    res.render(mainHtml + `myreview.html`, {
-      // mybookData,
-      user: req.user
-    });
-
+    try {
+      const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
+      const mybookData = bookData.map((book) => {
+        return {
+          title: book.title.split("-")[0],
+          cover: book.cover,
+          author: book.author.split(",")[0],
+          pubDate: book.pubDate,
+        };
+      });
+      res.render(mainHtml + `myreview.html`, {
+        mybookData,
+      });
+    } catch (error) {
+      console.log(error);
+      throw new Error("에러 발생");
+    }
   }
 
   const getUserModify = async (req, res) => {
-    const nickname = req.user.nickname;
-    if (!nickname) return res.status(401).redirect("http://localhost:3005/");
-    
     try {
-      const userInfo = (await axios.post(`${BACK_URL}/user/userInfo`,{
-        nickname: nickname
-        })).data
-        
-      const bookDataOne = (await axios.get(`${BACK_URL}/review/list?nickname=${nickname}`)).data;
-      const count = {
-        count: bookDataOne[0].reviewCount
-       }
-
-       
-      const mybookmark = (await axios.get(`${BACK_URL}/bookmark/mybookmark?nickname=${nickname}`)).data;
-       console.log(mybookmark);
-       
+      const [userInfo] = await axios.get(`${BACK_URL}/myInfo`, {
+        data: {
+          nickname: req.user.nickname
+        }
+      }).data
       console.log("userInfo", userInfo);
       
       res.render(mainHtml+ "usermodify.html", {
-        user : req.user,
-        userInfo : userInfo,
-        reviewCount : count,
-        mybookmark : mybookmark
+        userInfo,
       });
     } catch (error) {
-      console.log(error);      
+      console.log(error);
+      throw new Error("에러 발생");
+      
     }
   }
 
   module.exports = {getUserInfo, getUserPreview, getUserModify};
-

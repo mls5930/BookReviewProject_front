@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  #chat-container {
+    position: fixed;
+    bottom: 130px;
+    right: 100px;
+    background: white;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 500px;
+  }
+
+  #chat-container.minimized {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  #chat-container.expanded {
+    width: 350px;
+    max-height: 500px;
+    border-radius: 10px;
+  }
+
+  .chat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .chat-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .chat-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+  }
+
+  #chat-container.minimized .chat-content {
+    display: none;
+  }
+
+  .chat-header {
+    background: #1659cc;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+  }
+
+  .chat-header .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+  }
+
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+  .chat-input textarea {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    resize: none;
+    height: 50px;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  .chat-input button {
+    padding: 10px;
+    background: #1659cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .message {
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+  .user {
+    background-color: #d1e7fd;
+    align-self: flex-end;
+    text-align: right;
+  }
+  .ai {
+    background-color: #e1e1e1;
+    align-self: flex-start;
+    text-align: left;
+  }
