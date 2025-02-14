@@ -63,33 +63,33 @@
             </div>
             <div class="profile">
                 <div class="left">
-                    <div><img class="mypoto" src="{{user.thumbnail}}" ait="#"></div>
-                    <div class="nikname">{{user.nickname}}</div>
+                    <div><img class="mypoto" src="{{userInfo.thumbnail}}" ait="#"></div>
+                    <div class="nikname">{{userInfo.nickname}}</div>
                     <a href="/usermodify" class="profileBtn">프로필수정</a>
                     <div class="leftBottom">
                         <div>
-                            <!-- <div>{{mybookmark}}</div> -->
-                            <div>북마크</div>
+                            <div>북마크 수</div>
+                            <div style="color: red;">( {{mybookmark.count}} )</div>
                         </div>
                         <div>
-                            <!-- <div>{{}}</div> -->
-                            <div>감상문</div>
+                            <div>감상문 수</div>
+                            <div style="color: red;">( {{reviewCount.count}} )</div>
                         </div>
                     </div>
                 </div>
                 <div class="right">
                     <div class="bookcaseRoute">
                         <div>
-                            <a href="/mypage" class="mybookcase">북마크</a>
+                            <a href="/mybookmark" class="mybookcase">북마크</a>
                         </div>
                         <div>-</div>
                         <div>
                             <a href="/myreview" class="myReview">감상문</a>
                         </div>
                     </div>
-                    {% if myReviewData.data %}
+                    {% if myReviewData %}
                     <div class="bookReview">
-                        {% for reviewItem in myReviewData %}
+                        {%for reviewItem in myReviewData %}
                         <div class="BookreviewBox">
                             <div class="imgBox" >
                                 <a href="#">
@@ -97,9 +97,9 @@
                                 </a>
                             </div>
                             <div class="viewDate">
-                                <div>{{reviewItem.title}}</div>
+                                <div>{{reviewItem.context}}</div>
                                 <div class="viewRight">
-                                    <div>{{reviewItem.pubDate}}</div>
+                                    <div>{{reviewItem.createdAt}}</div>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                     <div class="rightBox" >
                         <div>리뷰가 비었어요.</div>
                         <div>읽은책에 자신의 생각을 적어보세요!</div>
-                        <a href="#" class="bookmarkBtn">책 둘러보기</a>
+                        <a href="/reviewlist" class="bookmarkBtn">책 둘러보기</a>
                     </div>
                     {% endif %}
                 </div>
