@@ -28,6 +28,8 @@
             backdrop-filter: blur(0.25rem);
         }
     </style>
+    <link rel="stylesheet" href="/css/chatbook.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div id="mainPage">
@@ -139,6 +141,19 @@
                 {% endfor %}
             </div>
         </div>
+        <div id="chat-container" class="minimized">
+            <div class="chat-icon" id="chat-icon">
+              <img src="/img/chatBook_img.png" alt="Chat Icon" />
+            </div>
+            <div class="chat-content">
+              <div class="chat-header">ChatBook <span class="close-btn" id="close-btn">&times;</span></div>
+              <div class="chat-body" id="chat-body"></div>
+              <div class="chat-input">
+                <textarea id="chat-input" placeholder="메시지를 입력하세요..."></textarea>
+                <button onclick="sendMessage()">전송</button>
+              </div>
+            </div>
+          </div>
         <div id="topbutton">
             <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
         </div>
@@ -209,5 +224,6 @@
     <script src="/js/loginPopup.js"></script>
     <script src="/js/userInfoButton.js"></script>
     <script src="/js/slide.js"></script>
+    <script src="/js/chatbook.js"></script>
 </body>
 </html>
