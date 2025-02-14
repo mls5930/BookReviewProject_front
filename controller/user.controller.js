@@ -85,4 +85,3 @@ const getUserModify = async (req, res) => {
 }
 
 module.exports = {getUserInfo, getUserPreview, getUserModify};
-

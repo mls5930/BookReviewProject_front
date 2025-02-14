@@ -55,7 +55,10 @@
 .bookUploadImg > p {
     color: #1659cc;
     font-weight: 900;
-    font-size: 16px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
 }
 .bookUploadAuthor{
     font-size: 16px;

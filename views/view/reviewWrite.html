@@ -26,18 +26,11 @@
                   </div>
                   {% if user %}
                   <div class="loginHeader">
-                      <a href="/mybookmark">
+                      <div>
                           <img class="loginLogo" src="/img/bookmark_empty_img.png">
-                      </a>
+                      </div>
                       <div>
                           <img class="loginThumbnail" src="{{user.thumbnail}}">
-                      </div>
-                      <div class="userThumbInfo" style="display:none">
-                          <div class="userInfoCloseBtn">✖</div>
-                          <a href="/mybookmark">북마크</a>
-                          <a href="/usermodify">내정보</a>
-                          <a href="/myreview">감상문</a>
-                          <a class="logout" href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}">로그아웃</a>
                       </div>
                   </div>
                   {% else %}

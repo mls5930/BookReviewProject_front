@@ -132,7 +132,7 @@ a {
 
 .BookreviewBox {
     width: 650px;
-    padding: 15px 60px;
+    padding: 15px 40px;
     display: flex;
     /* justify-content: left; */
     gap: 15px;
