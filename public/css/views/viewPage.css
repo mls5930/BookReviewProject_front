@@ -58,7 +58,7 @@
 }
 
 /* 생성 */
-.title > .book_btn > button > .bookmark-btn {
+.bookmark-btn {
   width: 20px;
   height: 30px;
 }
