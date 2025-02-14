@@ -8,208 +8,255 @@
     <link href="/css/maincss/footer.css" rel="stylesheet" />
     <link href="/css/views/viewPage.css" rel="stylesheet" />
     <link href="/css/views/reviewbox.css" rel="stylesheet" />
-
   </head>
   <body>
     <div id="mainPage">
       <div id="header">
         <div class="header-inner">
-            <div class="headerBox">
-                <a href="/">
-                    <img src="/img/logo4.png">
-                </a>
-                <div class="search" tabindex="0">
-                    <form class="search_form" action="/booksearch" method="get">
-                        <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
-                        <button type="submit"><img src="img/readingGlasses.png"></button>
-                    </form>
-                </div>
-                {% if user %}
-                <div class="loginHeader">
-                    <a href="/mybookmark">
-                        <img class="loginLogo" src="/img/bookmark_empty_img.png">
-                    </a>
-                    <div>
-                        <img class="loginThumbnail" src="{{user.thumbnail}}">
-                    </div>
-                    <div class="userThumbInfo" style="display:none">
-                        <div class="userInfoCloseBtn">✖</div>
-                        <a href="/mybookmark">북마크</a>
-                        <a href="/usermodify">내정보</a>
-                        <a href="/myreview">감상문</a>
-                        <a class="logout" href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}">로그아웃</a>
-                    </div>
-                </div>
-                {% else %}
-                <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
-                {% endif %}
+          <div class="headerBox">
+            <a href="/">
+              <img src="/img/logo4.png" />
+            </a>
+            <div class="search" tabindex="0">
+              <form class="search_form" action="/booksearch" method="get">
+                <input
+                  class="search_bar"
+                  id="input"
+                  name="query"
+                  value=""
+                  type="text"
+                  placeholder="리뷰하고 싶은 책을 검색해 보세요!"
+                />
+                <button type="submit">
+                  <img src="img/readingGlasses.png" />
+                </button>
+              </form>
             </div>
-              <div id="inner">
-                  <div class="innerbox">
-                      <ul class="banner">
-                          <li>
-                              <a href="/reviewlist">감상문</a>
-                          </li>
-                          <li>
-                              <a href="/booklist">책</a>
-                          </li>
-                          <li>
-                              <a href="/audiolist">오디오북</a>
-                          </li>
-                          <li>
-                              <a href="/community">커뮤니티</a>
-                          </li>
-                      </ul>
-                  </div>
+            {% if user %}
+            <div class="loginHeader">
+              <a href="/mybookmark">
+                <img class="loginLogo" src="/img/bookmark_empty_img.png" />
+              </a>
+              <div>
+                <img class="loginThumbnail" src="{{user.thumbnail}}" />
               </div>
-          </div>
-      </div>
-    <main id="container">
-      <div id="searchR">
-        <!-- 수정 -->
-        <h3>
-          BOOK ISLAND
-          <span class="gray">></span>
-          <span class="blue">책 보기</span>
-        </h3>
-      </div>
-      <section id="innerContainer">
-        <aside class="title">
-          <div class="bookImg">
-            <img src="{{ bookData.cover }}" />
-          </div>
-          <!-- class 이름 추가 -->
-          <div class="book_btn">
-            {% if true %}
-            <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
-              <!-- 이미지 변경 -->
-              <img
-                class="bookmark-btn"
-                src="/img/bookmark_empty_img.png"
-                art="비어있는 북마크 이미지"
-              >
-            </a>
+              <div class="userThumbInfo" style="display: none">
+                <div class="userInfoCloseBtn">✖</div>
+                <a href="/mybookmark">북마크</a>
+                <a href="/usermodify">내정보</a>
+                <a href="/myreview">감상문</a>
+                <a
+                  class="logout"
+                  href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}"
+                  >로그아웃</a
+                >
+              </div>
+            </div>
             {% else %}
-            <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
-              <!-- 이미지 변경 -->
-              <img
-                class="bookmark-btn"
-                src="/img/booktmark_full_img.png"
-                art="북마크 이미지"
-              >
-            </a>
+            <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
             {% endif %}
           </div>
-        </aside>
-        <article id="attribute">
-          <div class="items">
-            <h1 class="bookTitle">{{ bookData.title }}</h1>
-            <h3 class="bookAuthor">{{ bookData.author }}</h3>
-            <h4 class="bookDct">{{ bookData.description }}</h4>
-          </div>
-          <div id="content">
-            <div>감상문</div>
-            <a href="/reviewWrite/{{bookData.isbn13}}">
-              <!-- class commentaryBtn => commentary_btn-->
-              <button class="commentary_btn">감상문 작성</button>
-            </a>
-          </div>
-          <div class="bookreview">
-            {% for item in ReviewData %}
-            <div class="BookreviewBox">
-              <!-- <div class="review_content">{{Bookreview.title}}</div> -->
-              <div class="review_content">
-                <a class="commentwrite" id="commentwritey"
-                  href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}">
-                  {{item.context}}
-                </a>
-                <span class="more-text" id="toggleButton"></span>
-              </div>
-              <!-- class 이름 변경 .imgBox => user_box -->
-              <div class="user_box">
-                <a href="/myreview/kim">
-                  <!-- 작성자 thumbnail_img -->
-                  <img class="myimg" src="{{item.User.thumbnail}}" alt=""/>
-                  {{item.User.nickname}}
-                  <!-- {{Bookreview.author}} -->
-                </a>
-                <!-- <div>{Review model의 created_At}<div> -->
-                <div>{{item.createdAt}}</div>
-              </div>
+          <div id="inner">
+            <div class="innerbox">
+              <ul class="banner">
+                <li>
+                  <a href="/reviewlist">감상문</a>
+                </li>
+                <li>
+                  <a href="/booklist">책</a>
+                </li>
+                <li>
+                  <a href="/audiolist">오디오북</a>
+                </li>
+                <li>
+                  <a href="/community">커뮤니티</a>
+                </li>
+              </ul>
             </div>
-            {% endfor %}
           </div>
-        </article>
-      </section>
-    </main>
-    <div id="topbutton">
-      <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png"></a>
-  </div>
-  <div id="footer">
-      <div class="footerbox">
+        </div>
+      </div>
+      <main id="container">
+        <div id="searchR">
+          <!-- 수정 -->
+          <h3>
+            BOOK ISLAND
+            <span class="gray">></span>
+            <span class="blue">책 보기</span>
+          </h3>
+        </div>
+        <section id="innerContainer">
+          <aside class="title">
+            <div class="bookImg">
+              <img src="{{ bookData.cover }}" />
+            </div>
+            <!-- class 이름 추가 -->
+            <div class="book_btn">
+              {% if true %}
+              <a
+                href="http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}"
+              >
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/bookmark_empty_img.png"
+                  art="비어있는 북마크 이미지"
+                />
+              </a>
+              {% else %}
+              <a
+                href="http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}"
+              >
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/booktmark_full_img.png"
+                  art="북마크 이미지"
+                />
+              </a>
+              {% endif %}
+            </div>
+          </aside>
+          <article id="attribute">
+            <div class="items">
+              <h1 class="bookTitle">{{ bookData.title }}</h1>
+              <h3 class="bookAuthor">{{ bookData.author }}</h3>
+              <h4 class="bookDct">{{ bookData.description }}</h4>
+            </div>
+            <div id="content">
+              <div>감상문</div>
+              <a href="/reviewWrite/{{bookData.isbn13}}">
+                <!-- class commentaryBtn => commentary_btn-->
+                <button class="commentary_btn">감상문 작성</button>
+              </a>
+            </div>
+            <div class="bookreview">
+              {% for item in ReviewData %}
+              <div class="BookreviewBox">
+                <!-- <div class="review_content">{{Bookreview.title}}</div> -->
+                <div class="review_content">
+                  <a
+                    class="commentwrite"
+                    id="commentwritey"
+                    href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}"
+                  >
+                    {{item.context}}
+                  </a>
+                  <span class="more-text" id="toggleButton"></span>
+                </div>
+                <!-- class 이름 변경 .imgBox => user_box -->
+                <div class="user_box">
+                  <a>
+                    <!-- 작성자 thumbnail_img -->
+                    <img class="myimg" src="{{item.User.thumbnail}}" alt="" />
+                    {{item.User.nickname}}
+                    <!-- {{Bookreview.author}} -->
+                  </a>
+                  <!-- <div>{Review model의 created_At}<div> -->
+                  <div>{{item.createdAt}}</div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </article>
+        </section>
+      </main>
+      <div id="topbutton">
+        <a href="#mainPage"
+          ><img class="topbuttonImg" src="/img/topimg.png"
+        /></a>
+      </div>
+      <div id="footer">
+        <div class="footerbox">
           <div>(주)북아일랜드</div>
           <div>
-              <a href="https://www.youtube.com/"><img width="30px" height="30px" src="/img/youtubeLogo-removebg-preview.png"></a>
-              <a href="https://www.instagram.com/"><img width="35px" height="30px" src="/img/instagramLogo-removebg-preview.png"></a>
-              <a href="https://www.google.com"><img width="30px" height="30px" src="/img/glooglelogo.png"></a>
+            <a href="https://www.youtube.com/"
+              ><img
+                width="30px"
+                height="30px"
+                src="/img/youtubeLogo-removebg-preview.png"
+            /></a>
+            <a href="https://www.instagram.com/"
+              ><img
+                width="35px"
+                height="30px"
+                src="/img/instagramLogo-removebg-preview.png"
+            /></a>
+            <a href="https://www.google.com"
+              ><img width="30px" height="30px" src="/img/glooglelogo.png"
+            /></a>
           </div>
-      </div>
-      <div>
+        </div>
+        <div>
           <ul class="footerUl">
-              <li><a href="#">이용약관 ></a></li>
-              <li><a href="#">개인정보처리방침 ></a></li>
-              <li><a href="#">청소년보호정책  ></a></li>
-              <li><a href="#">고객센터 ></a></li>
-              <li><a href="#">B2B 문의 ></a></li>
-              <li><a href="#">콘텐츠 제휴문의 ></a></li>
-              <li><a href="#">뷰어 다운로드 ></a></li>
-              <li><a href="#">회사 소개 </a></li>
+            <li><a href="#">이용약관 ></a></li>
+            <li><a href="#">개인정보처리방침 ></a></li>
+            <li><a href="#">청소년보호정책 ></a></li>
+            <li><a href="#">고객센터 ></a></li>
+            <li><a href="#">B2B 문의 ></a></li>
+            <li><a href="#">콘텐츠 제휴문의 ></a></li>
+            <li><a href="#">뷰어 다운로드 ></a></li>
+            <li><a href="#">회사 소개 </a></li>
           </ul>
-      </div>
-      <div>
+        </div>
+        <div>
           <ul class="footerUL">
-              <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
-              <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
-              <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
-              <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
+            <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
+            <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+            <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+            <p>유효기간: 2025-02-01 ~ 2026-02-04</p>
           </ul>
+        </div>
+        <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
       </div>
-      <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
-  </div>
-</div>
-<dialog class="loginBox">
-  <div class="login" id="popup"> 
-      <div class="popup">
-          <div class="popup-head">	
-              <button class="closeBtn">x</button>
-              <img class="head-title" src="/img/loginLogo2.png">
+    </div>
+    <dialog class="loginBox">
+      <div class="login" id="popup">
+        <div class="popup">
+          <div class="popup-head">
+            <button class="closeBtn">x</button>
+            <img class="head-title" src="/img/loginLogo2.png" />
           </div>
-          <div class="popup-body">	
-              <div class="body-content">
-                  <div class="body-titlebox">
-                      <h3>반가워요! <br> 북아일랜드 시작하기 </h3>
-                  </div>
-                  <div class="body-contentbox">
-                      <div class="logintext">요즘 일하는 사람들이 책을 찾는 새로운 방법<br> 뛰어난 커리어를 가진 사람들과 도서를 나누고, 나에게 꼭 필요한 책을 찾으세요.</div>
-                      <form method="get" action="/login/page">
-                          <button type="submit">
-                              <img src="/img/kakaoLogo.png" width="30px" height="30px">
-                              카카오로 3초만에 시작하기
-                          </button>
-                      </form>
-                  </div>
-                  <p>로그인은
-                      <a href="https://bookcovery.notion.site/7f574a4a03a540ea846dd638aa712b11">개인정보보호 정책</a>
-                      및
-                      <a href="https://bookcovery.notion.site/92c58cef635a4fd08663942a6d4e7288">서비스 약관</a>
-                      에 동의하는 것을 의미합니다!
-                  </p>
+          <div class="popup-body">
+            <div class="body-content">
+              <div class="body-titlebox">
+                <h3>
+                  반가워요! <br />
+                  북아일랜드 시작하기
+                </h3>
               </div>
+              <div class="body-contentbox">
+                <div class="logintext">
+                  요즘 일하는 사람들이 책을 찾는 새로운 방법<br />
+                  뛰어난 커리어를 가진 사람들과 도서를 나누고, 나에게 꼭 필요한
+                  책을 찾으세요.
+                </div>
+                <form method="get" action="/login/page">
+                  <button type="submit">
+                    <img src="/img/kakaoLogo.png" width="30px" height="30px" />
+                    카카오로 3초만에 시작하기
+                  </button>
+                </form>
+              </div>
+              <p>
+                로그인은
+                <a
+                  href="https://bookcovery.notion.site/7f574a4a03a540ea846dd638aa712b11"
+                  >개인정보보호 정책</a
+                >
+                및
+                <a
+                  href="https://bookcovery.notion.site/92c58cef635a4fd08663942a6d4e7288"
+                  >서비스 약관</a
+                >
+                에 동의하는 것을 의미합니다!
+              </p>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-</dialog>
-<script src="/js/loginPopup.js"></script>
-<script src="/js/userInfoButton.js"></script>
+    </dialog>
+    <script src="/js/loginPopup.js"></script>
+    <script src="/js/userInfoButton.js"></script>
   </body>
 </html>
