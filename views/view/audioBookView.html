@@ -8,10 +8,6 @@
     <link href="/css/maincss/footer.css" rel="stylesheet" />
     <link href="/css/views/viewPage.css" rel="stylesheet" />
     <link href="/css/views/reviewbox.css" rel="stylesheet" />
-    <!-- 외부 CSS 파일 연결 -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/melotts.css">
     <style>
       .btnImg {
         margin-left: 76px;
@@ -25,49 +21,56 @@
   <body>
     <div id="mainPage">
       <div id="header">
-          <div class="header-inner">
-              <div class="headerBox">
-                  <a href="/">
-                      <img src="/img/logo4.png">
-                  </a>
-                  <div class="search" tabindex="0">
-                      <form class="search_form" action="/booksearch" method="get">
-                          <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
-                          <button type="submit"><img src="img/readingGlasses.png"></button>
-                      </form>
-                  </div>
-                  {% if user %}
-                  <div class="loginHeader">
-                      <div>
-                          <img class="loginLogo" src="/img/bookmark_empty_img.png">
-                      </div>
-                      <div>
-                          <img class="loginThumbnail" src="{{user.thumbnail}}">
-                      </div>
-                  </div>
-                  {% else %}
-                  <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
-                  {% endif %}
-              </div>
-              <div id="inner">
-                  <div class="innerbox">
-                      <ul class="banner">
-                          <li>
-                              <a href="/reviewlist">감상문</a>
-                          </li>
-                          <li>
-                              <a href="/booklist">책</a>
-                          </li>
-                          <li>
-                              <a href="/audiolist">오디오북</a>
-                          </li>
-                          <li>
-                              <a href="/community">커뮤니티</a>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
+        <div class="header-inner">
+            <div class="headerBox">
+                <a href="/">
+                    <img src="/img/logo4.png">
+                </a>
+                <div class="search" tabindex="0">
+                    <form class="search_form" action="/booksearch" method="get">
+                        <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
+                        <button type="submit"><img src="img/readingGlasses.png"></button>
+                    </form>
+                </div>
+                {% if user %}
+                <div class="loginHeader">
+                    <a href="/mybookmark">
+                        <img class="loginLogo" src="/img/bookmark_empty_img.png">
+                    </a>
+                    <div>
+                        <img class="loginThumbnail" src="{{user.thumbnail}}">
+                    </div>
+                    <div class="userThumbInfo" style="display:none">
+                        <div class="userInfoCloseBtn">✖</div>
+                        <a href="/mybookmark">북마크</a>
+                        <a href="/usermodify">내정보</a>
+                        <a href="/myreview">감상문</a>
+                        <a class="logout" href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}">로그아웃</a>
+                    </div>
+                </div>
+                {% else %}
+                <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
+                {% endif %}
+            </div>
+          <div id="inner">
+            <div class="innerbox">
+              <ul class="banner">
+                <li>
+                  <a href="/reviewlist">감상문</a>
+                </li>
+                <li>
+                  <a href="/booklist">책</a>
+                </li>
+                <li>
+                  <a href="/audiolist">오디오북</a>
+                </li>
+                <li>
+                  <a href="/community">커뮤니티</a>
+                </li>
+              </ul>
+            </div>
           </div>
+        </div>
       </div>
       <main id="container">
         <div id="searchR">
@@ -87,29 +90,19 @@
             <div class="book_btn">
               <!-- 이미지 변경, class 추가 -->
               <button>
-                <img onclick=sendRequest(this.dataset.value)  data-value="{{ bookData.isbn13 }}"
+                <img
                   class="audio-btn"
                   src="/img/audio_img.jpeg"
                   art="오디오 이미지"
                 />
               </button>
-              {% if true %}
-              <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+              <button>
                 <img
                   class="bookmark-btn"
                   src="/img/bookmark_empty_img.png"
                   art="비어있는 북마크 이미지"
-                >
-              </a>
-              {% else %}
-              <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
-                <img
-                  class="bookmark-btn"
-                  src="/img/booktmark_full_img.png"
-                  art="북마크 이미지"
-                >
-              </a>
-              {% endif %}
+                />
+              </button>
             </div>
           </aside>
           <article id="attribute">
@@ -118,44 +111,6 @@
               <h3 class="bookAuthor">{{ bookData.author }}</h3>
               <h4 class="bookDct">{{ bookData.description }}</h4>
             </div>
-            <!-- 오른쪽 하단에 고정될 음악 플레이어 사이드바 -->
-            <div class="music-player-sidebar">
-              <div class="music-player">
-                <!-- 앨범 아트 (필요 시 이미지 추가) -->
-                <div class="album-art">
-                  <img src="{{ bookData.cover }}" alt="Album Art"> 
-                </div>
-                <!-- 곡 정보 -->
-                <div class="info" >
-                  <div class="info-content">
-                    <div class="song-title">{{ bookData.title }}</div>
-                    <div class="artist">{{ bookData.author }}</div>
-                  </div>
-                </div>
-                <!-- 컨트롤 버튼 -->
-                <div class="controls">
-                  <button class="btn prev" title="Previous">
-                    <i class="material-icons">skip_previous</i>
-                  </button>
-                  <button class="btn play" id="playPause" title="Play/Pause">
-                    <i class="material-icons" id="playPauseIcon">play_arrow</i>
-                  </button>
-                  <button class="btn next" title="Next">
-                    <i class="material-icons">skip_next</i>
-                  </button>
-                </div>
-                <!-- 진행바 영역 -->
-                <div class="progress-container">
-                  <span class="current-time">0:00</span>
-                  <div class="progress-bar" id="progressBar">
-                    <div class="progress" id="progress"></div>
-                  </div>
-                  <span class="duration">0:00</span>
-                </div>
-              </div>
-            </div>
-            <!-- 실제 오디오 요소 (보이지 않고 JS로 제어) -->
-            <audio id="audioPlayer"></audio>
           </article>
         </section>
       </main>
@@ -226,8 +181,7 @@
         </div>
     </div>
 </dialog>
-</body>
 <script src="/js/loginPopup.js"></script>
 <script src="/js/userInfoButton.js"></script>
-<script src="/js/melotts.js"></script>
+  </body>
 </html>

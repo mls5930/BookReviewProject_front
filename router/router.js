@@ -9,7 +9,6 @@ const {
 
 const {
   getUserInfo,
-  getUserPreview,
   getUserModify,
 } = require("../controller/user.controller");
 
@@ -51,7 +50,6 @@ router.get("/", authMe, getList);
 router.get("/mybookmark", authMe, getUserInfo);
 
 //내 감상문
-router.get("/myreview", authMe, getUserPreview);
 
 //내 정보
 router.get("/usermodify", authMe, getUserModify);
