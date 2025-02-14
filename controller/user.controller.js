@@ -49,7 +49,8 @@ const getUserPreview = async (req, res) => {
       userInfo : userInfo,
       myReviewData : bookData.length ? bookData : false,
       reviewCount : count,
-      mybookmark : mybookmark
+      mybookmark : mybookmark,
+      user: req.user
     });
 
   } catch (error) {

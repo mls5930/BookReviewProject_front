@@ -45,16 +45,16 @@ const getSearchBook = async (req, res) => {
       `${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`
     );
   }
-  res.render(viewHtml + "bookSearch.html", {result :query, listBook: bookDatalist.data });
+  res.render(viewHtml + "bookSearch.html", {result :query, listBook: bookDatalist.data , user:req.user  });
 };
 
 const getCommunity = async (req, res) => {
     try {
       const response = await fetch(`${BACK_URL}/community/list`);
       const communitiesData = await response.json();
-      res.render(viewHtml + "community.html", { communitiesData });
+      res.render(viewHtml + "community.html", { communitiesData , user:req.user  });
     } catch (error) {
-      res.render(viewHtml + "community.html", { communitiesData: [] });
+      res.render(viewHtml + "community.html", { communitiesData: []  , user:req.user });
     }
 }
 
@@ -66,6 +66,7 @@ const getBookMark = async (req, res) => {
       });
       res.status(202).render("main/mypage.html", {
         bookmark,
+        user:req.user 
       });
     } catch (error) {
       return res.status(401).send();
