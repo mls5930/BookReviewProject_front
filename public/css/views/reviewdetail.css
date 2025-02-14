@@ -28,18 +28,24 @@
 
 .update-btn > button {
   cursor: pointer;
-  font-size: 16px;
   border: none;
   background: transparent;
 }
 
 .update-btn > .reviewDelete {
   color: #857e7e;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 16px;
 }
 
 .update-btn > .reviewUpdate {
+  text-decoration: none;
   color: red;
   font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .textbox {
@@ -95,7 +101,7 @@
 
 #attribute > .reviewLine {
   border: solid 1px #efefef;
-  margin: 30px 0 0 0;
+  margin: 30px 0;
 }
 
 .showcomment {

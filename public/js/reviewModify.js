@@ -1,6 +1,6 @@
 const form = document.querySelector(".text");
 const context = document.querySelector(".textbox");
-const updateButton = document.querySelector(".update-btn");
+const updateButton = document.querySelector(".reviewUpdate-btn");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
