@@ -54,19 +54,19 @@ const getReviewDetail = async (req, res) => {
   const review_id = req.params.review_id;
   const [bookDataOne] = (await axios.get(`${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`)).data;
   const CommentList = (await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)).data;
-  console.log("CommentList", CommentList);
-//   const reviewupdata = .map((date) => {
-//     return {
-//       review_id : date.review_id,
-//       isbn13 : date.isbn13,
-//       cover: date.cover,
-//       rating: date.rating,
-//       context: date.context,
-//       uuid: date.uuid,
-//       createdAt: date.createdAt.split("T")[0],
-//       updatedAt:  date.updatedAt.split("T")[0],
-//       User: date.User
-//     }
+  //console.log("CommentList", CommentList);
+  // const reviewupdata = reviewList.map((date) => {
+  //   return {
+  //     review_id : date.review_id,
+  //     isbn13 : date.isbn13,
+  //     cover: date.cover,
+  //     rating: date.rating,
+  //     context: date.context,
+  //     uuid: date.uuid,
+  //     createdAt: date.createdAt.split("T")[0],
+  //     updatedAt:  date.updatedAt.split("T")[0],
+  //     User: date.User
+  //   }
  
 //  })
   

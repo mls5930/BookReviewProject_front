@@ -52,7 +52,17 @@ const getCommunity = async (req, res) => {
     try {
       const response = await fetch(`${BACK_URL}/community/list`);
       const communitiesData = await response.json();
-      res.render(viewHtml + "community.html", { communitiesData });
+      const dateupdata = communitiesData.map((date) =>{
+        return {
+          community_id : date.community_id,
+          context: date.context,
+          createdAt: date.createdAt.split("T")[0]
+        }
+     
+     })
+      console.log(dateupdata);
+      
+      res.render(viewHtml + "community.html", {communitiesData:dateupdata } );
     } catch (error) {
       res.render(viewHtml + "community.html", { communitiesData: [] });
     }
