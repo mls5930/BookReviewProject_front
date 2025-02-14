@@ -28,7 +28,7 @@
                   placeholder="리뷰하고 싶은 책을 검색해 보세요!"
                 />
                 <button type="submit">
-                  <img src="img/readingGlasses.png" />
+                  <img src="/img/readingGlasses.png" />
                 </button>
               </form>
             </div>
@@ -98,8 +98,8 @@
                 art="비어있는 북마크 이미지"
               />
             </a>
-            <div id="kakaoNickname">{{bookData.User.nickname}}</div>
           </aside>
+          <div id="loginUser">{{user.nickname}}</div>
           <article id="attribute">
             <div class="bookReview">
               <div class="write">{{bookData.context}}</div>
@@ -112,7 +112,7 @@
                       alt=""
                     />
                   </a>
-                  <div>{{bookData.User.nickname}}</div>
+                  <div id="kakaoNickname">{{bookData.User.nickname}}</div>
                 </div>
                 <div class="date">{{bookData.updatedAt}}</div>
               </div>
@@ -210,7 +210,7 @@
             <p>유효기간: 2025-02-01 ~ 2026-02-04</p>
           </ul>
         </div>
-        <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+        <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
       </div>
     </div>
     <script src="/js/reviewDelete.js"></script>

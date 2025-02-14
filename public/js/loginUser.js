@@ -1,5 +1,3 @@
-console.log("script 입장");
-
 document.addEventListener("DOMContentLoaded", function () {
   const loginUser = document.querySelector("#loginUser");
   const writeBtn = document.querySelector(".commentary_btn");
