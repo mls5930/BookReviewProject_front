@@ -21,6 +21,7 @@
 /* 생성 */
 .BookreviewBox > .review_content {
   cursor: pointer;
+  font-weight: 600;
 }
 
 /* class 이름 변경 .imgBox => user_box */
@@ -56,8 +57,8 @@
   text-decoration: none;
   display: block;
   overflow: hidden;
-  white-space: nowrap; 
-  text-overflow: ellipsis; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
   line-height: 1.5em;
   max-height: 3em;
   width: 700px;
@@ -65,7 +66,6 @@
 }
 
 .commentwrite.expanded {
-  white-space: normal; 
-  max-height: none; 
+  white-space: normal;
+  max-height: none;
 }
-
