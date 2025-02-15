@@ -76,7 +76,7 @@
                     <div>
                         <img class="mypoto" src="{{user.thumbnail}}" ait="#">
                     </div>
-                    <div class="nikname">{{user.nickname}}</div>
+                    <div class="nickname">{{user.nickname}}</div>
                     <a href="/mybookmark" class="profileBtn">내 서재</a>
                     <div class="leftBottom">
                         <div>
@@ -103,17 +103,17 @@
                                 </div>
                                 <div class="email">
                                     <div>이메일</div>
-                                    <form class="modifyform" id="emailModify" method="post" action="http://localhost:3000/user/update">
-                                        <input type="text" name="title" placeholder="이메일을 수정할 수 있습니다!" value="{{userInfo.email}}">
-                                        <button type="submit">이메일 수정</button>
-                                    </form>
+                                    <div class="emailModify">
+                                        <input type="text" id="emailInput" placeholder="이메일을 입력해주세요" value="{{userInfo.email}}">
+                                        <button id="emailModifyBtn">이메일 수정</button>
+                                    </div>
                                 </div>
                                 <div class="Introduce">
                                     <div>자기소개</div>
-                                    <form class="modifyform" id="introduceModify" method="post" action="http://localhost:3000/modity/myIntroduce">
-                                        <input type="text" name="myIntroduce" placeholder="자기소개를 수정할 수 있습니다!" value="{{userInfo.introductions}}">
-                                        <button type="submit">자기소개 수정</button>
-                                    </form>
+                                    <div class="introduceModify">
+                                        <input type="text" id="introduceInput" placeholder="자기소개를 입력해주세요" value="{{userInfo.introductions}}">
+                                        <button id="introduceModifyBtn">자기소개 수정</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
             </div>
         </div>
         <div id="topbutton">
-            <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
+            <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png"></a>
         </div>
         <div id="footer">
             <div class="footerbox">
@@ -188,10 +188,11 @@
             </div>
         </div>
     </dialog>
-    <script src="/js/loginPopup.js"></script>
+    <!-- <script src="/js/loginPopup.js"></script> -->
     <script src="/js/userInfoButton.js"></script>
-    <script src="/js/emailModify.js"></script>
-    <script src="/js/introduceModify.js"></script>
+    <script src="/js/userInfoModify.js"></script>
+    <!-- <script src="/js/emailModify.js"></script> -->
+    <!-- <script src="/js/introduceModify.js"></script> -->
 
 </body>
 </html>
