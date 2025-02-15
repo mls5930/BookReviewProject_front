@@ -54,4 +54,4 @@
    setInterval(() => {
        currentIndex = (currentIndex + 1) % totalItems;
        renderSlides();
-   }, 3000);
+   }, 5000);

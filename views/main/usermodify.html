@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>usermodify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/maincss/header.css">
     <link rel="stylesheet" href="/css/usermodify.css">
     <link rel="stylesheet" href="/css/maincss/ad.css">
@@ -100,14 +103,14 @@
                                 </div>
                                 <div class="email">
                                     <div>이메일</div>
-                                    <form class="modifyform" method="post" action="/modity/email">
+                                    <form class="modifyform" id="emailModify" method="post" action="http://localhost:3000/user/update">
                                         <input type="text" name="title" placeholder="이메일을 수정할 수 있습니다!" value="{{userInfo.email}}">
                                         <button type="submit">이메일 수정</button>
                                     </form>
                                 </div>
                                 <div class="Introduce">
                                     <div>자기소개</div>
-                                    <form class="modifyform" method="post" action="/modity/myIntroduce">
+                                    <form class="modifyform" id="introduceModify" method="post" action="http://localhost:3000/modity/myIntroduce">
                                         <input type="text" name="myIntroduce" placeholder="자기소개를 수정할 수 있습니다!" value="{{userInfo.introductions}}">
                                         <button type="submit">자기소개 수정</button>
                                     </form>
@@ -187,5 +190,8 @@
     </dialog>
     <script src="/js/loginPopup.js"></script>
     <script src="/js/userInfoButton.js"></script>
+    <script src="/js/emailModify.js"></script>
+    <script src="/js/introduceModify.js"></script>
+
 </body>
 </html>

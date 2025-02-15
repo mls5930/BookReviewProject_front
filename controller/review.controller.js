@@ -85,14 +85,18 @@ const getReviewDetail = async (req, res) => {
   });
 };
 
-// 감상문 수정 페이지 요청
 const getReviewModify = async (req, res) => {
-    //const review_id = req.params.review_id;
-    const review_id = req.params.review_id;
-    const {isbn13} = req.query;
-    const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data;
-    res.render(viewHtml + "reviewModify.html", { bookData: bookDataOne , user:req.user });
+  const review_id = req.params.review_id;
+  const { nickname } = req.query;
+  const [bookDataOne] = (
+    await axios.get(
+      `${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`
+    )
+  ).data;
+
+  res.render(viewHtml + "reviewModify.html", { bookData: bookDataOne, user:req.user });
 };
+
 
 const deleteReview = async (req, res) => {
   const review_id = req.params.review_id;
