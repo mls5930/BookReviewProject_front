@@ -69,6 +69,10 @@
   height: 30px;
 }
 
+#loginUser {
+  display: none;
+}
+
 #attribute {
   display: flex;
   flex-direction: column;
@@ -132,6 +136,10 @@
   cursor: pointer;
 }
 
+#loginUser {
+  display: none;
+}
+
 /* BTN 이름 변경 후 새로 만듦 */
 #attribute > #content > a > .commentary_btn {
   font-size: 16px;
@@ -141,7 +149,7 @@
   border: none;
   border-radius: 5px;
   padding: 6px;
-  border: none;
+  cursor: pointer;
 }
 
 .btnImg {

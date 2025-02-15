@@ -1,30 +1,22 @@
-// Cookie에서 JWT_Token 가져옴
-function getNickname() {
-  const token = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("JWT_Token="))
-    ?.split("=")[1];
-
-  if (!token) return null;
-
-  //   JWT_Token payload 디코딩해서 nickname 가져옴
-  try {
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    return payload.nickname;
-  } catch (error) {
-    console.error("토큰 오류:", error);
-    return null;
-  }
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-  const userNickname = getNickname(); // Cookie에서 가져온 JWT_Token nickname
-  const reviewNickname = "{{bookData.User.nickname}}"; // backend에서 받아온 nickname
-  //   const userNickname = "kim";
-  //   const reviewNickname = "kim";
+  const kakaoNickname = document.querySelector("#kakaoNickname");
+  const loginUser = document.querySelector("#loginUser");
+  const updateBtn = document.querySelector(".update-btn");
+
+  if (!kakaoNickname || !loginUser || !updateBtn) {
+    console.error("필요한 요소를 찾을 수 없음");
+    return;
+  }
+
+  const userNickname = loginUser.innerHTML.trim(); // Cookie에서 가져온 JWT_Token nickname
+  const reviewNickname = kakaoNickname.innerHTML.trim(); // backend에서 받아온 nickname
 
   //   nickname 일치할 경우에만 버튼 보여주기
-  if (userNickname && userNickname === reviewNickname) {
-    document.querySelector(".update-btn").style.display = "flex";
+  if (userNickname === reviewNickname) {
+    console.log("작성자 본인 감상문 => 버튼 표시");
+    updateBtn.style.display = "flex";
+  } else {
+    console.log("본인 감상문이 아님 => 버튼 숨김");
+    updateBtn.style.display = "none";
   }
 });
