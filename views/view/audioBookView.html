@@ -104,8 +104,8 @@
                 />
               </button>
               <div class="book_btn">
-                {% if true %}
-                <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                {% if not bookmark %}
+                <a  href="http://localhost:3000/bookmark/setBookmark/2?value=1&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}&cover={{bookData.cover}}">
                   <!-- 이미지 변경 -->
                   <img
                     class="bookmark-btn"
@@ -114,7 +114,7 @@
                   >
                 </a>
                 {% else %}
-                <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <a href="http://localhost:3000/bookmark/delbookmark/2?value=0&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}">
                   <!-- 이미지 변경 -->
                   <img
                     class="bookmark-btn"

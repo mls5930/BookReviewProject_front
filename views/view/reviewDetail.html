@@ -95,10 +95,9 @@
               <img src="{{ bookData.cover }}" />
             </div>
             <div class="book_btn">
-              {% if true %}
+              {% if not bookmark %}
               <a
-                href="http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}"
-              >
+              href="http://localhost:3000/bookmark/setBookmark/1?value=1&review_id={{bookData.review_id}}&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}&cover={{bookData.cover}}"              >
                 <!-- 이미지 변경 -->
                 <img
                   class="bookmark-btn"
@@ -108,7 +107,7 @@
               </a>
               {% else %}
               <a
-                href="http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}"
+              href="http://localhost:3000/bookmark/delbookmark/1?value=0&review_id={{bookData.review_id}}&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}"
               >
                 <!-- 이미지 변경 -->
                 <img
@@ -181,7 +180,7 @@
                     </a>
                     <div>{{item.User.nickname}}</div>
                   </div>
-                  <div class="date">{{item.updatedAt}}</div>
+                  <div class="date">{{bookData.updatedAt}}</div>
                 </div>
               </div>
             </div>
@@ -241,6 +240,7 @@
         <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
       </div>
     </div>
+    <script src="/js/userInfoButton.js"></script>
     <script src="/js/reviewDelete.js"></script>
     <script src="/js/userReviewBtn.js"></script>
     <script src="/js/loginUser.js"></script>
