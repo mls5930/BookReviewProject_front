@@ -93,22 +93,26 @@
             </div>
             <div class="book_btn">
               {% if true %}
-              <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+              <a
+                href="http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}"
+              >
                 <!-- 이미지 변경 -->
                 <img
                   class="bookmark-btn"
                   src="/img/bookmark_empty_img.png"
                   art="비어있는 북마크 이미지"
-                >
+                />
               </a>
               {% else %}
-              <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+              <a
+                href="http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}"
+              >
                 <!-- 이미지 변경 -->
                 <img
                   class="bookmark-btn"
                   src="/img/booktmark_full_img.png"
                   art="북마크 이미지"
-                >
+                />
               </a>
               {% endif %}
             </div>
@@ -152,9 +156,16 @@
               action="http://localhost:3000/comment/{{bookData.review_id}}"
               method="post"
             >
-              <textarea name="context"></textarea>
-              <input type="text" name="nickname" value="{{user.nickname}}" hidden />
-              <button type="submit" class="write-btn">댓글<br />작성</button>
+              <textarea name="context" class="context"></textarea>
+              <input
+                type="text"
+                name="nickname"
+                value="{{user.nickname}}"
+                hidden
+              />
+              <button type="submit" class="commentary-btn">
+                댓글<br />작성
+              </button>
             </form>
             {% for item in CommentList %}
             <div class="showcomment">
@@ -229,5 +240,6 @@
     </div>
     <script src="/js/reviewDelete.js"></script>
     <script src="/js/userReviewBtn.js"></script>
+    <script src="/js/loginUser.js"></script>
   </body>
 </html>

@@ -73,8 +73,8 @@
                 </div>
                 <div class="community-area">
                     <form class="community-write" action="http://localhost:3000/community/write" method="post">
-                        <textarea name="context" value="" rows="4" maxlength="100" placeholder="자유롭게 대화해요"></textarea>
-                        <button class="write-btn" type="submit" >작성</button>
+                        <textarea name="context" class="context" value="" rows="4" maxlength="100" placeholder="자유롭게 대화해요"></textarea>
+                        <button class="commentary-btn" type="submit" >작성</button>
                     </form>
                     <div class="community-list">
                         {% for item in communitiesData %}
@@ -88,6 +88,7 @@
 
             </div>
         </div> 
+        <div id="loginUser">{{loginUser}}</div>
     <div id="topbutton">
         <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png"></a>
     </div>
@@ -116,12 +117,13 @@
             <ul class="footerUL">
                 <li><a><img width="40px" height="40px"></a></li>
                 <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
-                <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
-                <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
+                <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
                 <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
             </ul>
         </div>
-        <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+        <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
     </div>
+    <script src="/js/loginUser.js"></script>
 </body>
 </html>
