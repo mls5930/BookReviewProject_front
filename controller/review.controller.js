@@ -14,6 +14,7 @@ const getBookReview = async (req, res) => {
   const reviewList = (
     await axios.get(`${BACK_URL}/review/ReviewAll?isbn13=${isbn13}`)
   ).data;
+ 
    const reviewupdata = reviewList.map((date) => {
       return {
         review_id : date.review_id,
@@ -26,7 +27,6 @@ const getBookReview = async (req, res) => {
         updatedAt:  date.updatedAt.split("T")[0],
         User: date.User
       }
-   
    })
   res.render(viewHtml + "bookView.html", {
     bookData: bookDataOne,
@@ -42,7 +42,6 @@ const getReviewWrite = async (req, res) => {
 };
 
 const getReviewList = async (req, res) => {
-  //감상문 전체 검색
   const bookDataView = await axios.get(`${BACK_URL}/review`);
   const bookDataViews = bookDataView.data;
   res.render(viewHtml +'reviewList.html', {listBook : bookDataViews} );
@@ -50,28 +49,29 @@ const getReviewList = async (req, res) => {
 
 const getReviewDetail = async (req, res) => {
   const user = req.user;
-  const {nickname} = req.query;
+  const { nickname } = req.query;
   const review_id = req.params.review_id;
   const [bookDataOne] = (await axios.get(`${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`)).data;
+
+  const bookdate = {
+    review_id: bookDataOne.review_id,
+    isbn13: bookDataOne.isbn13,
+    cover: bookDataOne.cover,
+    rating: bookDataOne.rating,
+    context: bookDataOne.context,
+    uuid: bookDataOne.uuid,
+    createdAt: bookDataOne.createdAt.split("T")[0], 
+    updatedAt: bookDataOne.updatedAt.split("T")[0],  
+    User: bookDataOne.User,
+  };
+
   const CommentList = (await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)).data;
-  //console.log("CommentList", CommentList);
-  // const reviewupdata = reviewList.map((date) => {
-  //   return {
-  //     review_id : date.review_id,
-  //     isbn13 : date.isbn13,
-  //     cover: date.cover,
-  //     rating: date.rating,
-  //     context: date.context,
-  //     uuid: date.uuid,
-  //     createdAt: date.createdAt.split("T")[0],
-  //     updatedAt:  date.updatedAt.split("T")[0],
-  //     User: date.User
-  //   }
- 
-//  })
-  
-  res.status(201).render(viewHtml + "reviewDetail.html", { bookData: bookDataOne ,
-      CommentList:CommentList, user:user});
+
+  res.status(201).render(viewHtml + "reviewDetail.html", { 
+    bookData: bookdate, 
+    CommentList: CommentList, 
+    user: user 
+  });
 };
 
 // 감상문 수정 페이지 요청

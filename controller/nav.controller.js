@@ -62,7 +62,7 @@ const getCommunity = async (req, res) => {
      })
       console.log(dateupdata);
       
-      res.render(viewHtml + "community.html", {communitiesData:dateupdata } );
+      res.render(viewHtml + "community.html", {communitiesData:dateupdata} );
     } catch (error) {
       res.render(viewHtml + "community.html", { communitiesData: [] });
     }
