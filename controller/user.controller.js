@@ -41,11 +41,20 @@ const getUserPreview = async (req, res) => {
 
     const count = {
       count: bookData[0].reviewCount
-      }
+    }
+
+    const reviewData = bookData.map((one) => {
+      return {
+        ...one,
+        createdAt: one.createdAt.split("T")[0],  
+        updatedAt: one.updatedAt.split("T")[0], 
+      };
+    });
+    
     const mybookmark = (await axios.get(`${BACK_URL}/bookmark/mybookmark?nickname=${nickname}`)).data;
     res.render(mainHtml + `myreview.html`, {
       userInfo : userInfo,
-      myReviewData : bookData.length ? bookData : false,
+      myReviewData : reviewData.length ? reviewData : false,
       reviewCount : count,
       mybookmark : mybookmark,
       user: req.user

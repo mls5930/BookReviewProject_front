@@ -95,9 +95,9 @@
             </div>
             <!-- class 이름 추가 -->
             <div class="book_btn">
-              {% if true %}
+              {% if not bookmark %}
               <a
-                href="http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}"
+                href="http://localhost:3000/bookmark/setBookmark/0?value=1&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}&cover={{bookData.cover}}"
               >
                 <!-- 이미지 변경 -->
                 <img
@@ -108,7 +108,7 @@
               </a>
               {% else %}
               <a
-                href="http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}"
+                href="http://localhost:3000/bookmark/delbookmark/0?value=0&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}"
               >
                 <!-- 이미지 변경 -->
                 <img
@@ -142,7 +142,7 @@
                   <a
                     class="commentwrite"
                     id="commentwritey"
-                    href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}"
+                    href="/reviewdetail/{{item.review_id}}?nickname={{item.User.nickname}}&isbn13={{bookData.isbn13}}"
                   >
                     {{item.context}}
                   </a>

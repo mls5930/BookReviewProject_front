@@ -15,7 +15,20 @@ const getBookReview = async (req, res) => {
   const reviewList = (
     await axios.get(`${BACK_URL}/review/ReviewAll?isbn13=${isbn13}`)
   ).data;
- 
+
+  let isbookmark = false;
+  if(loginUser)
+  {
+      const checkBookmark = (await axios.get(`${BACK_URL}/bookmark/check/${isbn13}?nickname=${loginUser}`)).data 
+      if(checkBookmark){
+        if (checkBookmark.isbookmark === 1) {
+          isbookmark = true;
+        } else if (checkBookmark.isbookmark === null) {
+          isbookmark = false;
+        }
+      }
+  }
+
    const reviewupdata = reviewList.map((date) => {
       return {
         review_id : date.review_id,
@@ -33,7 +46,8 @@ const getBookReview = async (req, res) => {
     bookData: bookDataOne,
     ReviewData: reviewupdata,
     loginUser: loginUser,
-    user: req.user
+    user: req.user,
+    bookmark :isbookmark
   });
 };
 
@@ -42,9 +56,24 @@ const getReviewWrite = async (req, res) => {
   const isbn13 = req.params.isbn13;
   const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`))
     .data;
+    let isbookmark = false;
+
+  if(user)
+  {
+      const checkBookmark = (await axios.get(`${BACK_URL}/bookmark/check/${isbn13}?nickname=${user.nickname}`)).data 
+      if(checkBookmark){
+        if (checkBookmark.isbookmark === 1) {
+          isbookmark = true;
+        } else if (checkBookmark.isbookmark === null) {
+          isbookmark = false;
+        }
+      }
+  }
+
   res.render(viewHtml + "reviewWrite.html", {
     bookData: bookDataOne,
     user: user,
+    bookmark: isbookmark
   });
 };
 
@@ -58,8 +87,21 @@ const getReviewList = async (req, res) => {
 
 const getReviewDetail = async (req, res) => {
   const user = req.user;
-  const { nickname } = req.query;
+  const { nickname, isbn13 } = req.query;
   const review_id = req.params.review_id;
+
+  let isbookmark = false;
+  if(user)
+  {
+      const checkBookmark = (await axios.get(`${BACK_URL}/bookmark/check/${isbn13}?nickname=${user.nickname}`)).data 
+      if(checkBookmark){
+        if (checkBookmark.isbookmark === 1) {
+          isbookmark = true;
+        } else if (checkBookmark.isbookmark === null) {
+          isbookmark = false;
+        }
+      }
+  }
 
   const bookData = (await axios.get(`${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`)).data;
 
@@ -74,6 +116,7 @@ const getReviewDetail = async (req, res) => {
       createdAt: one.createdAt.split("T")[0],  
       updatedAt: one.updatedAt.split("T")[0],  
       User: one.User,
+
     };
   });
   const CommentList = (await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)).data;
@@ -81,7 +124,8 @@ const getReviewDetail = async (req, res) => {
   res.status(201).render(viewHtml + "reviewDetail.html", { 
     bookData: bookdate, 
     CommentList: CommentList, 
-    user: user 
+    user: user,
+    bookmark: isbookmark
   });
 };
 

@@ -101,7 +101,9 @@
                     <div class="bookData">
                         {% for bookData in mybookData%}
                         <div class="bookMarkBox">
-                            <img src="{{bookData.cover}}">
+                            <a href =/bookview/{{bookData.isbn13}}>
+                                <img class="img_cover" style="width: 150px; height: 200px;" src="{{bookData.cover}}"> 
+                            </a>
                             <h4 class="title">{{bookData.title}}</h4>
                             <h4 class="author">{{bookData.author}}</h4>
                         </div>
