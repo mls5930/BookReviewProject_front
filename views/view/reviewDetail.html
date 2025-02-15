@@ -28,17 +28,28 @@
                   placeholder="리뷰하고 싶은 책을 검색해 보세요!"
                 />
                 <button type="submit">
-                  <img src="img/readingGlasses.png" />
+                  <img src="/img/readingGlasses.png" />
                 </button>
               </form>
             </div>
             {% if user %}
             <div class="loginHeader">
-              <div>
+              <a href="/mybookmark">
                 <img class="loginLogo" src="/img/bookmark_empty_img.png" />
-              </div>
+              </a>
               <div>
                 <img class="loginThumbnail" src="{{user.thumbnail}}" />
+              </div>
+              <div class="userThumbInfo" style="display: none">
+                <div class="userInfoCloseBtn">✖</div>
+                <a href="/mybookmark">북마크</a>
+                <a href="/usermodify">내정보</a>
+                <a href="/myreview">감상문</a>
+                <a
+                  class="logout"
+                  href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}"
+                  >로그아웃</a
+                >
               </div>
             </div>
             {% else %}
@@ -102,6 +113,7 @@
               {% endif %}
             </div>
           </aside>
+          <div id="loginUser">{{user.nickname}}</div>
           <article id="attribute">
             <div class="bookReview">
               <div class="write">{{bookData.context}}</div>
@@ -114,7 +126,7 @@
                       alt=""
                     />
                   </a>
-                  <div>{{bookData.User.nickname}}</div>
+                  <div id="kakaoNickname">{{bookData.User.nickname}}</div>
                 </div>
                 <div class="date">{{bookData.updatedAt}}</div>
               </div>
@@ -150,7 +162,7 @@
                 <div class="commentwrite">{{item.context}}</div>
                 <div class="writebox">
                   <div>
-                    <a href="#">
+                    <a>
                       <img class="img" src="{{item.User.thumbnail}}" alt="" />
                     </a>
                     <div>{{item.User.nickname}}</div>
@@ -212,7 +224,7 @@
             <p>유효기간: 2025-02-01 ~ 2026-02-04</p>
           </ul>
         </div>
-        <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+        <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
       </div>
     </div>
     <script src="/js/reviewDelete.js"></script>
