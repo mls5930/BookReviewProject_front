@@ -78,16 +78,26 @@
             <div class="bookImg">
               <img src="{{ bookData.cover }}" />
             </div>
-            <!-- class 이름 추가 -->
             <div class="book_btn">
-              <button>
+              {% if true %}
+              <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
                 <!-- 이미지 변경 -->
                 <img
                   class="bookmark-btn"
                   src="/img/bookmark_empty_img.png"
                   art="비어있는 북마크 이미지"
-                />
-              </button>
+                >
+              </a>
+              {% else %}
+              <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/booktmark_full_img.png"
+                  art="북마크 이미지"
+                >
+              </a>
+              {% endif %}
             </div>
           </aside>
         <article id="attribute">

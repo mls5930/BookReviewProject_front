@@ -91,13 +91,27 @@
             <div class="bookImg">
               <img src="{{ bookData.cover }}" />
             </div>
-            <a class="book_btn">
-              <img
-                class="bookmark-btn"
-                src="/img/bookmark_empty_img.png"
-                art="비어있는 북마크 이미지"
-              />
-            </a>
+            <div class="book_btn">
+              {% if true %}
+              <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/bookmark_empty_img.png"
+                  art="비어있는 북마크 이미지"
+                >
+              </a>
+              {% else %}
+              <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/booktmark_full_img.png"
+                  art="북마크 이미지"
+                >
+              </a>
+              {% endif %}
+            </div>
           </aside>
           <div id="loginUser">{{user.nickname}}</div>
           <article id="attribute">
@@ -139,7 +153,7 @@
               method="post"
             >
               <textarea name="context"></textarea>
-              <input type="text" name="nickname" value="kim" hidden />
+              <input type="text" name="nickname" value="User.nickname" hidden />
               <button type="submit" class="write-btn">댓글<br />작성</button>
             </form>
             {% for item in CommentList %}
