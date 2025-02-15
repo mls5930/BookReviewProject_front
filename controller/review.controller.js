@@ -63,7 +63,7 @@ const getReviewDetail = async (req, res) => {
 
   const bookData = (await axios.get(`${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`)).data;
 
-  const bookdate = bookData.map((one) => {
+  const [bookdate] = bookData.map((one) => {
     return {
       review_id: one.review_id,
       isbn13: one.isbn13,
@@ -76,7 +76,6 @@ const getReviewDetail = async (req, res) => {
       User: one.User,
     };
   });
-
   const CommentList = (await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)).data;
 
   res.status(201).render(viewHtml + "reviewDetail.html", { 
