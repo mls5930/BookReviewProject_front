@@ -36,7 +36,7 @@
 }
 
 #content > #container > .community-area > .community-write > textarea {
-  width: 85%;
+  width: 88%;
   height: 90px;
   padding: 15px 10px;
   resize: none;
@@ -45,9 +45,12 @@
   border-radius: 5px;
 }
 
-#content > #container > .community-area > .community-write > .write-btn {
+#content > #container > .community-area > .community-write > .commentary-btn {
   width: 10%;
   height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
   font-weight: 700;
   color: white;
@@ -97,4 +100,8 @@
   display: flex;
   justify-content: end;
   font-size: 14px;
+}
+
+#loginUser {
+  display: none;
 }

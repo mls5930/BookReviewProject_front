@@ -1,8 +1,9 @@
 const bookId = document.querySelector("#bookId");
+const userNickname = document.querySelector("#kakaoNickname");
 
 document.querySelector(".reviewDelete").addEventListener("click", async (e) => {
   const review_id = e.target.dataset.reviewId;
-  const nickname = "kim"; // 현재 로그인한 사용자의 닉네임 (변경 필요)
+  const nickname = userNickname.innerHTML;
 
   const response = await fetch(`/review/${review_id}?nickname=${nickname}`, {
     method: "DELETE",

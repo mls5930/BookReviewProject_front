@@ -59,7 +59,6 @@
 
 /* 생성 */
 
-
 .bookmark-btn {
   width: 20px;
   height: 30px;
@@ -71,7 +70,8 @@
   height: 30px;
 }
 
-#loginUser {
+#loginUser,
+#userId {
   display: none;
 }
 
@@ -138,14 +138,12 @@
   cursor: pointer;
 }
 
-#loginUser {
-  display: none;
-}
-#attribute > #content > a{
+#attribute > #content > a {
   text-decoration: none;
 }
+
 /* BTN 이름 변경 후 새로 만듦 */
-#attribute > #content > a > .commentary_btn {
+#attribute > #content > a > .commentary-btn {
   font-size: 16px;
   color: white;
   font-weight: 700;

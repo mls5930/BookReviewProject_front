@@ -1,11 +1,12 @@
 const form = document.querySelector(".text");
 const context = document.querySelector(".textbox");
 const updateButton = document.querySelector(".reviewUpdate-btn");
+const userNickname = document.querySelector("#userId");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const review_id = updateButton.dataset.reviewId;
-  const nickname = "kim"; // 현재 로그인한 사용자의 닉네임 (변경 필요)
+  const nickname = userNickname.innerHTML;
 
   try {
     const response = await fetch(`http://localhost:3000/review/${review_id}`, {
