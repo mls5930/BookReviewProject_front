@@ -4,11 +4,11 @@ const {
   getSearchBook,
   getCommunity,
   getBookMark,
+  getBookList
 } = require("../controller/nav.controller");
 
 const {
   getUserInfo,
-  getUserPreview,
   getUserModify,
 } = require("../controller/user.controller");
 
@@ -24,6 +24,7 @@ const {
   getReviewList,
   getReviewDetail,
   getReviewModify,
+  deleteReview,
 } = require("../controller/review.controller");
 
 const router = express.Router();
@@ -31,7 +32,7 @@ const path = require("path");
 const viewHtml = path.join(__dirname, `../views/view/`);
 require("dotenv").config();
 const { bookData } = require("../public/js/main");
-const {  authMe } = require("../middleware/middleware");
+const { authMe } = require("../middleware/middleware");
 
 const HOST = "https://kauth.kakao.com";
 const REST_API_KEY = process.env.API_KEY;
@@ -43,36 +44,25 @@ router.get("/login/page", async (req, res) => {
 });
 
 //메인 페이지
-router.get('/' , authMe, getList);
+router.get("/", authMe, getList);
 
 //내 북마크
-router.get("/mybookmark",authMe, getUserInfo);
+router.get("/mybookmark", authMe, getUserInfo);
 
 //내 감상문
-router.get("/myreview", authMe, getUserPreview);
 
 //내 정보
-router.get("/usermodify",authMe, getUserModify);
+router.get("/usermodify", authMe, getUserModify);
 
 // 오디오
 router.get("/audiolist", authMe, getAudioList);
 
 router.get("/audioview/:isbn13", authMe, getAudioView);
 
-router.get("/audiowrite", authMe ,getAudioWrite);
+router.get("/audiowrite", authMe, getAudioWrite);
 
 // 책
-router.get("/booklist", authMe, (req, res) => {
-  const listBook = bookData.map((book) => {
-    return {
-      isbn13: book.isbn13,
-      cover: book.cover,
-      title: book.title.split("-")[0],
-      author: book.author.split(",")[0],
-    };
-  });
-  res.render(viewHtml + "bookList.html", { listBook, user:req.user });
-});
+router.get("/booklist", authMe, getBookList);
 
 // 책 검색
 router.get("/booksearch", authMe, getSearchBook);
@@ -88,11 +78,15 @@ router.get("/reviewlist", authMe, getReviewList);
 
 router.get("/reviewdetail/:review_id", authMe, getReviewDetail);
 
-//내 리뷰 수정
-router.get("/reviewmodify/:review_id", authMe, getReviewModify);
+// 감상문 수정
+router.get("/reviewModify/:review_id", authMe, getReviewModify);
+
+// 감상문 삭제
+router.delete("/review/:review_id", deleteReview);
 
 router.get("/community", authMe, getCommunity);
 
 router.get("/bookmark", authMe, getBookMark);
+
 
 module.exports = router;

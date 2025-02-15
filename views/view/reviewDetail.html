@@ -12,49 +12,69 @@
   <body>
     <div id="mainPage">
       <div id="header">
-          <div class="header-inner">
-              <div class="headerBox">
-                  <a href="/">
-                      <img src="/img/logo4.png">
-                  </a>
-                  <div class="search" tabindex="0">
-                      <form class="search_form" action="/booksearch" method="get">
-                          <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
-                          <button type="submit"><img src="img/readingGlasses.png"></button>
-                      </form>
-                  </div>
-                  {% if user %}
-                  <div class="loginHeader">
-                      <div>
-                          <img class="loginLogo" src="/img/bookmark_empty_img.png">
-                      </div>
-                      <div>
-                          <img class="loginThumbnail" src="{{user.thumbnail}}">
-                      </div>
-                  </div>
-                  {% else %}
-                  <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
-                  {% endif %}
+        <div class="header-inner">
+          <div class="headerBox">
+            <a href="/">
+              <img src="/img/logo4.png" />
+            </a>
+            <div class="search" tabindex="0">
+              <form class="search_form" action="/booksearch" method="get">
+                <input
+                  class="search_bar"
+                  id="input"
+                  name="query"
+                  value=""
+                  type="text"
+                  placeholder="리뷰하고 싶은 책을 검색해 보세요!"
+                />
+                <button type="submit">
+                  <img src="/img/readingGlasses.png" />
+                </button>
+              </form>
+            </div>
+            {% if user %}
+            <div class="loginHeader">
+              <a href="/mybookmark">
+                <img class="loginLogo" src="/img/bookmark_empty_img.png" />
+              </a>
+              <div>
+                <img class="loginThumbnail" src="{{user.thumbnail}}" />
               </div>
-              <div id="inner">
-                  <div class="innerbox">
-                      <ul class="banner">
-                          <li>
-                              <a href="/reviewlist">감상문</a>
-                          </li>
-                          <li>
-                              <a href="/booklist">책</a>
-                          </li>
-                          <li>
-                              <a href="/audiolist">오디오북</a>
-                          </li>
-                          <li>
-                              <a href="/community">커뮤니티</a>
-                          </li>
-                      </ul>
-                  </div>
+              <div class="userThumbInfo" style="display: none">
+                <div class="userInfoCloseBtn">✖</div>
+                <a href="/mybookmark">북마크</a>
+                <a href="/usermodify">내정보</a>
+                <a href="/myreview">감상문</a>
+                <a
+                  class="logout"
+                  href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}"
+                  >로그아웃</a
+                >
               </div>
+            </div>
+            {% else %}
+            <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
+            {% endif %}
           </div>
+          <div id="inner">
+            <div class="innerbox">
+              <ul class="banner">
+                <li>
+                  <a href="/reviewlist">감상문</a>
+                </li>
+                <li>
+                  <a href="/booklist">책</a>
+                </li>
+                <li>
+                  <a href="/audiolist">오디오북</a>
+                </li>
+                <li>
+                  <a href="/community">커뮤니티</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
       <main id="container">
         <div id="searchR">
@@ -63,7 +83,7 @@
             <span class="gray">></span>
             감상문 보기
             <span class="gray">></span>
-            <span class="blue">홍길동 님</span>
+            <span class="blue">{{bookData.User.nickname}}님의 글</span>
           </h3>
         </div>
         <section id="innerContainer">
@@ -71,16 +91,29 @@
             <div class="bookImg">
               <img src="{{ bookData.cover }}" />
             </div>
-            <!-- class 이름 추가 -->
-            <a>
-              <!-- 이미지 변경 -->
-              <img
-                class="bookmark-btn"
-                src="/img/bookmark_empty_img.png"
-                art="비어있는 북마크 이미지"
-              />
-            </a> 
+            <div class="book_btn">
+              {% if true %}
+              <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/bookmark_empty_img.png"
+                  art="비어있는 북마크 이미지"
+                >
+              </a>
+              {% else %}
+              <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/booktmark_full_img.png"
+                  art="북마크 이미지"
+                >
+              </a>
+              {% endif %}
+            </div>
           </aside>
+          <div id="loginUser">{{user.nickname}}</div>
           <article id="attribute">
             <div class="bookReview">
               <div class="write">{{bookData.context}}</div>
@@ -93,20 +126,35 @@
                       alt=""
                     />
                   </a>
-                  <div>{{bookData.User.nickname}}</div>
+                  <div id="kakaoNickname">{{bookData.User.nickname}}</div>
                 </div>
                 <div class="date">{{bookData.updatedAt}}</div>
               </div>
             </div>
+            <div class="update-btn">
+              <button
+                data-review-id="{{bookData.review_id}}"
+                class="reviewDelete"
+              >
+                삭제
+              </button>
+              <a
+                href="/reviewModify/{{bookData.review_id}}?nickname={{bookData.User.nickname}}"
+                class="reviewUpdate"
+              >
+                수정
+              </a>
+            </div>
             <div class="reviewLine"></div>
+            <div id="bookId">{{ bookData.isbn13 }}</div>
             <form
               class="textbox"
               action="http://localhost:3000/comment/{{bookData.review_id}}"
               method="post"
             >
               <textarea name="context"></textarea>
-              <input type="text" name="nickname" value="kim" hidden />
-              <button type="submit" class="write-btn">작 성</button>
+              <input type="text" name="nickname" value="User.nickname" hidden />
+              <button type="submit" class="write-btn">댓글<br />작성</button>
             </form>
             {% for item in CommentList %}
             <div class="showcomment">
@@ -114,7 +162,7 @@
                 <div class="commentwrite">{{item.context}}</div>
                 <div class="writebox">
                   <div>
-                    <a href="#">
+                    <a>
                       <img class="img" src="{{item.User.thumbnail}}" alt="" />
                     </a>
                     <div>{{item.User.nickname}}</div>
@@ -171,13 +219,15 @@
               <a><img width="40px" height="40px" /></a>
             </li>
             <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
-            <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
-            <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+            <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
+            <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
             <p>유효기간: 2025-02-01 ~ 2026-02-04</p>
           </ul>
         </div>
-        <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+        <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
       </div>
     </div>
+    <script src="/js/reviewDelete.js"></script>
+    <script src="/js/userReviewBtn.js"></script>
   </body>
 </html>

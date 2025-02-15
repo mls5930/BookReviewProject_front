@@ -26,11 +26,18 @@
                     </div>
                     {% if user %}
                     <div class="loginHeader">
-                        <div>
+                        <a href="/mybookmark">
                             <img class="loginLogo" src="/img/bookmark_empty_img.png">
-                        </div>
+                        </a>
                         <div>
                             <img class="loginThumbnail" src="{{user.thumbnail}}">
+                        </div>
+                        <div class="userThumbInfo" style="display:none">
+                            <div class="userInfoCloseBtn">✖</div>
+                            <a href="/mybookmark">북마크</a>
+                            <a href="/usermodify">내정보</a>
+                            <a href="/myreview">감상문</a>
+                            <a class="logout" href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}">로그아웃</a>
                         </div>
                     </div>
                     {% else %}
@@ -59,23 +66,23 @@
         </div>
         <div id="mymain">
             <div class="mypage">
-                <h3>받은아이디 의 서재</h3>
+                <h3>{{user.nickname}} 의 서재</h3>
             </div>
             <div class="profile">
                 <div class="left">
                     <div>
-                        <img class="mypoto" src="#" ait="#">
+                        <img class="mypoto" src="{{user.thumbnail}}" ait="#">
                     </div>
-                    <div class="nikname">받은아이디</div>
+                    <div class="nikname">{{user.nickname}}</div>
                     <a href="/mybookmark" class="profileBtn">내 서재</a>
                     <div class="leftBottom">
                         <div>
                             <div>북마크 수</div>
-                            <div>북마크</div>
+                            <div style="color: red;">( {{mybookmark.count}} )</div>
                         </div>
                         <div>
-                            <div>감상문 수 </div>
-                            <div>감상문</div>
+                            <div>감상문 수</div>
+                            <div style="color: red;">( {{reviewCount.count}} )</div>
                         </div>
                     </div>
                 </div>
@@ -89,19 +96,19 @@
                             <div class="modifyBox">
                                 <div class="name">
                                     <div>카카오 닉네임</div>
-                                    <p> {{bookdata.author}}</p> 
+                                    <p> {{user.nickname}}</p> 
                                 </div>
                                 <div class="email">
                                     <div>이메일</div>
-                                    <form class="modifyform" method="get" action="/modity/email">
-                                        <input type="text" name="title" placeholder="이메일을 수정할 수 있습니다!">
+                                    <form class="modifyform" method="post" action="/modity/email">
+                                        <input type="text" name="title" placeholder="이메일을 수정할 수 있습니다!" value="{{userInfo.email}}">
                                         <button type="submit">이메일 수정</button>
                                     </form>
                                 </div>
                                 <div class="Introduce">
                                     <div>자기소개</div>
-                                    <form class="modifyform" method="get" action="/modity/myIntroduce">
-                                        <input type="text" name="myIntroduce" placeholder="자기소개를 수정할 수 있습니다!">
+                                    <form class="modifyform" method="post" action="/modity/myIntroduce">
+                                        <input type="text" name="myIntroduce" placeholder="자기소개를 수정할 수 있습니다!" value="{{userInfo.introductions}}">
                                         <button type="submit">자기소개 수정</button>
                                     </form>
                                 </div>

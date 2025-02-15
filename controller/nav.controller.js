@@ -6,7 +6,7 @@ require('dotenv').config();
 const BACK_HOST = process.env.BACK_HOST;
 const BACK_HOST_PORT = process.env.BACK_HOST_PORT;
 const BACK_URL = `http://${BACK_HOST}:${BACK_HOST_PORT}`;
-
+const {bookData } = require("../public/js/main")
 //책 검색
 const getList = async(req, res) =>{
     //감상문 전체 검색
@@ -45,14 +45,24 @@ const getSearchBook = async (req, res) => {
       `${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`
     );
   }
-  res.render(viewHtml + "bookSearch.html", { listBook: bookDatalist.data });
+  res.render(viewHtml + "bookSearch.html", {result :query, listBook: bookDatalist.data });
 };
 
 const getCommunity = async (req, res) => {
     try {
       const response = await fetch(`${BACK_URL}/community/list`);
       const communitiesData = await response.json();
-      res.render(viewHtml + "community.html", { communitiesData });
+      const dateupdata = communitiesData.map((date) =>{
+        return {
+          community_id : date.community_id,
+          context: date.context,
+          createdAt: date.createdAt.split("T")[0]
+        }
+     
+     })
+      console.log(dateupdata);
+      
+      res.render(viewHtml + "community.html", {communitiesData:dateupdata} );
     } catch (error) {
       res.render(viewHtml + "community.html", { communitiesData: [] });
     }
@@ -72,4 +82,25 @@ const getBookMark = async (req, res) => {
     }
   }
 
-module.exports =  { getList, getSearchBook, getCommunity, getBookMark};
+  const getBookList = async (req, res) => {
+    try{
+      //책 신간 전체 리스트
+      const bookDatalist = await axios.get(`${BACK_URL}/view?QueryType=ItemNewSpecial&SearchTarget=Book&amout=10`);
+      bookDatalists = bookDatalist.data;
+  
+      const listBook = bookDatalists.map((book) => {
+        return {
+          title: book.title.split("-")[0],
+          cover: book.cover,
+          author: book.author.split(",")[0],
+          isbn13 : book.isbn13
+        };
+      });
+      res.render(viewHtml + "bookList.html", { listBook, user:req.user });
+    }catch (error) {
+      return res.status(401).send();
+    }
+  }
+  
+
+module.exports =  { getList, getSearchBook, getCommunity, getBookMark, getBookList};

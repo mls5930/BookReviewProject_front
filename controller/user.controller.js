@@ -8,60 +8,80 @@ const BACK_HOST_PORT = process.env.BACK_HOST_PORT;
 const BACK_URL = `http://${BACK_HOST}:${BACK_HOST_PORT}`;
 
 const getUserInfo = async (req, res) => {
+    const nickname = req.user.nickname;
     try {
       // 나중에 북마크 데이터 가져올거임 myBookMarkData
-      const mybookmark = await axios.get(`${BACK_URL}/review/list?nickname=${req.user.nickname}`, {
-        nickname: req.user.nickname
-      });
-      console.log(myReviewData);
-      res.render(mainHtml + `mypage.html`, {
-        myReviewData,
-        user: req.user
+      const mybookmark = (await axios.get(`${BACK_URL}/bookmark/mybookmark?nickname=${nickname}`)).data;
+      const bookDataOne = (await axios.get(`${BACK_URL}/review/list?nickname=${nickname}`)).data;
+      const bookMarkList = (await axios.get(`${BACK_URL}/bookmark/bookmarklist?nickname=${nickname}`)).data;
+      const count = {
+      count: bookDataOne[0].reviewCount
+      }
+
+      res.render(mainHtml + `mybookmark.html`, {
+        mybookmark : mybookmark,
+        user: req.user,
+        reviewCount : count,
+        mybookData : bookMarkList
       });
     } catch (error) {
       console.log(error);
-      throw new Error("에러임")
     }
-  };
+};
 
-  const getUserPreview = async (req, res) => {
-    try {
-      const bookData = await axios.get('http://localhost3000/bookList',{search:"비트코인"})
-      const mybookData = bookData.map((book) => {
-        return {
-          title: book.title.split("-")[0],
-          cover: book.cover,
-          author: book.author.split(",")[0],
-          pubDate: book.pubDate,
-        };
-      });
-      res.render(mainHtml + `myreview.html`, {
-        mybookData,
-      });
-    } catch (error) {
-      console.log(error);
-      throw new Error("에러 발생");
-    }
-  }
+const getUserPreview = async (req, res) => {
+  const nickname = req.user.nickname;
 
-  const getUserModify = async (req, res) => {
-    try {
-      const [userInfo] = await axios.get(`${BACK_URL}/myInfo`, {
-        data: {
-          nickname: req.user.nickname
-        }
-      }).data
-      console.log("userInfo", userInfo);
+  try {
+    const bookData = (await axios.get(`${BACK_URL}/review/list?nickname=${nickname}`)).data;
+
+    const userInfo = (await axios.post(`${BACK_URL}/user/userInfo`,{
+      nickname: nickname //req.user.nickname
+      })).data
+
+    const count = {
+      count: bookData[0].reviewCount
+      }
+    const mybookmark = (await axios.get(`${BACK_URL}/bookmark/mybookmark?nickname=${nickname}`)).data;
+
       
-      res.render(mainHtml+ "usermodify.html", {
-        userInfo,
-      });
-    } catch (error) {
-      console.log(error);
-      throw new Error("에러 발생");
-      
-    }
+    res.render(mainHtml + `myreview.html`, {
+      userInfo : userInfo,
+      myReviewData : bookData.length ? bookData : false,
+      reviewCount : count,
+      mybookmark : mybookmark
+    });
+
+  } catch (error) {
+    console.log(error);
   }
+}
 
-  module.exports = {getUserInfo, getUserPreview, getUserModify};
+const getUserModify = async (req, res) => {
+  const nickname = req.user.nickname;
+  if (!nickname) return res.status(401).redirect("http://localhost:3005/");
+  
+  try {
+    const userInfo = (await axios.post(`${BACK_URL}/user/userInfo`,{
+      nickname: nickname
+      })).data
+    
+    const bookDataOne = (await axios.get(`${BACK_URL}/review/list?nickname=${nickname}`)).data;
+    const count = {
+      count: bookDataOne[0].reviewCount
+     }
+    const mybookmark = (await axios.get(`${BACK_URL}/bookmark/mybookmark?nickname=${nickname}`)).data;
+   
+    res.render(mainHtml+ "usermodify.html", {
+      user : req.user,
+      userInfo : userInfo,
+      reviewCount : count,
+      mybookmark : mybookmark
 
+    });
+  } catch (error) {
+    console.log(error);      
+  }
+}
+
+module.exports = {getUserInfo, getUserPreview, getUserModify};

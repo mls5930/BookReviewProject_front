@@ -13,30 +13,37 @@
   <body>
     <div id="mainPage">
       <div id="header">
-          <div class="header-inner">
-              <div class="headerBox">
-                  <a href="/">
-                      <img src="/img/logo4.png">
-                  </a>
-                  <div class="search" tabindex="0">
-                      <form class="search_form" action="/booksearch" method="get">
-                          <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
-                          <button type="submit"><img src="img/readingGlasses.png"></button>
-                      </form>
-                  </div>
-                  {% if user %}
-                  <div class="loginHeader">
-                      <div>
-                          <img class="loginLogo" src="/img/bookmark_empty_img.png">
-                      </div>
-                      <div>
-                          <img class="loginThumbnail" src="{{user.thumbnail}}">
-                      </div>
-                  </div>
-                  {% else %}
-                  <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
-                  {% endif %}
-              </div>
+        <div class="header-inner">
+            <div class="headerBox">
+                <a href="/">
+                    <img src="/img/logo4.png">
+                </a>
+                <div class="search" tabindex="0">
+                    <form class="search_form" action="/booksearch" method="get">
+                        <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
+                        <button type="submit"><img src="/img/readingGlasses.png"></button>
+                    </form>
+                </div>
+                {% if user %}
+                <div class="loginHeader">
+                    <a href="/mybookmark">
+                        <img class="loginLogo" src="/img/bookmark_empty_img.png">
+                    </a>
+                    <div>
+                        <img class="loginThumbnail" src="{{user.thumbnail}}">
+                    </div>
+                    <div class="userThumbInfo" style="display:none">
+                        <div class="userInfoCloseBtn">✖</div>
+                        <a href="/mybookmark">북마크</a>
+                        <a href="/usermodify">내정보</a>
+                        <a href="/myreview">감상문</a>
+                        <a class="logout" href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}">로그아웃</a>
+                    </div>
+                </div>
+                {% else %}
+                <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
+                {% endif %}
+            </div>
               <div id="inner">
                   <div class="innerbox">
                       <ul class="banner">
@@ -71,25 +78,34 @@
             <div class="bookImg">
               <img src="{{ bookData.cover }}" />
             </div>
-            <!-- class 이름 추가 -->
             <div class="book_btn">
-              <button>
+              {% if true %}
+              <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
                 <!-- 이미지 변경 -->
                 <img
                   class="bookmark-btn"
                   src="/img/bookmark_empty_img.png"
                   art="비어있는 북마크 이미지"
-                />
-              </button>
+                >
+              </a>
+              {% else %}
+              <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <!-- 이미지 변경 -->
+                <img
+                  class="bookmark-btn"
+                  src="/img/booktmark_full_img.png"
+                  art="북마크 이미지"
+                >
+              </a>
+              {% endif %}
             </div>
           </aside>
         <article id="attribute">
           <div id="textbox">
             <form class="text" action="http://localhost:3000/review/{{bookData.isbn13}}" method="post">
-              <textarea class="textbox" name="context">
-              </textarea>
-                <input type="text" name="cover" value="{{bookData.cover}}" hidden>
-                <input type="text" name="nickname" value="kim" hidden>
+              <textarea class="textbox" name="context"></textarea>
+              <input type="text" name="cover" value="{{bookData.cover}}" hidden>
+              <input type="text" name="nickname" value="{{user.nickname}}" hidden>
               <div id="btnbox">
                 <div class="btn2">
                   <button type="submit" class="write-btn">작 성</button>
@@ -100,7 +116,7 @@
       </section>
     </main>
     <div id="topbutton">
-      <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
+      <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png"></a>
   </div>
   <div id="footer">
       <div class="footerbox">
@@ -126,12 +142,12 @@
       <div>
           <ul class="footerUL">
               <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
-              <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
-              <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+              <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
+              <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
               <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
           </ul>
       </div>
-      <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+      <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
   </div>
 </div>
 <dialog class="loginBox">
