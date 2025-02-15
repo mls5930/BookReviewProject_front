@@ -24,7 +24,6 @@ const getAudioList = async(req, res) => {
 
 const getAudioView = async (req, res) => {
     //책 신간 전체 리스트
-    const user = req.user;
     const isbn13 = req.params.isbn13;
     const [bookDataOne] = (await axios.get(`${BACK_URL}/list?itemId=${isbn13}`)).data
 
