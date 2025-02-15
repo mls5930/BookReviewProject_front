@@ -31,7 +31,7 @@ const getBookReview = async (req, res) => {
    })
   res.render(viewHtml + "bookView.html", {
     bookData: bookDataOne,
-    ReviewData: reviewList,
+    ReviewData: reviewupdata,
     loginUser: loginUser,
     user: req.user
   });
@@ -53,7 +53,6 @@ const getReviewList = async (req, res) => {
   const user = req.user
   const bookDataView = await axios.get(`${BACK_URL}/review`);
   const bookDataViews = bookDataView.data;
-  res.render(viewHtml + "reviewList.html", { listBook: bookDataViews });
   res.render(viewHtml +'reviewList.html', {listBook : bookDataViews , user:req.user } );
 };
 
@@ -61,20 +60,29 @@ const getReviewDetail = async (req, res) => {
   const user = req.user;
   const { nickname } = req.query;
   const review_id = req.params.review_id;
-  const [bookDataOne] = (
-    await axios.get(
-      `${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`
-    )
-  ).data;
-  const CommentList = (
-    await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)
-  ).data;
-  //console.log("CommentList", CommentList);
 
-  res.status(201).render(viewHtml + "reviewDetail.html", {
-    bookData: bookDataOne,
-    CommentList: CommentList,
-    user: user,
+  const bookData = (await axios.get(`${BACK_URL}/review/ReviewOne/${review_id}?nickname=${nickname}`)).data;
+
+  const bookdate = bookData.map((one) => {
+    return {
+      review_id: one.review_id,
+      isbn13: one.isbn13,
+      cover: one.cover,
+      rating: one.rating,
+      context: one.context,
+      uuid: one.uuid,
+      createdAt: one.createdAt.split("T")[0],  
+      updatedAt: one.updatedAt.split("T")[0],  
+      User: one.User,
+    };
+  });
+
+  const CommentList = (await axios.get(`${BACK_URL}/comment/list?review_id=${review_id}`)).data;
+
+  res.status(201).render(viewHtml + "reviewDetail.html", { 
+    bookData: bookdate, 
+    CommentList: CommentList, 
+    user: user 
   });
 };
 

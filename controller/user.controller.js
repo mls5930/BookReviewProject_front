@@ -43,8 +43,6 @@ const getUserPreview = async (req, res) => {
       count: bookData[0].reviewCount
       }
     const mybookmark = (await axios.get(`${BACK_URL}/bookmark/mybookmark?nickname=${nickname}`)).data;
-
-      
     res.render(mainHtml + `myreview.html`, {
       userInfo : userInfo,
       myReviewData : bookData.length ? bookData : false,
