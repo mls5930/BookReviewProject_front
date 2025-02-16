@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>커뮤니티</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link href="/css/maincss/header.css" rel="stylesheet"/>
     <link href="/css/maincss/footer.css" rel="stylesheet"/>
     <link href="/css/views/community.css" rel="stylesheet">
@@ -73,7 +76,7 @@
                 </div>
                 <div class="community-area">
                     <form class="community-write" action="http://localhost:3000/community/write" method="post">
-                        <textarea name="context" class="context" value="" rows="4" maxlength="100" placeholder="자유롭게 대화해요"></textarea>
+                        <textarea name="context" class="context" value="" rows="4" maxlength="100" placeholder="자유롭게 대화해요 (100자 이내)"></textarea>
                         <button class="commentary-btn" type="submit" >작성</button>
                     </form>
                     <div class="community-list">
@@ -88,7 +91,7 @@
 
             </div>
         </div> 
-        <div id="loginUser">{{loginUser}}</div>
+        <div id="loginUser">{{user.nickname}}</div>
     <div id="topbutton">
         <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png"></a>
     </div>
@@ -125,5 +128,6 @@
         <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
     </div>
     <script src="/js/loginUser.js"></script>
+    <script src="/js/userInfoButton.js"></script>
 </body>
 </html>

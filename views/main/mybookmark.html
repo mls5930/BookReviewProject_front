@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mypage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/maincss/header.css">
     <link rel="stylesheet" href="/css/mypage.css">
     <link rel="stylesheet" href="/css/maincss/ad.css">
@@ -98,7 +101,9 @@
                     <div class="bookData">
                         {% for bookData in mybookData%}
                         <div class="bookMarkBox">
-                            <img src="{{bookData.cover}}">
+                            <a href =/bookview/{{bookData.isbn13}}>
+                                <img class="img_cover" style="width: 150px; height: 200px;" src="{{bookData.cover}}"> 
+                            </a>
                             <h4 class="title">{{bookData.title}}</h4>
                             <h4 class="author">{{bookData.author}}</h4>
                         </div>

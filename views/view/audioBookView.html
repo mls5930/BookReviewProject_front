@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>오디오북 상세 페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link href="/css/maincss/header.css" rel="stylesheet" />
     <link href="/css/maincss/footer.css" rel="stylesheet" />
     <link href="/css/views/viewPage.css" rel="stylesheet" />
     <link href="/css/views/reviewbox.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="/css/melotts.css">
     <style>
       .btnImg {
         margin-left: 76px;
@@ -34,11 +41,18 @@
                   </div>
                   {% if user %}
                   <div class="loginHeader">
-                      <div>
+                      <a href="/mybookmark">
                           <img class="loginLogo" src="/img/bookmark_empty_img.png">
-                      </div>
+                      </a>
                       <div>
                           <img class="loginThumbnail" src="{{user.thumbnail}}">
+                      </div>
+                      <div class="userThumbInfo" style="display:none">
+                          <div class="userInfoCloseBtn">✖</div>
+                          <a href="/mybookmark">북마크</a>
+                          <a href="/usermodify">내정보</a>
+                          <a href="/myreview">감상문</a>
+                          <a class="logout" href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}">로그아웃</a>
                       </div>
                   </div>
                   {% else %}
@@ -83,15 +97,15 @@
             <div class="book_btn">
               <!-- 이미지 변경, class 추가 -->
               <button>
-                <img
+                <img onclick=sendRequest(this.dataset.value)  data-value="{{ bookData.isbn13 }}"
                   class="audio-btn"
                   src="/img/audio_img.jpeg"
                   art="오디오 이미지"
                 />
               </button>
               <div class="book_btn">
-                {% if true %}
-                <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                {% if not bookmark %}
+                <a  href="http://localhost:3000/bookmark/setBookmark/2?value=1&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}&cover={{bookData.cover}}">
                   <!-- 이미지 변경 -->
                   <img
                     class="bookmark-btn"
@@ -100,7 +114,7 @@
                   >
                 </a>
                 {% else %}
-                <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+                <a href="http://localhost:3000/bookmark/delbookmark/2?value=0&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}">
                   <!-- 이미지 변경 -->
                   <img
                     class="bookmark-btn"
@@ -118,6 +132,44 @@
               <h3 class="bookAuthor">{{ bookData.author }}</h3>
               <h4 class="bookDct">{{ bookData.description }}</h4>
             </div>
+            <!-- 오른쪽 하단에 고정될 음악 플레이어 사이드바 -->
+            <div class="music-player-sidebar">
+              <div class="music-player">
+                <!-- 앨범 아트 (필요 시 이미지 추가) -->
+                <div class="album-art">
+                  <img src="{{ bookData.cover }}" alt="Album Art"> 
+                </div>
+                <!-- 곡 정보 -->
+                <div class="info" >
+                  <div class="info-content">
+                    <div class="song-title">{{ bookData.title }}</div>
+                    <div class="artist">{{ bookData.author }}</div>
+                  </div>
+                </div>
+                <!-- 컨트롤 버튼 -->
+                <div class="controls">
+                  <button class="btn prev" title="Previous">
+                    <i class="material-icons">skip_previous</i>
+                  </button>
+                  <button class="btn play" id="playPause" title="Play/Pause">
+                    <i class="material-icons" id="playPauseIcon">play_arrow</i>
+                  </button>
+                  <button class="btn next" title="Next">
+                    <i class="material-icons">skip_next</i>
+                  </button>
+                </div>
+                <!-- 진행바 영역 -->
+                <div class="progress-container">
+                  <span class="current-time">0:00</span>
+                  <div class="progress-bar" id="progressBar">
+                    <div class="progress" id="progress"></div>
+                  </div>
+                  <span class="duration">0:00</span>
+                </div>
+              </div>
+            </div>
+            <!-- 실제 오디오 요소 (보이지 않고 JS로 제어) -->
+            <audio id="audioPlayer"></audio>
           </article>
         </section>
       </main>
@@ -190,5 +242,6 @@
 </dialog>
 <script src="/js/loginPopup.js"></script>
 <script src="/js/userInfoButton.js"></script>
+<script src="/js/melotts.js"></script>
   </body>
 </html>

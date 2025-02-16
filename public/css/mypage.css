@@ -151,6 +151,9 @@ a {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+
+
+
 .bookMarkBox > .title {
     font-weight: 700;
 
@@ -160,6 +163,23 @@ a {
     
 }
 .bookMarkBox > img {
+    width: 150px;
+    height: 200px;
+    border-radius: 12px;
+}
+
+.bookMarkBox-cover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    object-fit: fill;
+}
+.bookMarkBox-corver{
+    transform: translateY(-24px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.bookMarkBox-corver {
     width: 150px;
     height: 200px;
     border-radius: 12px;

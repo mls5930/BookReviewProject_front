@@ -37,8 +37,20 @@ const getAudioView = async (req, res) => {
     //     isbn13 : book.isbn13
     //   };
     // });
+      let isbookmark = false;
+      if(user)
+      {
+          const checkBookmark = (await axios.get(`${BACK_URL}/bookmark/check/${isbn13}?nickname=${user.nickname}`)).data 
+          if(checkBookmark){
+            if (checkBookmark.isbookmark === 1) {
+              isbookmark = true;
+            } else if (checkBookmark.isbookmark === null) {
+              isbookmark = false;
+            }
+          }
+      }
 
-    res.render(viewHtml + "audioBookView.html", { bookData: bookDataOne , user:req.user  });
+    res.render(viewHtml + "audioBookView.html", { bookData: bookDataOne , user:req.user, bookmark:isbookmark  });
 };
 
 const getAudioWrite = async (req, res) => {

@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>감상문 작성페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link href="/css/maincss/header.css" rel="stylesheet"/>
     <link href="/css/maincss/footer.css" rel="stylesheet"/>
     <link href="/css/views/viewPage.css" rel="stylesheet"/>
@@ -79,8 +82,8 @@
               <img src="{{ bookData.cover }}" />
             </div>
             <div class="book_btn">
-              {% if true %}
-              <a href = "http://localhost:3000/bookmark/setBookmark?value=1&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+              {% if not bookmark %}
+              <a href="http://localhost:3000/bookmark/setBookmark/3?value=1&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}&cover={{bookData.cover}}">
                 <!-- 이미지 변경 -->
                 <img
                   class="bookmark-btn"
@@ -89,7 +92,7 @@
                 >
               </a>
               {% else %}
-              <a href = "http://localhost:3000/bookmark/deleteBookmark?value=0&isbn13={{bookData.isbn13}}&nickname={{User.nickname}}&cover={{bookData.cover}}">
+              <a href="http://localhost:3000/bookmark/delbookmark/3?value=0&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}">
                 <!-- 이미지 변경 -->
                 <img
                   class="bookmark-btn"
