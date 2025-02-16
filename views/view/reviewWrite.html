@@ -105,15 +105,15 @@
           </aside>
         <article id="attribute">
           <div id="textbox">
-            <form class="text" action="http://localhost:3000/review/{{bookData.isbn13}}" method="post">
-              <textarea class="textbox" name="context"></textarea>
+            <form class="text" action="http://localhost:3000/review/{{bookData.isbn13}}" method="post" onsubmit="return empty()">
+              <textarea class="context" name="context"></textarea>
               <input type="text" name="cover" value="{{bookData.cover}}" hidden>
               <input type="text" name="nickname" value="{{user.nickname}}" hidden>
               <div id="btnbox">
                 <div class="btn2">
                   <button type="submit" class="write-btn">작 성</button>
                 </div>
-              </form>
+            </form>
             </div>
           </article>
       </section>
@@ -187,5 +187,6 @@
 </dialog>
 <script src="/js/loginPopup.js"></script>
 <script src="/js/userInfoButton.js"></script>
+<script src="/js/emptyCheck.js"></script>
   </body>
 </html>

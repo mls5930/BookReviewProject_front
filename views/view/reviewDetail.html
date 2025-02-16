@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>리뷰상세 페이지</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <link href="/css/maincss/header.css" rel="stylesheet" />
     <link href="/css/maincss/footer.css" rel="stylesheet" />
     <link href="/css/views/viewPage.css" rel="stylesheet" />
@@ -158,6 +161,7 @@
               class="textbox"
               action="http://localhost:3000/comment/{{bookData.review_id}}"
               method="post"
+              onsubmit="return empty()"
             >
               <textarea name="context" class="context"></textarea>
               <input
@@ -229,9 +233,6 @@
         </div>
         <div>
           <ul class="footerUL">
-            <li>
-              <a><img width="40px" height="40px" /></a>
-            </li>
             <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
             <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
             <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
@@ -241,8 +242,57 @@
         <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
       </div>
     </div>
+    {% if user %} {% else %}
+    <dialog class="loginBox">
+      <div class="login" id="popup">
+        <div class="popup">
+          <div class="popup-head">
+            <button class="closeBtn">x</button>
+            <img class="head-title" src="/img/loginLogo2.png" />
+          </div>
+          <div class="popup-body">
+            <div class="body-content">
+              <div class="body-titlebox">
+                <h3>
+                  반가워요! <br />
+                  북아일랜드 시작하기
+                </h3>
+              </div>
+              <div class="body-contentbox">
+                <div class="logintext">
+                  요즘 일하는 사람들이 책을 찾는 새로운 방법<br />
+                  뛰어난 커리어를 가진 사람들과 도서를 나누고, 나에게 꼭 필요한
+                  책을 찾으세요.
+                </div>
+                <form method="get" action="/login/page">
+                  <button type="submit">
+                    <img src="/img/kakaoLogo.png" width="30px" height="30px" />
+                    카카오로 3초만에 시작하기
+                  </button>
+                </form>
+              </div>
+              <p>
+                로그인은
+                <a
+                  href="https://bookcovery.notion.site/7f574a4a03a540ea846dd638aa712b11"
+                  >개인정보보호 정책</a
+                >
+                및
+                <a
+                  href="https://bookcovery.notion.site/92c58cef635a4fd08663942a6d4e7288"
+                  >서비스 약관</a
+                >
+                에 동의하는 것을 의미합니다!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+    {% endif %}
     <script src="/js/reviewDelete.js"></script>
     <script src="/js/userReviewBtn.js"></script>
     <script src="/js/loginUser.js"></script>
+    <script src="/js/emptyCheck.js"></script>
   </body>
 </html>

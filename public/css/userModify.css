@@ -1,130 +1,138 @@
 #mymain {
-    width: 1200px;
-    margin: 0 auto;
+  width: 1200px;
+  margin: 0 auto;
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 .profile {
-    display: flex;
-    gap: 40px;
+  display: flex;
+  gap: 40px;
 }
 .mypage {
-    padding:24px 16px;
+  padding: 24px 16px;
 }
 .left {
-    width: 300px;
-    padding:0 50px;
-    height: 400px;
-    background: rgb(250, 249, 249);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+  width: 300px;
+  padding: 0 50px;
+  height: 400px;
+  background: rgb(250, 249, 249);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
 .mypoto {
-    width: 100px;
-    height: 100px;
-    border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
 }
 .nikname {
-    font-weight: 700;
+  font-weight: 700;
 }
 .profileBtn {
-    width: 250px;
-    height: 40px;
-    background-color: #e2e2e2;
-    color: black;
-    border-radius: 10px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+  width: 250px;
+  height: 40px;
+  background-color: #e2e2e2;
+  color: black;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 .profileBtn:hover {
-    background-color: #cdcccc;
+  background-color: #cdcccc;
 }
 .leftBottom {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 .leftBottom > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
 }
 .right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 800px;
 }
 .bookcaseRoute {
-    /* padding-bottom: 32px; */
-    font-size:16px;
-    font-weight: 800;
+  /* padding-bottom: 32px; */
+  font-size: 16px;
+  font-weight: 800;
 }
 .mydata {
-    color: #333;
-    font-size: 24px;
-    font-weight:800;
-    padding-left: 20px;
-    margin: 0px;
+  color: #333;
+  font-size: 24px;
+  font-weight: 800;
+  padding-left: 20px;
+  margin: 0px;
 }
-#myModify{
-    display: flex;
-    gap: 20px;
-    border: solid 1px #e2e2e2;
-    height: 600px;
-    padding: 60px;
-    border-radius: 12px;
-}
-.modifyform {
-    display: flex;
-    /* gap: 200px; */
-
-}
-.modifyform > input{
-    background-color: white;
-    border: none;
-    font-weight:400;
-    /* border: solid 1px red; */
-    width: 400px;
-    height: 50px;
-    outline: none; 
-}
-.modifyform > button{
-    background-color: white;
-    border: none;
-    color: #1659cc;
-    font-weight:600
+#myModify {
+  display: flex;
+  gap: 20px;
+  border: solid 1px #e2e2e2;
+  height: 600px;
+  padding: 60px;
+  border-radius: 12px;
 }
 
-.modifyImg{
-    width: 110px;
-    height: 110px;
-    border-radius: 12px;
+.emailModify,
+.introduceModify {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#emailInput,
+#introduceInput {
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid #e2e2e2;
+  font-weight: 400;
+  width: 400px;
+  height: 50px;
+  outline: none;
+}
+
+#emailModifyBtn,
+#introduceModifyBtn {
+  background-color: white;
+  border: none;
+  color: #1659cc;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modifyImg {
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
 }
 .modifyBox {
-    display: flex;
-    flex-direction: column;
-    gap: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
 }
 .modifyBox > div {
-    font-size: 16px;
-    font-weight: 800;
+  font-size: 16px;
+  font-weight: 800;
 }
 
-
-.name, .email, .title , .Introduce{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.name,
+.email,
+.title,
+.Introduce {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-
