@@ -144,6 +144,7 @@
                 {% endfor %}
             </div>
         </div>
+        {% if user %}
         <div id="chat-container" class="minimized">
             <div class="chat-icon" id="chat-icon">
               <img src="/img/chatBook_img.png" alt="Chat Icon" />
@@ -157,6 +158,7 @@
               </div>
             </div>
           </div>
+        {% endif %}
         <div id="topbutton">
             <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
         </div>
