@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- 외부 CSS 파일 연결 -->
     <link rel="stylesheet" href="/css/melotts.css">
+    <link rel="stylesheet" href="/css/maincss/loginbox.css">
     <style>
       .btnImg {
         margin-left: 76px;
@@ -96,14 +97,17 @@
             <!-- class 이름 변경 -->
             <div class="book_btn">
               <!-- 이미지 변경, class 추가 -->
+              {% if user %}
               <button>
                 <img onclick=sendRequest(this.dataset.value)  data-value="{{ bookData.isbn13 }}"
                   class="audio-btn"
                   src="/img/audio_img.jpeg"
                   art="오디오 이미지"
                 />
+              {% endif %}
               </button>
               <div class="book_btn">
+                {% if user %}
                 {% if not bookmark %}
                 <a  href="http://localhost:3000/bookmark/setBookmark/2?value=1&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}&cover={{bookData.cover}}">
                   <!-- 이미지 변경 -->
@@ -122,6 +126,7 @@
                     art="북마크 이미지"
                   >
                 </a>
+                {% endif %}
                 {% endif %}
               </div>
             </div>
