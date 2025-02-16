@@ -162,6 +162,7 @@
               class="textbox"
               action="http://localhost:3000/comment/{{bookData.review_id}}"
               method="post"
+              onsubmit="return empty()"
             >
               <textarea name="context" class="context"></textarea>
               <input
@@ -292,5 +293,6 @@
     <script src="/js/reviewDelete.js"></script>
     <script src="/js/userReviewBtn.js"></script>
     <script src="/js/loginUser.js"></script>
+    <script src="/js/emptyCheck.js"></script>
   </body>
 </html>
