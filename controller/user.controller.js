@@ -43,10 +43,9 @@ const getUserPreview = async (req, res) => {
       })
     ).data;
 
-    console.log(bookData);
     const count = {
-      count: (Array.isArray(bookDataOne) && bookDataOne.length > 0) 
-        ? bookDataOne[0]?.reviewCount ?? 0 : 0
+      count: (Array.isArray(bookData) && bookData.length > 0) 
+        ? bookData[0]?.reviewCount ?? 0 : 0
     }
 
     const reviewData = bookData.map((one) => {
@@ -93,12 +92,6 @@ const getUserModify = async (req, res) => {
       userInfo : userInfo,
       reviewCount : count,
       mybookmark : mybookmark
-
-    res.render(mainHtml + "usermodify.html", {
-      user: req.user,
-      userInfo: userInfo,
-      reviewCount: count,
-      mybookmark: mybookmark,
     });
   } catch (error) {
     console.log(error);
