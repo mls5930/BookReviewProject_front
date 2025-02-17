@@ -103,14 +103,14 @@
                                 </div>
                                 <div class="email">
                                     <div>이메일</div>
-                                    <form class="modifyform" id="emailModify" method="post" action="http://localhost:3000/user/update">
-                                        <input type="text" name="email" placeholder="이메일을 입력해주세요!" value="{{userInfo.email}}">
+                                    <form class="modifyform" id="emailModify" method="post" action="http://localhost:3000/user/update/{{user.nickname}}">
+                                        <input type="email" name="email" placeholder="이메일을 입력해주세요!" value="{{userInfo.email}}">
                                         <button type="submit">이메일 수정</button>
                                     </form>
                                 </div>
                                 <div class="Introduce">
                                     <div>자기소개</div>
-                                    <form class="modifyform" id="introduceModify" method="post" action="http://localhost:3000/user/update">
+                                    <form class="modifyform" id="introduceModify" method="post" action="http://localhost:3000/user/update/{{user.nickname}}">
                                         <input type="text" name="introductions" placeholder="자기소개를 입력해주세요!" value="{{userInfo.introductions}}">
                                         <button type="submit">자기소개 수정</button>
                                     </form>

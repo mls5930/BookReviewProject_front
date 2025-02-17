@@ -93,8 +93,8 @@ a {
   align-items: center;
 }
 
-#emailInput,
-#introduceInput {
+#emailModify > input,
+#introduceModify > input {
   background-color: white;
   border: none;
   border-bottom: 1px solid #e2e2e2;
@@ -104,8 +104,8 @@ a {
   outline: none;
 }
 
-#emailModifyBtn,
-#introduceModifyBtn {
+#emailModify > button,
+#introduceModify > button {
   background-color: white;
   border: none;
   color: #1659cc;
