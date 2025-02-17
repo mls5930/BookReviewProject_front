@@ -15,7 +15,8 @@ const getUserInfo = async (req, res) => {
       const bookDataOne = (await axios.get(`${BACK_URL}/review/list?nickname=${nickname}`)).data;
       const bookMarkList = (await axios.get(`${BACK_URL}/bookmark/bookmarklist?nickname=${nickname}`)).data;
       const count = {
-      count: bookDataOne[0].reviewCount
+        count: (Array.isArray(bookDataOne) && bookDataOne.length > 0) 
+        ? bookDataOne[0]?.reviewCount ?? 0 : 0
       }
 
       res.render(mainHtml + `mybookmark.html`, {
@@ -39,8 +40,10 @@ const getUserPreview = async (req, res) => {
       nickname: nickname //req.user.nickname
       })).data
 
+    console.log(bookData);
     const count = {
-      count: bookData[0].reviewCount
+      count: (Array.isArray(bookDataOne) && bookDataOne.length > 0) 
+        ? bookDataOne[0]?.reviewCount ?? 0 : 0
     }
 
     const reviewData = bookData.map((one) => {
@@ -75,8 +78,11 @@ const getUserModify = async (req, res) => {
       })).data
     
     const bookDataOne = (await axios.get(`${BACK_URL}/review/list?nickname=${nickname}`)).data;
+    console.log(bookDataOne);
     const count = {
-      count: bookDataOne[0].reviewCount
+      count: (Array.isArray(bookDataOne) && bookDataOne.length > 0) 
+        ? bookDataOne[0]?.reviewCount ?? 0 : 0
+      //count: bookDataOne[0].reviewCount?.reviewCount ?? 0
      }
     const mybookmark = (await axios.get(`${BACK_URL}/bookmark/mybookmark?nickname=${nickname}`)).data;
    
