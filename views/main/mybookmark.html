@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mypage</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/maincss/header.css">
-    <link rel="stylesheet" href="/css/mypage.css">
-    <link rel="stylesheet" href="/css/maincss/ad.css">
-    <link rel="stylesheet" href="/css/maincss/footer.css">
-    <link rel="stylesheet" href="/css/maincss/loginbox.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Dongle&family=Jua&family=Noto+Sans+KR:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/maincss/header.css" />
+    <link rel="stylesheet" href="/css/mypage.css" />
+    <link rel="stylesheet" href="/css/maincss/ad.css" />
+    <link rel="stylesheet" href="/css/maincss/footer.css" />
+    <link rel="stylesheet" href="/css/maincss/loginbox.css" />
+  </head>
+  <body>
     <div id="mainPage">
         <div id="header">
             <div class="header-inner">
@@ -66,6 +69,48 @@
                     </div>
                 </div>
             </div>
+            {% if user %}
+            <div class="loginHeader">
+              <a href="/mybookmark">
+                <img class="loginLogo" src="/img/bookmark_empty_img.png" />
+              </a>
+              <div>
+                <img class="loginThumbnail" src="{{user.thumbnail}}" />
+              </div>
+              <div class="userThumbInfo" style="display: none">
+                <div class="userInfoCloseBtn">✖</div>
+                <a href="/mybookmark">북마크</a>
+                <a href="/usermodify">내정보</a>
+                <a href="/myreview">감상문</a>
+                <a
+                  class="logout"
+                  href="http://localhost:3000/oauth/logout?nickname={{user.nickname}}"
+                  >로그아웃</a
+                >
+              </div>
+            </div>
+            {% else %}
+            <a href="/login/page" class="logoLogin">북아일랜드 시작하기</a>
+            {% endif %}
+          </div>
+          <div id="inner">
+            <div class="innerbox">
+              <ul class="banner">
+                <li>
+                  <a href="/reviewlist">감상문</a>
+                </li>
+                <li>
+                  <a href="/booklist">책</a>
+                </li>
+                <li>
+                  <a href="/audiolist">오디오북</a>
+                </li>
+                <li>
+                  <a href="/community">커뮤니티</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div id="mymain">
             <div class="mypage">
@@ -119,74 +164,148 @@
                 </div>
             </div>
         </div>
-        <div id="topbutton">
-            <a href="#mainPage"><img width="60px" height="60px" src="/img/topimg.png"></a>
+        <div class="profile">
+          <div class="left">
+            <div><img class="mypoto" src="{{user.thumbnail}}" ait="#" /></div>
+            <div class="nikname">{{user.nickname}}</div>
+            <a href="/usermodify" class="profileBtn">프로필수정</a>
+            <div class="leftBottom">
+              <div>
+                <div>북마크 수</div>
+                <div style="color: red">( {{mybookmark.count}} )</div>
+              </div>
+              <div>
+                <div>감상문 수</div>
+                <div style="color: red">( {{reviewCount.count}} )</div>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="bookcaseRoute">
+              <div>
+                <a href="/mybookmark" class="mybookcase">북마크</a>
+              </div>
+              <div>-</div>
+              <div>
+                <a href="/myreview" class="myReview">감상문</a>
+              </div>
+            </div>
+            {% if mybookData %}
+            <div class="bookData">
+              {% for bookData in mybookData%}
+              <div class="bookMarkBox">
+                <img src="{{bookData.cover}}" />
+                <h4 class="title">{{bookData.title}}</h4>
+                <h4 class="author">{{bookData.author}}</h4>
+              </div>
+              {% endfor %}
+            </div>
+            {% else %}
+            <div class="rightBox">
+              <div>책장이 비어있어요.</div>
+              <div>북마크를 추가해서 책을 저장할 수 있어요!</div>
+              <a href="/booklist" class="bookmarkBtn">북마크 하러가기</a>
+            </div>
+            {% endif %}
+          </div>
         </div>
-        <div id="footer">
-            <div class="footerbox">
-                <div>(주)북아일랜드</div>
-                <div>
-                    <a href="https://www.youtube.com/"><img width="30px" height="30px" src="/img/youtubeLogo-removebg-preview.png"></a>
-                    <a href="https://www.instagram.com/"><img width="35px" height="30px" src="/img/instagramLogo-removebg-preview.png"></a>
-                    <a href="https://www.google.com"><img width="30px" height="30px" src="/img/glooglelogo.png"></a>
-                </div>
-            </div>
-            <div>
-                <ul class="footerUl">
-                    <li><a href="#">이용약관 ></a></li>
-                    <li><a href="#">개인정보처리방침 ></a></li>
-                    <li><a href="#">청소년보호정책  ></a></li>
-                    <li><a href="#">고객센터 ></a></li>
-                    <li><a href="#">B2B 문의 ></a></li>
-                    <li><a href="#">콘텐츠 제휴문의 ></a></li>
-                    <li><a href="#">뷰어 다운로드 ></a></li>
-                    <li><a href="#">회사 소개 </a></li>
-                </ul>
-            </div>
-            <div>
-                <ul class="footerUL">
-                    <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
-                    <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
-                    <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
-                    <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
-                </ul>
-            </div>
-            <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
+      </div>
+      <div id="topbutton">
+        <a href="#mainPage"
+          ><img width="60px" height="60px" src="/img/topimg.png"
+        /></a>
+      </div>
+      <div id="footer">
+        <div class="footerbox">
+          <div>(주)북아일랜드</div>
+          <div>
+            <a href="https://www.youtube.com/"
+              ><img
+                width="30px"
+                height="30px"
+                src="/img/youtubeLogo-removebg-preview.png"
+            /></a>
+            <a href="https://www.instagram.com/"
+              ><img
+                width="35px"
+                height="30px"
+                src="/img/instagramLogo-removebg-preview.png"
+            /></a>
+            <a href="https://www.google.com"
+              ><img width="30px" height="30px" src="/img/glooglelogo.png"
+            /></a>
+          </div>
         </div>
+        <div>
+          <ul class="footerUl">
+            <li><a href="#">이용약관 ></a></li>
+            <li><a href="#">개인정보처리방침 ></a></li>
+            <li><a href="#">청소년보호정책 ></a></li>
+            <li><a href="#">고객센터 ></a></li>
+            <li><a href="#">B2B 문의 ></a></li>
+            <li><a href="#">콘텐츠 제휴문의 ></a></li>
+            <li><a href="#">뷰어 다운로드 ></a></li>
+            <li><a href="#">회사 소개 </a></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="footerUL">
+            <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
+            <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
+            <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
+            <p>유효기간: 2025-02-01 ~ 2026-02-04</p>
+          </ul>
+        </div>
+        <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
+      </div>
     </div>
     <dialog class="loginBox">
-        <div class="login" id="popup"> 
-            <div class="popup">
-                <div class="popup-head">	
-                    <button class="closeBtn">x</button>
-                    <img class="head-title" src="/img/loginLogo2.png">
+      <div class="login" id="popup">
+        <div class="popup">
+          <div class="popup-head">
+            <button class="closeBtn">x</button>
+            <img class="head-title" src="/img/loginLogo2.png" />
+          </div>
+          <div class="popup-body">
+            <div class="body-content">
+              <div class="body-titlebox">
+                <h3>
+                  반가워요! <br />
+                  북아일랜드 시작하기
+                </h3>
+              </div>
+              <div class="body-contentbox">
+                <div class="logintext">
+                  요즘 일하는 사람들이 책을 찾는 새로운 방법<br />
+                  뛰어난 커리어를 가진 사람들과 도서를 나누고, 나에게 꼭 필요한
+                  책을 찾으세요.
                 </div>
-                <div class="popup-body">	
-                    <div class="body-content">
-                        <div class="body-titlebox">
-                            <h3>반가워요! <br> 북아일랜드 시작하기 </h3>
-                        </div>
-                        <div class="body-contentbox">
-                            <div class="logintext">요즘 일하는 사람들이 책을 찾는 새로운 방법<br> 뛰어난 커리어를 가진 사람들과 도서를 나누고, 나에게 꼭 필요한 책을 찾으세요.</div>
-                            <form method="get" action="/login/page">
-                                <button type="submit">
-                                    <img src="/img/kakaoLogo.png" width="30px" height="30px">
-                                    카카오로 3초만에 시작하기
-                                </button>
-                            </form>
-                        </div>
-                        <p>로그인은
-                            <a href="https://bookcovery.notion.site/7f574a4a03a540ea846dd638aa712b11">개인정보보호 정책</a>
-                            및
-                            <a href="https://bookcovery.notion.site/92c58cef635a4fd08663942a6d4e7288">서비스 약관</a>
-                            에 동의하는 것을 의미합니다!
-                        </p>
-                    </div>
-                </div>
+                <form method="get" action="/login/page">
+                  <button type="submit">
+                    <img src="/img/kakaoLogo.png" width="30px" height="30px" />
+                    카카오로 3초만에 시작하기
+                  </button>
+                </form>
+              </div>
+              <p>
+                로그인은
+                <a
+                  href="https://bookcovery.notion.site/7f574a4a03a540ea846dd638aa712b11"
+                  >개인정보보호 정책</a
+                >
+                및
+                <a
+                  href="https://bookcovery.notion.site/92c58cef635a4fd08663942a6d4e7288"
+                  >서비스 약관</a
+                >
+                에 동의하는 것을 의미합니다!
+              </p>
             </div>
+          </div>
         </div>
+      </div>
     </dialog>
     <script src="/js/loginPopup.js"></script>
     <script src="/js/userInfoButton.js"></script>
-</body>
+  </body>
 </html>

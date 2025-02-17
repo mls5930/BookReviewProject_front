@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const context = document.querySelector(".context");
 
   const userNickname = loginUser.innerHTML.trim();
+  console.log(userNickname);
 
   if (userNickname) {
     console.log("KAKAO LOGIN 사용자");
