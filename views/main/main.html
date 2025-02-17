@@ -12,25 +12,7 @@
     <link rel="stylesheet" href="/css/maincss/ad.css">
     <link rel="stylesheet" href="/css/maincss/footer.css">
     <link rel="stylesheet" href="/css/maincss/loginbox.css">
-    <style>
-        dialog {
-            display: block;
-            max-block-size: min(80vh, 100%);
-            overflow: hidden;
-            transition: all .3s;
-            border-radius: 0.5rem;
-            padding: 0;
-            scale: 1;
-        }
-        dialog:not([open]) {
-            pointer-events: none;
-            scale: 0.9;
-            opacity: 0;
-        }
-        dialog::backdrop {
-            backdrop-filter: blur(0.25rem);
-        }
-    </style>
+  
     <link rel="stylesheet" href="/css/chatbook.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
@@ -45,7 +27,7 @@
                     <div class="search" tabindex="0">
                         <form class="search_form" action="/booksearch" method="get">
                             <input class="search_bar" id="input" name=query value="" type="text" placeholder="리뷰하고 싶은 책을 검색해 보세요!">
-                            <button type="submit"><img src="img/readingGlasses.png"></button>
+                            <button type="submit"><img src="/img/readingGlasses.png"></button>
                         </form>
                     </div>
                     {% if user %}
@@ -144,6 +126,7 @@
                 {% endfor %}
             </div>
         </div>
+        {% if user %}
         <div id="chat-container" class="minimized">
             <div class="chat-icon" id="chat-icon">
               <img src="/img/chatBook_img.png" alt="Chat Icon" />
@@ -157,8 +140,9 @@
               </div>
             </div>
           </div>
+        {% endif %}
         <div id="topbutton">
-            <a href="#mainPage"><img class="topbuttonImg" src="./img/topimg.png"></a>
+            <a href="#mainPage"><img class="topbuttonImg" src="/img/topimg.png"></a>
         </div>
         <div id="footer">
             <div class="footerbox">
@@ -184,12 +168,12 @@
             <div>
                 <ul class="footerUL">
                     <li><a href="#">정보관리체계 블록체인 인증획득 |</a></li>
-                    <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
-                    <li><a href="#">인증 범위: 북아일렌드 고객서비스 |</a></li>
+                    <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
+                    <li><a href="#">인증 범위: 북아일랜드 고객서비스 |</a></li>
                     <P>유효기간: 2025-02-01 ~ 2026-02-04</P>
                 </ul>
             </div>
-            <p>Copyright &copy; 2025 북아일렌드 All Rights Reserved.</p>
+            <p>Copyright &copy; 2025 북아일랜드 All Rights Reserved.</p>
         </div>
     </div>
     {% if user %}

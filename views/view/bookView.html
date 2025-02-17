@@ -11,6 +11,7 @@
     <link href="/css/maincss/footer.css" rel="stylesheet" />
     <link href="/css/views/viewPage.css" rel="stylesheet" />
     <link href="/css/views/reviewbox.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/maincss/loginbox.css">
   </head>
   <body>
     <div id="mainPage">
@@ -95,6 +96,7 @@
             </div>
             <!-- class 이름 추가 -->
             <div class="book_btn">
+              {% if user %}
               {% if not bookmark %}
               <a
                 href="http://localhost:3000/bookmark/setBookmark/0?value=1&isbn13={{bookData.isbn13}}&nickname={{user.nickname}}&cover={{bookData.cover}}"
@@ -117,6 +119,7 @@
                   art="북마크 이미지"
                 />
               </a>
+              {% endif %}
               {% endif %}
             </div>
           </aside>
