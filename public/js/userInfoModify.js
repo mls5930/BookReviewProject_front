@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .getElementById("introduceModifyBtn")
     .addEventListener("click", () => {
       const introduceValue = document.getElementById("introduceInput").value;
-
       fetch(
         `http://localhost:3000/user/update/${encodeURIComponent(nickname)}`,
         {
