@@ -44,6 +44,13 @@ router.get("/login/page", async (req, res) => {
   res.redirect(redirectURL);
 });
 
+/*
+  1. 라우트와 함께 함수도 작성
+  2. 라우트는 작성 하지 못했지만 함수는 작성
+
+  라우트가 뭐에요?
+*/
+
 //메인 페이지
 router.get("/", authMe, getList);
 

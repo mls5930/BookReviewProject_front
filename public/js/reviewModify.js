@@ -17,7 +17,7 @@ form.addEventListener("submit", async (e) => {
 
     const result = await response.json();
 
-    if (result) {
+    if (result === "success") {
       alert("감상문이 수정되었습니다.");
       window.location.href = `/reviewdetail/${review_id}?nickname=${nickname}`; // 수정 후 이동할 페이지
     } else {

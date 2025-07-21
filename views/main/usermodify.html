@@ -103,14 +103,14 @@
                                 </div>
                                 <div class="email">
                                     <div>이메일</div>
-                                    <form class="modifyform" id="emailModify" method="post" action="http://localhost:3000/user/update">
-                                        <input type="text" name="email" placeholder="이메일을 입력해주세요!" value="{{userInfo.email}}">
+                                    <form class="modifyform" id="emailModify" method="post" action="http://localhost:3000/user/update/{{user.nickname}}">
+                                        <input type="email" name="email" placeholder="이메일을 입력해주세요!" value="{{userInfo.email}}">
                                         <button type="submit">이메일 수정</button>
                                     </form>
                                 </div>
                                 <div class="Introduce">
                                     <div>자기소개</div>
-                                    <form class="modifyform" id="introduceModify" method="post" action="http://localhost:3000/user/update">
+                                    <form class="modifyform" id="introduceModify" method="post" action="http://localhost:3000/user/update/{{user.nickname}}">
                                         <input type="text" name="introductions" placeholder="자기소개를 입력해주세요!" value="{{userInfo.introductions}}">
                                         <button type="submit">자기소개 수정</button>
                                     </form>
@@ -127,11 +127,6 @@
         <div id="footer">
             <div class="footerbox">
                 <div>(주)북아일랜드</div>
-                <div>
-                    <a href="https://www.youtube.com/"><img width="30px" height="30px" src="/img/youtubeLogo-removebg-preview.png"></a>
-                    <a href="https://www.instagram.com/"><img width="35px" height="30px" src="/img/instagramLogo-removebg-preview.png"></a>
-                    <a href="https://www.google.com"><img width="30px" height="30px" src="/img/glooglelogo.png"></a>
-                </div>
             </div>
             <div>
                 <ul class="footerUl">
